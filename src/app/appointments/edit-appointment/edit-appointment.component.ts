@@ -27,9 +27,7 @@ export class EditAppointmentComponent implements OnInit {
   languageArray: Language[] = [];
   @ViewChild('chipList') chipList;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  selectedBindingType: string;
   editAppointmentForm: FormGroup;
-  BindingType: any = ['Paperback', 'Case binding', 'Perfect binding', 'Saddle stitch binding', 'Spiral binding'];
 
   ngOnInit() {
     this.updateAppointmentForm();
@@ -40,7 +38,7 @@ export class EditAppointmentComponent implements OnInit {
     private location: Location,
     private appointmentApi: AppointmentService,
     private actRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.appointmentApi.GetAppointment(id).valueChanges().subscribe(data => {

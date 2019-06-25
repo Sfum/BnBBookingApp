@@ -32,8 +32,7 @@ export class AppointmentService {
   GetAppointment(id: string) {
     this.appointmentRef = this.db.object('appointments-list/' + id);
     return this.appointmentRef;
-  }  
-
+  }
   /* Get appointment list */
   GetAppointmentList() {
     this.appointmentsRef = this.db.list('appointments-list');

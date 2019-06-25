@@ -33,12 +33,12 @@ export class EditDoctorComponent implements OnInit {
   }
 
   constructor(
-    public fb: FormBuilder,    
+    public fb: FormBuilder,
     private location: Location,
     private doctorApi: DoctorService,
     private actRoute: ActivatedRoute,
     private router: Router
-  ) { 
+  ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.doctorApi.GetDoctor(id).valueChanges().subscribe(data => {
       this.languageArray = data.languages;

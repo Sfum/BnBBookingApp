@@ -4,7 +4,10 @@ import { MatChipInputEvent, MatTableDataSource } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { AppointmentService } from './../../shared/appointment.service';
-import { Appointment } from '../../shared/appointment'
+import { Appointment } from '../../shared/appointment';
+
+import { DoctorService } from './../../shared/doctor.service';
+import { Doctor } from '../../shared/doctor';
 
 export interface Language {
   name: string;
@@ -25,20 +28,27 @@ export class AddAppointmentComponent implements OnInit {
   @ViewChild('chipList') chipList;
   @ViewChild('resetAppointmentForm') myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  selectedBindingType: string;
   appointmentForm: FormGroup;
-  BindingType: any = ['Paperback', 'Case binding', 'Perfect binding', 'Saddle stitch binding', 'Spiral binding'];
 
   ngOnInit() {
     this.appointmentApi.GetAppointmentList();
+    this.doctorApi.GetDoctorList();
     this.submitAppointmentForm();
   }
 
   constructor(
     public fb: FormBuilder,
-    private appointmentApi: AppointmentService
+    private appointmentApi: AppointmentService,
+    private doctorApi: DoctorService,
   ) {
     this.appointmentApi.GetAppointmentList().snapshotChanges().subscribe(appointments => {
+      appointments.forEach(item => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.AppointmentData.push(a as Appointment)
+      })
+    })
+    this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
