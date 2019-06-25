@@ -58,15 +58,16 @@
      <mat-card>
        <div class="controlers-wrapper">
          <!-- Appointment binding -->
-         <mat-form-field>
-           <mat-label>Binding type</mat-label>
-           <mat-select [(value)]="selected" formControlName="binding_type">
-             <mat-option [value]="bindingType" *ngFor="let bindingType of BindingType">{{bindingType}}</mat-option>
-           </mat-select>
-           <mat-error *ngIf="handleError('binding_type', 'required')">
-             Binding type is required
-           </mat-error>
-         </mat-form-field>
+         <div>
+           <mat-form-field>
+             <mat-label>Select</mat-label>
+             <mat-select>
+               <mat-option *ngFor="let element of AppointmentData" [value]="element.book_name">
+                 {{element.book_name}}
+               </mat-option>
+             </mat-select>
+           </mat-form-field>
+         </div>
 
          <!-- Appointment stock -->
          <div class="misc-bottom-padding">

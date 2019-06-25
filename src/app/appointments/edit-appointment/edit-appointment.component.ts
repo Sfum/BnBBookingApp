@@ -19,6 +19,7 @@ export interface Language {
 export class EditAppointmentComponent implements OnInit {
   visible = true;
   selectable = true;
+  AppointmentData: any = [];
   removable = true;
   addOnBlur = true;
   languageArray: Language[] = [];

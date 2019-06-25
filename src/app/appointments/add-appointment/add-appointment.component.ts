@@ -18,6 +18,7 @@ export class AddAppointmentComponent implements OnInit {
   selectable = true;
   removable = true;
   addOnBlur = true;
+  AppointmentData: any = [];
   languageArray: Language[] = [];
   @ViewChild('chipList') chipList;
   @ViewChild('resetAppointmentForm') myNgForm;
@@ -34,7 +35,7 @@ export class AddAppointmentComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private appointmentApi: AppointmentService
-  ) { }
+  ) {}
 
   /* Remove dynamic languages */
   remove(language: Language): void {
