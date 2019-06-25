@@ -1,0 +1,52 @@
+import { Appointment } from './../../shared/appointment';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { AppointmentService } from './../../shared/appointment.service';
+
+@Component({
+  selector: 'app-appointments-list',
+  templateUrl: './appointments-list.component.html',
+  styleUrls: ['./appointments-list.component.css']
+})
+
+export class AppointmentListComponent {
+  
+  dataSource: MatTableDataSource<Appointment>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  AppointmentData: any = [];
+  columnsDisplay: any[] = [
+    'book_name',
+    'author_name', 
+    'publication_date',
+    'in_stock',
+    'action'
+  ];
+  
+  constructor(private appointmentApi: AppointmentService){
+    this.appointmentApi.GetAppointmentList()
+    .snapshotChanges().subscribe(appointments => {
+        appointments.forEach(item => {
+          let a = item.payload.toJSON();
+          a['$key'] = item.key;
+          this.AppointmentData.push(a as Appointment)
+        })
+        /* Data table */
+        this.dataSource = new MatTableDataSource(this.AppointmentData);
+        /* Pagination */
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+        }, 0);
+    })
+  }
+
+  /* Delete */
+  deleteAppointment(index: number, e){
+    if(window.confirm('Are you sure?')) {
+      const data = this.dataSource.data;
+      data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
+      this.dataSource.data = data;
+      this.appointmentApi.DeleteAppointment(e.$key)
+    }
+  }
+  
+}
