@@ -5,6 +5,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { AppointmentService } from './../../shared/appointment.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {Appointment} from '../../shared/appointment';
 
 export interface Language {
   name: string;
@@ -34,16 +35,23 @@ export class EditAppointmentComponent implements OnInit {
   }
 
   constructor(
-    public fb: FormBuilder,    
+    public fb: FormBuilder,
     private location: Location,
     private appointmentApi: AppointmentService,
     private actRoute: ActivatedRoute,
     private router: Router
-  ) { 
+  ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.appointmentApi.GetAppointment(id).valueChanges().subscribe(data => {
       this.languageArray = data.languages;
       this.editAppointmentForm.setValue(data);
+      this.appointmentApi.GetAppointmentList().snapshotChanges().subscribe(appointments => {
+        appointments.forEach(item => {
+          let a = item.payload.toJSON();
+          a['$key'] = item.key;
+          this.AppointmentData.push(a as Appointment)
+        })
+      })
     })
   }
 

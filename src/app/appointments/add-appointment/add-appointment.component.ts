@@ -37,8 +37,7 @@ export class AddAppointmentComponent implements OnInit {
     public fb: FormBuilder,
     private appointmentApi: AppointmentService
   ) {
-    this.appointmentApi.GetAppointmentList()
-      .snapshotChanges().subscribe(appointments => {
+    this.appointmentApi.GetAppointmentList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
