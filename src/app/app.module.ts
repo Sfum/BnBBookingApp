@@ -3,9 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
-import { EditAppointmentComponent } from './components/edit-appointment/edit-appointment.component';
-import { AppointmentListComponent } from './components/appointments-list/appointments-list.component';
+import { AddAppointmentComponent } from './appointments/add-appointment/add-appointment.component';
+import { EditAppointmentComponent } from './appointments/edit-appointment/edit-appointment.component';
+import { AppointmentListComponent } from './appointments/appointments-list/appointments-list.component';
+
+import { AddDoctorComponent } from './doctors/add-doctor/add-doctor.component';
+import { EditDoctorComponent } from './doctors/edit-doctor/edit-doctor.component';
+import { DoctorsListComponent } from './doctors/doctors-list/doctors-list.component';
 
 /* Angular material */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,7 +32,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     AddAppointmentComponent,
     EditAppointmentComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
+    AddDoctorComponent,
+    EditDoctorComponent,
+    DoctorsListComponent
   ],
   imports: [
     BrowserModule,
