@@ -8,6 +8,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AppointmentService } from './../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
 
+import { DoctorService } from './../../shared/doctor.service';
+import { Doctor } from '../../shared/doctor';
+
 export interface Language {
   name: string;
 }
@@ -36,15 +39,17 @@ export class EditAppointmentComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private location: Location,
-    private appointmentApi: AppointmentService,
     private actRoute: ActivatedRoute,
     private router: Router,
+    private appointmentApi: AppointmentService,
+    private doctorApi: DoctorService,
   ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.appointmentApi.GetAppointment(id).valueChanges().subscribe(data => {
       this.languageArray = data.languages;
       this.editAppointmentForm.setValue(data);
-      this.appointmentApi.GetAppointmentList().snapshotChanges().subscribe(appointments => {
+
+      this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
           a['$key'] = item.key;
