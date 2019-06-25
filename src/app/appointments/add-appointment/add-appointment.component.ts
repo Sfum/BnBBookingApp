@@ -41,13 +41,7 @@ export class AddAppointmentComponent implements OnInit {
     private appointmentApi: AppointmentService,
     private doctorApi: DoctorService,
   ) {
-    this.appointmentApi.GetAppointmentList().snapshotChanges().subscribe(appointments => {
-      appointments.forEach(item => {
-        let a = item.payload.toJSON();
-        a['$key'] = item.key;
-        this.AppointmentData.push(a as Appointment)
-      })
-    })
+
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();

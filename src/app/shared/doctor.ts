@@ -1,6 +1,6 @@
 export interface Doctor {
   $key: string;
-  book_name: string;
+  doctor_name: string;
   isbn_10: number;
   author_name: string;
   publication_date: Date;

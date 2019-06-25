@@ -15,7 +15,7 @@ export class DoctorService {
   /* Create doctor */
   AddDoctor(doctor: Doctor) {
     this.doctorsRef.push({
-      book_name: doctor.book_name,
+      doctor_name: doctor.doctor_name,
       isbn_10: doctor.isbn_10,
       author_name: doctor.author_name,
       publication_date: doctor.publication_date,
@@ -43,7 +43,7 @@ export class DoctorService {
   /* Update doctor */
   UpdateDoctor(id, doctor: Doctor) {
     this.doctorRef.update({
-      book_name: doctor.book_name,
+      doctor_name: doctor.doctor_name,
       isbn_10: doctor.isbn_10,
       author_name: doctor.author_name,
       publication_date: doctor.publication_date,
