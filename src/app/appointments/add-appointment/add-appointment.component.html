@@ -60,17 +60,10 @@
 
 
          <!-- Appointment binding -->
-         <mat-form-field>
-           <mat-label>Binding type</mat-label>
-           <mat-select [(value)]="selected" formControlName="binding_type">
-             <mat-option [value]="bindingType" *ngFor="let bindingType of BindingType">{{bindingType}}</mat-option>
-           </mat-select>
-         </mat-form-field>
-
 
          <mat-form-field>
            <mat-label>Select a Doctor</mat-label>
-           <mat-select>
+           <mat-select [(value)]="selected" formControlName="binding_type">
              <mat-option *ngFor="let element of AppointmentData" [value]="element.book_name">
                {{element.book_name}}
              </mat-option>
