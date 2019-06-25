@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AddBookComponent } from './components/add-book/add-book.component';
-import { EditBookComponent } from './components/edit-book/edit-book.component';
-import { BookListComponent } from './components/book-list/book-list.component';
+import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
+import { EditAppointmentComponent } from './components/edit-appointment/edit-appointment.component';
+import { AppointmentListComponent } from './components/appointments-list/appointments-list.component';
 
 /* Angular material */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +18,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 
 /* Angular CRUD services */
-import { BookService } from './shared/book.service';
+import { AppointmentService } from './shared/appointment.service';
 
 /* Reactive form services in Angular 7 */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,9 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    AddBookComponent,
-    EditBookComponent,
-    BookListComponent
+    AddAppointmentComponent,
+    EditAppointmentComponent,
+    AppointmentListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [BookService],
+  providers: [AppointmentService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
