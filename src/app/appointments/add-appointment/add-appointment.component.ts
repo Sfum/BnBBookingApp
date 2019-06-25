@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material';
+import {MatChipInputEvent, MatTableDataSource} from '@angular/material';
 import { AppointmentService } from './../../shared/appointment.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {Appointment} from '../../shared/appointment';
 
 export interface Language {
   name: string;
@@ -35,7 +36,16 @@ export class AddAppointmentComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private appointmentApi: AppointmentService
-  ) {}
+  ) {
+    this.appointmentApi.GetAppointmentList()
+      .snapshotChanges().subscribe(appointments => {
+      appointments.forEach(item => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.AppointmentData.push(a as Appointment)
+      })
+    })
+  }
 
   /* Remove dynamic languages */
   remove(language: Language): void {
