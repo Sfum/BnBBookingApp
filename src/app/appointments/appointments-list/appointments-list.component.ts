@@ -1,7 +1,8 @@
-import { Appointment } from './../../shared/appointment';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
+
 import { AppointmentService } from './../../shared/appointment.service';
+import { Appointment } from '../../shared/appointment';
 
 @Component({
   selector: 'app-appointments-list',
@@ -18,6 +19,7 @@ export class AppointmentListComponent {
     'book_name',
     'author_name', 
     'publication_date',
+    'binding_type',
     'in_stock',
     'action'
   ];

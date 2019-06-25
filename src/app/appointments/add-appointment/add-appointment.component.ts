@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import {MatChipInputEvent, MatTableDataSource} from '@angular/material';
-import { AppointmentService } from './../../shared/appointment.service';
+import { MatChipInputEvent, MatTableDataSource } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import {Appointment} from '../../shared/appointment';
+
+import { AppointmentService } from './../../shared/appointment.service';
+import { Appointment } from '../../shared/appointment'
 
 export interface Language {
   name: string;
