@@ -8,6 +8,10 @@ import { DoctorsListComponent } from './doctors/doctors-list/doctors-list.compon
 import { EditDoctorComponent } from './doctors/edit-doctor/edit-doctor.component';
 import { AddDoctorComponent } from './doctors/add-doctor/add-doctor.component';
 
+import { AddHospitalComponent } from './hospitals/add-hospital/add-hospital.component';
+import { EditHospitalComponent } from './hospitals/edit-hospital/edit-hospital.component';
+import { HospitalsListComponent } from './hospitals/hospitals-list/hospitals-list.component';
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'add-appointment' },
   { path: 'add-appointment', component: AddAppointmentComponent },
@@ -15,7 +19,10 @@ const routes: Routes = [
   { path: 'appointments-list', component: AppointmentListComponent },
   { path: 'add-doctor', component: AddDoctorComponent },
   { path: 'edit-doctor/:id', component: EditDoctorComponent },
-  { path: 'doctors-list', component: DoctorsListComponent }
+  { path: 'doctors-list', component: DoctorsListComponent },
+  { path: 'add-hospital', component: AddHospitalComponent },
+  { path: 'edit-hospital/:id', component: EditHospitalComponent },
+  { path: 'hospitals-list', component: HospitalsListComponent }
 ];
 
 @NgModule({

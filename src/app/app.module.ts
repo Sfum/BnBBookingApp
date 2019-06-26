@@ -11,6 +11,10 @@ import { AddDoctorComponent } from './doctors/add-doctor/add-doctor.component';
 import { EditDoctorComponent } from './doctors/edit-doctor/edit-doctor.component';
 import { DoctorsListComponent } from './doctors/doctors-list/doctors-list.component';
 
+import { AddHospitalComponent } from './hospitals/add-hospital/add-hospital.component';
+import { EditHospitalComponent } from './hospitals/edit-hospital/edit-hospital.component';
+import { HospitalsListComponent } from './hospitals/hospitals-list/hospitals-list.component';
+
 /* Angular material */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './material.module';
@@ -35,7 +39,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppointmentListComponent,
     AddDoctorComponent,
     EditDoctorComponent,
-    DoctorsListComponent
+    DoctorsListComponent,
+    AddHospitalComponent,
+    EditHospitalComponent,
+    HospitalsListComponent
   ],
   imports: [
     BrowserModule,
