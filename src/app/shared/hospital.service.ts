@@ -12,7 +12,6 @@ export class HospitalService {
 
   constructor(private db: AngularFireDatabase) {}
 
-
   /* Get hospital */
   GetHospital(id: string) {
     this.hospitalRef = this.db.object('hospitals-list/' + id);

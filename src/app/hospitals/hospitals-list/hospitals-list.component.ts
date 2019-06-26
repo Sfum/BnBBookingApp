@@ -47,5 +47,4 @@ export class HospitalsListComponent {
       this.hospitalApi.DeleteHospital(e.$key)
     }
   }
-  
 }

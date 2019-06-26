@@ -31,7 +31,7 @@
         <th mat-header-cell *matHeaderCellDef> Edit / Delete </th>
         <td mat-cell *matCellDef="let element; let i = index;">
           <mat-icon color="primary" class="push-right"
-            [routerLink]="['/edit-doctor/', element.$key]">edit</mat-icon>
+            [routerLink]="['/edit-hospital/', element.$key]">edit</mat-icon>
           <mat-icon mat-raised-button color="accent" (click)="deleteHospital(i, element)">delete</mat-icon>
         </td>
       </ng-container>
