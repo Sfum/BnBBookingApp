@@ -7,7 +7,6 @@ import { AppointmentService } from './../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
 
 import { DoctorService } from './../../shared/doctor.service';
-import { Doctor } from '../../shared/doctor';
 
 export interface Language {
   name: string;
@@ -19,14 +18,14 @@ export interface Language {
   styleUrls: ['./add-appointment.component.css']
 })
 export class AddAppointmentComponent implements OnInit {
-  visible = true;
+
+  @ViewChild('chipList') chipList;
+  @ViewChild('resetAppointmentForm') myNgForm;
   selectable = true;
   removable = true;
   addOnBlur = true;
   AppointmentData: any = [];
   languageArray: Language[] = [];
-  @ViewChild('chipList') chipList;
-  @ViewChild('resetAppointmentForm') myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   appointmentForm: FormGroup;
 
@@ -50,16 +49,12 @@ export class AddAppointmentComponent implements OnInit {
       })
     })
   }
-
-  /* Remove dynamic languages */
   remove(language: Language): void {
     const index = this.languageArray.indexOf(language);
     if (index >= 0) {
       this.languageArray.splice(index, 1);
     }
   }
-
-  /* Reactive appointment form */
   submitAppointmentForm() {
     this.appointmentForm = this.fb.group({
       book_name: ['', [Validators.required]],
@@ -68,16 +63,12 @@ export class AddAppointmentComponent implements OnInit {
       publication_date: ['', [Validators.required]],
       binding_type: ['', [Validators.required]],
       in_stock: ['Yes'],
-      languages: [this.languageArray]
+      languages: [this.languageArray],
     })
   }
-
-  /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
     return this.appointmentForm.controls[controlName].hasError(errorName);
   }
-
-  /* Add dynamic languages */
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
@@ -90,16 +81,12 @@ export class AddAppointmentComponent implements OnInit {
       input.value = '';
     }
   }
-
-  /* Date */
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.appointmentForm.get('publication_date').setValue(convertDate, {
       onlyself: true
     })
   }
-
-  /* Reset form */
   resetForm() {
     this.languageArray = [];
     this.appointmentForm.reset();
@@ -107,8 +94,6 @@ export class AddAppointmentComponent implements OnInit {
       this.appointmentForm.controls[key].setErrors(null)
     });
   }
-
-  /* Submit appointment */
   submitAppointment() {
     if (this.appointmentForm.valid){
       this.appointmentApi.AddAppointment(this.appointmentForm.value)

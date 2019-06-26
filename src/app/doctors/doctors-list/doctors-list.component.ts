@@ -10,9 +10,8 @@ import { DoctorService } from './../../shared/doctor.service';
 })
 
 export class DoctorsListComponent {
-  
-  dataSource: MatTableDataSource<Doctor>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource: MatTableDataSource<Doctor>;
   DoctorData: any = [];
   columnsDisplay: any[] = [
     'book_name',
@@ -20,7 +19,6 @@ export class DoctorsListComponent {
     'in_stock',
     'action'
   ];
-  
   constructor(private doctorApi: DoctorService){
     this.doctorApi.GetDoctorList()
     .snapshotChanges().subscribe(doctors => {
@@ -37,8 +35,6 @@ export class DoctorsListComponent {
         }, 0);
     })
   }
-
-  /* Delete */
   deleteDoctor(index: number, e){
     if(window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
@@ -47,5 +43,4 @@ export class DoctorsListComponent {
       this.doctorApi.DeleteDoctor(e.$key)
     }
   }
-  
 }

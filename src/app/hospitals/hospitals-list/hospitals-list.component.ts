@@ -10,9 +10,8 @@ import { HospitalService } from './../../shared/hospital.service';
 })
 
 export class HospitalsListComponent {
-  
-  dataSource: MatTableDataSource<Hospital>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource: MatTableDataSource<Hospital>;
   HospitalData: any = [];
   columnsDisplay: any[] = [
     'book_name',
@@ -20,7 +19,6 @@ export class HospitalsListComponent {
     'in_stock',
     'action'
   ];
-  
   constructor(private hospitalApi: HospitalService){
     this.hospitalApi.GetHospitalList()
     .snapshotChanges().subscribe(hospitals => {
@@ -37,8 +35,6 @@ export class HospitalsListComponent {
         }, 0);
     })
   }
-
-  /* Delete */
   deleteHospital(index: number, e){
     if(window.confirm('Are you sure?')) {
       const data = this.dataSource.data;

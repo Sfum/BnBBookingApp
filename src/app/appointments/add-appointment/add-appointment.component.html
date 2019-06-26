@@ -26,7 +26,6 @@
            </mat-error>
          </mat-form-field>
 
-
          <!-- Patient First Name -->
          <mat-form-field class="Patient-First-Name">
            <input matInput placeholder="Patient First Name" formControlName="book_name">
@@ -34,7 +33,6 @@
              You must provide a<strong>appointment name</strong>
            </mat-error>
          </mat-form-field>
-
 
          <!-- Patient Last Name -->
          <mat-form-field class="Patient-Last-Name">
@@ -61,9 +59,7 @@
      <mat-card>
        <div class="controlers-wrapper">
 
-
          <!-- Select a Doctor -->
-
          <mat-form-field>
            <mat-label>Select a Doctor</mat-label>
            <mat-select [(value)]="selected" formControlName="binding_type">
@@ -75,8 +71,6 @@
              Binding type is required
            </mat-error>
          </mat-form-field>
-
-
 
          <!-- Confirmation -->
          <div class="misc-bottom-padding">
@@ -95,7 +89,7 @@
                {{lang.name}}
                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
              </mat-chip>
-             <input placeholder="Additional No" [matChipInputFor]="chipList"
+             <input placeholder="Additional Notes" [matChipInputFor]="chipList"
                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
                (matChipInputTokenEnd)="add($event)">
            </mat-chip-list>

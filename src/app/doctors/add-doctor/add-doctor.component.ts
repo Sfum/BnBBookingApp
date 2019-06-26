@@ -5,7 +5,7 @@ import { DoctorService } from './../../shared/doctor.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AppointmentService } from '../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
-import {HospitalService} from '../../shared/hospital.service';
+import { HospitalService } from '../../shared/hospital.service';
 
 export interface Language {
   name: string;
@@ -17,24 +17,20 @@ export interface Language {
   styleUrls: ['./add-doctor.component.css']
 })
 export class AddDoctorComponent implements OnInit {
-  visible = true;
+  @ViewChild('chipList') chipList;
+  @ViewChild('resetDoctorForm') myNgForm;
   selectable = true;
   removable = true;
   addOnBlur = true;
   languageArray: Language[] = [];
   AppointmentData: any = [];
-  @ViewChild('chipList') chipList;
-  @ViewChild('resetDoctorForm') myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  selectedBindingType: string;
   doctorForm: FormGroup;
-  BindingType: any = ['Paperback', 'Case binding', 'Perfect binding', 'Saddle stitch binding', 'Spiral binding'];
 
   ngOnInit() {
     this.doctorApi.GetDoctorList();
     this.submitDoctorForm();
   }
-
   constructor(
     public fb: FormBuilder,
     private doctorApi: DoctorService,
@@ -49,16 +45,12 @@ export class AddDoctorComponent implements OnInit {
       })
     })
   }
-
-  /* Remove dynamic languages */
   remove(language: Language): void {
     const index = this.languageArray.indexOf(language);
     if (index >= 0) {
       this.languageArray.splice(index, 1);
     }
   }
-
-  /* Reactive doctor form */
   submitDoctorForm() {
     this.doctorForm = this.fb.group({
       book_name: ['', [Validators.required]],
@@ -70,13 +62,9 @@ export class AddDoctorComponent implements OnInit {
       languages: [this.languageArray]
     })
   }
-
-  /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
     return this.doctorForm.controls[controlName].hasError(errorName);
   }
-
-  /* Add dynamic languages */
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
@@ -89,16 +77,12 @@ export class AddDoctorComponent implements OnInit {
       input.value = '';
     }
   }
-
-  /* Date */
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.doctorForm.get('publication_date').setValue(convertDate, {
       onlyself: true
     })
   }
-
-  /* Reset form */
   resetForm() {
     this.languageArray = [];
     this.doctorForm.reset();
@@ -106,8 +90,6 @@ export class AddDoctorComponent implements OnInit {
       this.doctorForm.controls[key].setErrors(null)
     });
   }
-
-  /* Submit doctor */
   submitDoctor() {
     if (this.doctorForm.valid){
       this.doctorApi.AddDoctor(this.doctorForm.value)

@@ -9,7 +9,6 @@ import { AppointmentService } from './../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
 
 import { DoctorService } from './../../shared/doctor.service';
-import { Doctor } from '../../shared/doctor';
 
 export interface Language {
   name: string;
@@ -22,21 +21,18 @@ export interface Language {
 })
 
 export class EditAppointmentComponent implements OnInit {
-
-  visible = true;
+  @ViewChild('chipList') chipList;
   selectable = true;
   AppointmentData: any = [];
   removable = true;
   addOnBlur = true;
   languageArray: Language[] = [];
-  @ViewChild('chipList') chipList;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   editAppointmentForm: FormGroup;
 
   ngOnInit() {
     this.updateAppointmentForm();
   }
-
   constructor(
     public fb: FormBuilder,
     private location: Location,
@@ -59,8 +55,6 @@ export class EditAppointmentComponent implements OnInit {
       })
     })
   }
-
-  /* Update form */
   updateAppointmentForm(){
     this.editAppointmentForm = this.fb.group({
       book_name: ['', [Validators.required]],
@@ -69,57 +63,44 @@ export class EditAppointmentComponent implements OnInit {
       publication_date: ['', [Validators.required]],
       binding_type: ['', [Validators.required]],
       in_stock: ['Yes'],
-      languages: ['']
+      languages: ['', [Validators.required]]
     })
   }
-
-  /* Add language */
+  updateAppointment() {
+    var id = this.actRoute.snapshot.paramMap.get('id');
+    if(window.confirm('Are you sure you wanna update?')){
+      this.appointmentApi.UpdateAppointment(id, this.editAppointmentForm.value);
+      this.router.navigate(['appointments-list']);
+    }
+  }
   add(event: MatChipInputEvent): void {
     var input: any = event.input;
     var value: any = event.value;
-    // Add language
+
     if ((value || '').trim() && this.languageArray.length < 5) {
       this.languageArray.push({name: value.trim()});
     }
-    // Reset the input value
+
     if (input) {
       input.value = '';
     }
   }
-
-  /* Remove language */
   remove(language: any): void {
     const index = this.languageArray.indexOf(language);
     if (index >= 0) {
       this.languageArray.splice(index, 1);
     }
   }
-
-  /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
     return this.editAppointmentForm.controls[controlName].hasError(errorName);
   }
-
-  /* Date */
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.editAppointmentForm.get('publication_date').setValue(convertDate, {
       onlyself: true
     })
   }
-
-  /* Go to previous page */
   goBack(){
     this.location.back();
   }
-
-  /* Submit appointment */
-  updateAppointment() {
-    var id = this.actRoute.snapshot.paramMap.get('id');
-    if(window.confirm('Are you sure you wanna update?')){
-        this.appointmentApi.UpdateAppointment(id, this.editAppointmentForm.value);
-      this.router.navigate(['appointments-list']);
-    }
-  }
-
 }

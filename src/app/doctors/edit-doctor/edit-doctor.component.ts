@@ -17,21 +17,17 @@ export interface Language {
 })
 
 export class EditDoctorComponent implements OnInit {
-  visible = true;
+  @ViewChild('chipList') chipList;
   selectable = true;
   removable = true;
   addOnBlur = true;
   languageArray: Language[] = [];
-  @ViewChild('chipList') chipList;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  selectedBindingType: string;
   editDoctorForm: FormGroup;
-  BindingType: any = ['Paperback', 'Case binding', 'Perfect binding', 'Saddle stitch binding', 'Spiral binding'];
 
   ngOnInit() {
     this.updateDoctorForm();
   }
-
   constructor(
     public fb: FormBuilder,
     private location: Location,
@@ -45,8 +41,6 @@ export class EditDoctorComponent implements OnInit {
       this.editDoctorForm.setValue(data);
     })
   }
-
-  /* Update form */
   updateDoctorForm(){
     this.editDoctorForm = this.fb.group({
       book_name: ['', [Validators.required]],
@@ -58,8 +52,6 @@ export class EditDoctorComponent implements OnInit {
       languages: ['']
     })
   }
-
-  /* Add language */
   add(event: MatChipInputEvent): void {
     var input: any = event.input;
     var value: any = event.value;
@@ -72,34 +64,24 @@ export class EditDoctorComponent implements OnInit {
       input.value = '';
     }
   }
-
-  /* Remove language */
   remove(language: any): void {
     const index = this.languageArray.indexOf(language);
     if (index >= 0) {
       this.languageArray.splice(index, 1);
     }
   }
-
-  /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
     return this.editDoctorForm.controls[controlName].hasError(errorName);
   }
-
-  /* Date */
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.editDoctorForm.get('publication_date').setValue(convertDate, {
       onlyself: true
     })
   }
-
-  /* Go to previous page */
   goBack(){
     this.location.back();
   }
-
-  /* Submit doctor */
   updateDoctor() {
     var id = this.actRoute.snapshot.paramMap.get('id');
     if(window.confirm('Are you sure you wanna update?')){
@@ -107,5 +89,4 @@ export class EditDoctorComponent implements OnInit {
       this.router.navigate(['doctors-list']);
     }
   }
-
 }

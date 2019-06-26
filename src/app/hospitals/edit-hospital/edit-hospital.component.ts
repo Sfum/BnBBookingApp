@@ -17,14 +17,12 @@ export interface Language {
 })
 
 export class EditHospitalComponent implements OnInit {
-  visible = true;
+  @ViewChild('chipList') chipList;
   selectable = true;
   removable = true;
   addOnBlur = true;
   languageArray: Language[] = [];
-  @ViewChild('chipList') chipList;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  selectedBindingType: string;
   editHospitalForm: FormGroup;
   BindingType: any = ['Paperback', 'Case binding', 'Perfect binding', 'Saddle stitch binding', 'Spiral binding'];
 

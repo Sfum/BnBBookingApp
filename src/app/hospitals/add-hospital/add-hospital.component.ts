@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
 import { Appointment } from '../../shared/appointment';
 import { AppointmentService } from '../../shared/appointment.service';
 import { HospitalService } from '../../shared/hospital.service';
@@ -17,31 +18,26 @@ export interface Language {
   styleUrls: ['./add-hospital.component.css']
 })
 export class AddHospitalComponent implements OnInit {
-  visible = true;
+  @ViewChild('chipList') chipList;
+  @ViewChild('resetHospitalForm') myNgForm;
   selectable = true;
   removable = true;
   addOnBlur = true;
   languageArray: Language[] = [];
   AppointmentData: any = [];
-  @ViewChild('chipList') chipList;
-  @ViewChild('resetHospitalForm') myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  selectedBindingType: string;
   hospitalForm: FormGroup;
 
   ngOnInit() {
     this.hospitalApi.GetHospitalList();
     this.submitHospitalForm();
-
   }
-
   constructor(
     public fb: FormBuilder,
     private hospitalApi: HospitalService,
     private appointmentApi: AppointmentService,
     private doctorApi: DoctorService
   ) {
-
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
@@ -50,14 +46,12 @@ export class AddHospitalComponent implements OnInit {
       })
     })
   }
-  /* Remove dynamic languages */
   remove(language: Language): void {
     const index = this.languageArray.indexOf(language);
     if (index >= 0) {
       this.languageArray.splice(index, 1);
     }
   }
-  /* Reactive hospital form */
   submitHospitalForm() {
     this.hospitalForm = this.fb.group({
       book_name: ['', [Validators.required]],
@@ -69,13 +63,9 @@ export class AddHospitalComponent implements OnInit {
       languages: [this.languageArray]
     })
   }
-
-  /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
     return this.hospitalForm.controls[controlName].hasError(errorName);
   }
-
-  /* Add dynamic languages */
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
@@ -88,16 +78,12 @@ export class AddHospitalComponent implements OnInit {
       input.value = '';
     }
   }
-
-  /* Date */
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.hospitalForm.get('publication_date').setValue(convertDate, {
       onlyself: true
     })
   }
-
-  /* Reset form */
   resetForm() {
     this.languageArray = [];
     this.hospitalForm.reset();
@@ -105,13 +91,10 @@ export class AddHospitalComponent implements OnInit {
       this.hospitalForm.controls[key].setErrors(null)
     });
   }
-
-  /* Submit hospital */
   submitHospital() {
     if (this.hospitalForm.valid){
       this.hospitalApi.AddHospital(this.hospitalForm.value)
       this.resetForm();
     }
   }
-
 }

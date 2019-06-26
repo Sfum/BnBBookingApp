@@ -11,19 +11,17 @@ import { Appointment } from '../../shared/appointment';
 })
 
 export class AppointmentListComponent {
-  
-  dataSource: MatTableDataSource<Appointment>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   AppointmentData: any = [];
+  dataSource: MatTableDataSource<Appointment>;
   columnsDisplay: any[] = [
     'book_name',
-    'author_name', 
+    'author_name',
     'publication_date',
     'binding_type',
     'in_stock',
     'action'
   ];
-  
   constructor(private appointmentApi: AppointmentService){
     this.appointmentApi.GetAppointmentList()
     .snapshotChanges().subscribe(appointments => {
@@ -40,8 +38,6 @@ export class AppointmentListComponent {
         }, 0);
     })
   }
-
-  /* Delete */
   deleteAppointment(index: number, e){
     if(window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
@@ -50,5 +46,4 @@ export class AppointmentListComponent {
       this.appointmentApi.DeleteAppointment(e.$key)
     }
   }
-  
 }
