@@ -3,6 +3,9 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { DoctorService } from './../../shared/doctor.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { AppointmentService } from '../../shared/appointment.service';
+import { Appointment } from '../../shared/appointment';
+import {HospitalService} from '../../shared/hospital.service';
 
 export interface Language {
   name: string;
@@ -19,6 +22,7 @@ export class AddDoctorComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   languageArray: Language[] = [];
+  AppointmentData: any = [];
   @ViewChild('chipList') chipList;
   @ViewChild('resetDoctorForm') myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -33,8 +37,18 @@ export class AddDoctorComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    private doctorApi: DoctorService
-  ) { }
+    private doctorApi: DoctorService,
+    private appointmentApi: AppointmentService,
+    private hospitalApi: HospitalService,
+  ) {
+    this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
+      appointments.forEach(item => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.AppointmentData.push(a as Appointment)
+      })
+    })
+  }
 
   /* Remove dynamic languages */
   remove(language: Language): void {

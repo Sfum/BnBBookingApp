@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
-import { HospitalService } from './../../shared/hospital.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Appointment } from '../../shared/appointment';
+import { AppointmentService } from '../../shared/appointment.service';
+import { HospitalService } from '../../shared/hospital.service';
+import { DoctorService } from './../../shared/doctor.service';
 
 export interface Language {
   name: string;
@@ -19,23 +22,34 @@ export class AddHospitalComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   languageArray: Language[] = [];
+  AppointmentData: any = [];
   @ViewChild('chipList') chipList;
   @ViewChild('resetHospitalForm') myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   selectedBindingType: string;
   hospitalForm: FormGroup;
-  BindingType: any = ['Paperback', 'Case binding', 'Perfect binding', 'Saddle stitch binding', 'Spiral binding'];
 
   ngOnInit() {
     this.hospitalApi.GetHospitalList();
     this.submitHospitalForm();
+
   }
 
   constructor(
     public fb: FormBuilder,
-    private hospitalApi: HospitalService
-  ) { }
+    private hospitalApi: HospitalService,
+    private appointmentApi: AppointmentService,
+    private doctorApi: DoctorService
+  ) {
 
+    this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
+      appointments.forEach(item => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.AppointmentData.push(a as Appointment)
+      })
+    })
+  }
   /* Remove dynamic languages */
   remove(language: Language): void {
     const index = this.languageArray.indexOf(language);
@@ -43,7 +57,6 @@ export class AddHospitalComponent implements OnInit {
       this.languageArray.splice(index, 1);
     }
   }
-
   /* Reactive hospital form */
   submitHospitalForm() {
     this.hospitalForm = this.fb.group({

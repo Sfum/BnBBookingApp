@@ -60,12 +60,14 @@
        <div class="controlers-wrapper">
          <!-- Area/Hospital -->
          <mat-form-field>
-           <mat-label>Area/Hospital</mat-label>
+           <mat-label>Select a Doctor</mat-label>
            <mat-select [(value)]="selected" formControlName="binding_type">
-             <mat-option [value]="bindingType" *ngFor="let bindingType of BindingType">{{bindingType}}</mat-option>
+             <mat-option *ngFor="let element of AppointmentData" [value]="element.book_name">
+               {{element.book_name}}
+             </mat-option>
            </mat-select>
            <mat-error *ngIf="handleError('binding_type', 'required')">
-             Area/Hospital is required!
+             Binding type is required
            </mat-error>
          </mat-form-field>
 
