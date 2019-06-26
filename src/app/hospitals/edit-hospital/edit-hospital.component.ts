@@ -5,6 +5,9 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { HospitalService } from './../../shared/hospital.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {AppointmentService} from '../../shared/appointment.service';
+import {DoctorService} from '../../shared/doctor.service';
+import {Appointment} from '../../shared/appointment';
 
 export interface Language {
   name: string;
@@ -24,7 +27,7 @@ export class EditHospitalComponent implements OnInit {
   languageArray: Language[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   editHospitalForm: FormGroup;
-  BindingType: any = ['Paperback', 'Case binding', 'Perfect binding', 'Saddle stitch binding', 'Spiral binding'];
+  AppointmentData: any = [];
 
   ngOnInit() {
     this.updateHospitalForm();
@@ -33,14 +36,24 @@ export class EditHospitalComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private location: Location,
-    private hospitalApi: HospitalService,
     private actRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private appointmentApi: AppointmentService,
+    private doctorApi: DoctorService,
+    private hospitalApi: HospitalService,
   ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.hospitalApi.GetHospital(id).valueChanges().subscribe(data => {
       this.languageArray = data.languages;
       this.editHospitalForm.setValue(data);
+
+      this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
+        appointments.forEach(item => {
+          let a = item.payload.toJSON();
+          a['$key'] = item.key;
+          this.AppointmentData.push(a as Appointment)
+        })
+      })
     })
   }
 

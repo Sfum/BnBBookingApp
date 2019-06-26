@@ -3,8 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
-import { DoctorService } from './../../shared/doctor.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { AppointmentService } from '../../shared/appointment.service';
+import { HospitalService } from '../../shared/hospital.service';
+import { DoctorService } from './../../shared/doctor.service';
+import {Appointment} from '../../shared/appointment';
 
 export interface Language {
   name: string;
@@ -24,21 +28,34 @@ export class EditDoctorComponent implements OnInit {
   languageArray: Language[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   editDoctorForm: FormGroup;
+  AppointmentData: any = [];
+
 
   ngOnInit() {
     this.updateDoctorForm();
+    this.doctorApi.GetDoctorList();
   }
   constructor(
     public fb: FormBuilder,
     private location: Location,
-    private doctorApi: DoctorService,
     private actRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private appointmentApi: AppointmentService,
+    private doctorApi: DoctorService,
+    private hospitalApi: HospitalService,
   ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.doctorApi.GetDoctor(id).valueChanges().subscribe(data => {
       this.languageArray = data.languages;
       this.editDoctorForm.setValue(data);
+
+      this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
+        appointments.forEach(item => {
+          let a = item.payload.toJSON();
+          a['$key'] = item.key;
+          this.AppointmentData.push(a as Appointment)
+        })
+      })
     })
   }
   updateDoctorForm(){
@@ -49,7 +66,7 @@ export class EditDoctorComponent implements OnInit {
       publication_date: ['', [Validators.required]],
       binding_type: ['', [Validators.required]],
       in_stock: ['Yes'],
-      languages: ['']
+      languages: [''],
     })
   }
   add(event: MatChipInputEvent): void {
