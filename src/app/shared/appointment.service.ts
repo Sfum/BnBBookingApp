@@ -12,6 +12,17 @@ export class AppointmentService {
 
   constructor(private db: AngularFireDatabase) {}
 
+  /* Get appointment */
+  GetAppointment(id: string) {
+    this.appointmentRef = this.db.object('appointments-list/' + id);
+    return this.appointmentRef;
+  }
+  /* Get appointment list */
+  GetAppointmentList() {
+    this.appointmentsRef = this.db.list('appointments-list');
+    return this.appointmentsRef;
+  }
+
   /* Create appointment */
   AddAppointment(appointment: Appointment) {
     this.appointmentsRef.push({
@@ -26,17 +37,6 @@ export class AppointmentService {
     .catch(error => {
       this.errorMgmt(error);
     })
-  }
-
-  /* Get appointment */
-  GetAppointment(id: string) {
-    this.appointmentRef = this.db.object('appointments-list/' + id);
-    return this.appointmentRef;
-  }
-  /* Get appointment list */
-  GetAppointmentList() {
-    this.appointmentsRef = this.db.list('appointments-list');
-    return this.appointmentsRef;
   }
 
   /* Update appointment */

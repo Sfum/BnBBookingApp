@@ -12,6 +12,19 @@ export class DoctorService {
 
   constructor(private db: AngularFireDatabase) {}
 
+
+  /* Get doctor */
+  GetDoctor(id: string) {
+    this.doctorRef = this.db.object('doctors-list/' + id);
+    return this.doctorRef;
+  }
+
+  /* Get doctor list */
+  GetDoctorList() {
+    this.doctorsRef = this.db.list('doctors-list');
+    return this.doctorsRef;
+  }
+
   /* Create doctor */
   AddDoctor(doctor: Doctor) {
     this.doctorsRef.push({
@@ -26,18 +39,6 @@ export class DoctorService {
       .catch(error => {
         this.errorMgmt(error);
       })
-  }
-
-  /* Get doctor */
-  GetDoctor(id: string) {
-    this.doctorRef = this.db.object('doctors-list/' + id);
-    return this.doctorRef;
-  }
-
-  /* Get doctor list */
-  GetDoctorList() {
-    this.doctorsRef = this.db.list('doctors-list');
-    return this.doctorsRef;
   }
 
   /* Update doctor */

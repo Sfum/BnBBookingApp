@@ -22,6 +22,7 @@ export interface Language {
 })
 
 export class EditAppointmentComponent implements OnInit {
+
   visible = true;
   selectable = true;
   AppointmentData: any = [];
