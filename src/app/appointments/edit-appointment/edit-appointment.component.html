@@ -9,18 +9,11 @@
   <form [formGroup]="editAppointmentForm" (ngSubmit)="updateAppointment()" novalidate>
     <mat-card>
       <div class="controlers-wrapper">
-        <!-- Appointment name -->
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Appointment name" formControlName="book_name">
-          <mat-error *ngIf="handleError('book_name', 'required')">
-            You must provide a<strong>appointment name</strong>
-          </mat-error>
-        </mat-form-field>
 
-        <!-- ISBN -->
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="ISBN-10" formControlName="isbn_10" pattern="[0-9]*" minlength="10"
-            maxlength="10">
+        <!-- Appointment Reference Number -->
+        <mat-form-field class="Appointment-Reference-Number">
+          <input matInput placeholder="Appointment Reference Number" formControlName="isbn_10" pattern="[0-9]*" minlength="10"
+                 maxlength="10">
           <mat-error *ngIf="handleError('isbn_10', 'required')">
             You must provide a <strong>10 digit ISBN</strong>
           </mat-error>
@@ -32,17 +25,29 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Author name -->
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Author name" formControlName="author_name">
+
+        <!-- Patient First Name -->
+        <mat-form-field class="Patient-First-Name">
+          <input matInput placeholder="Patient First Name" formControlName="book_name">
+          <mat-error *ngIf="handleError('book_name', 'required')">
+            You must provide a<strong>appointment name</strong>
+          </mat-error>
+        </mat-form-field>
+
+
+
+        <!-- Patient Last Name -->
+        <mat-form-field class="Patient-Last-Name">
+          <input matInput placeholder="Patient Last Name" formControlName="author_name">
           <mat-error *ngIf="handleError('author_name', 'required')">
             You must provide an <strong>author name</strong>
           </mat-error>
         </mat-form-field>
 
-        <!-- Publication date -->
+
+        <!-- Appointment Date -->
         <mat-form-field>
-          <input matInput readonly [matDatepicker]="picker" placeholder="Publication date"
+          <input matInput readonly [matDatepicker]="picker" placeholder="Appointment Date"
             formControlName="publication_date" (dateChange)="formatDate($event)">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -55,9 +60,10 @@
 
     <mat-card>
       <div class="controlers-wrapper">
-        <!-- Appointment binding -->
+
+        <!-- Select a Doctor -->
         <mat-form-field>
-          <mat-label>Select a Doctor</mat-label>
+          <mat-label>Edit a Doctor</mat-label>
           <mat-select [(value)]="selected" formControlName="binding_type">
             <mat-option *ngFor="let element of AppointmentData" [value]="element.book_name">
               {{element.book_name}}
@@ -68,16 +74,16 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Appointment stock -->
+        <!-- Confirmation -->
         <div class="misc-bottom-padding">
-          <mat-label>Available in stock: </mat-label>
+          <mat-label>Confirmed?: </mat-label>
           <mat-radio-group aria-label="Select an option" formControlName="in_stock">
             <mat-radio-button value="Yes">Yes</mat-radio-button>
             <mat-radio-button value="No">No</mat-radio-button>
           </mat-radio-group>
         </div>
 
-        <!-- Add languages -->
+        <!-- Additional Notes -->
         <mat-form-field class="multiple-items">
           <mat-chip-list #chipList>
             <mat-chip *ngFor="let lang of languageArray" [selectable]="selectable" [removable]="removable"
@@ -85,7 +91,7 @@
               {{lang.name}}
               <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
-            <input placeholder="Add languages" [matChipInputFor]="chipList"
+            <input placeholder="Additional Notes" [matChipInputFor]="chipList"
               [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
               (matChipInputTokenEnd)="add($event)">
           </mat-chip-list>
