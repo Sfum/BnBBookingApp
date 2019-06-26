@@ -16,8 +16,7 @@ export class DoctorsListComponent {
   DoctorData: any = [];
   columnsDisplay: any[] = [
     'book_name',
-    'author_name', 
-    'publication_date',
+    'author_name',
     'in_stock',
     'action'
   ];
