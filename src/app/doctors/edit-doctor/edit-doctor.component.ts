@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AppointmentService } from '../../shared/appointment.service';
 import { HospitalService } from '../../shared/hospital.service';
 import { DoctorService } from './../../shared/doctor.service';
-import {Appointment} from '../../shared/appointment';
+import { Appointment } from '../../shared/appointment';
 
 export interface Language {
   name: string;
@@ -32,8 +32,8 @@ export class EditDoctorComponent implements OnInit {
 
 
   ngOnInit() {
-    this.updateDoctorForm();
     this.doctorApi.GetDoctorList();
+    this.updateDoctorForm();
   }
   constructor(
     public fb: FormBuilder,

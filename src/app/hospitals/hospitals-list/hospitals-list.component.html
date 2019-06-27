@@ -18,8 +18,13 @@
       </ng-container>
 
       <ng-container matColumnDef="author_name">
-        <th mat-header-cell *matHeaderCellDef> Type Of Specialist </th>
+        <th mat-header-cell *matHeaderCellDef> Address </th>
         <td mat-cell *matCellDef="let element"> {{element.author_name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="binding_type">
+        <th mat-header-cell *matHeaderCellDef> Doctor </th>
+        <td mat-cell *matCellDef="let element"> {{element.binding_type}} </td>
       </ng-container>
 
       <ng-container matColumnDef="in_stock">

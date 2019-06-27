@@ -33,9 +33,9 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Type Of Specialist -->
+        <!-- Address -->
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Type Of Specialist" formControlName="author_name">
+          <input matInput placeholder="Address" formControlName="author_name">
           <mat-error *ngIf="handleError('author_name', 'required')">
             You must provide a <strong>type of medical specialist.</strong>
           </mat-error>
@@ -58,12 +58,14 @@
       <div class="controlers-wrapper">
         <!-- Area/Hospital -->
         <mat-form-field>
-          <mat-label>Area/Hospital</mat-label>
+          <mat-label>Edit a Doctor</mat-label>
           <mat-select [(value)]="selected" formControlName="binding_type">
-            <mat-option [value]="bindingType" *ngFor="let bindingType of AppointmentData">{{bindingType}}</mat-option>
+            <mat-option *ngFor="let element of AppointmentData" [value]="element.book_name">
+              {{element.book_name}}
+            </mat-option>
           </mat-select>
           <mat-error *ngIf="handleError('binding_type', 'required')">
-            Area/Hospital is required!
+            Binding type is required
           </mat-error>
         </mat-form-field>
 

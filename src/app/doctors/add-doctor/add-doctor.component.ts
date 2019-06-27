@@ -23,9 +23,10 @@ export class AddDoctorComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   languageArray: Language[] = [];
-  AppointmentData: any = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   doctorForm: FormGroup;
+  AppointmentData: any = [];
+
 
   ngOnInit() {
     this.doctorApi.GetDoctorList();

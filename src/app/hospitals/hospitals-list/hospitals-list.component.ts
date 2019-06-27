@@ -16,6 +16,7 @@ export class HospitalsListComponent {
   columnsDisplay: any[] = [
     'book_name',
     'author_name',
+    'binding_type',
     'in_stock',
     'action'
   ];
