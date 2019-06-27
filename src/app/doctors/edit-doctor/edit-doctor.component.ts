@@ -69,6 +69,13 @@ export class EditDoctorComponent implements OnInit {
       languages: [''],
     })
   }
+  updateDoctor() {
+    var id = this.actRoute.snapshot.paramMap.get('id');
+    if(window.confirm('Are you sure you wanna update?')){
+      this.doctorApi.UpdateDoctor(id, this.editDoctorForm.value);
+      this.router.navigate(['doctors-list']);
+    }
+  }
   add(event: MatChipInputEvent): void {
     var input: any = event.input;
     var value: any = event.value;
@@ -98,12 +105,5 @@ export class EditDoctorComponent implements OnInit {
   }
   goBack(){
     this.location.back();
-  }
-  updateDoctor() {
-    var id = this.actRoute.snapshot.paramMap.get('id');
-    if(window.confirm('Are you sure you wanna update?')){
-        this.doctorApi.UpdateDoctor(id, this.editDoctorForm.value);
-      this.router.navigate(['doctors-list']);
-    }
   }
 }

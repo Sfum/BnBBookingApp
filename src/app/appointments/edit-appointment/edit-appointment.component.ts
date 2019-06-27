@@ -39,7 +39,7 @@ export class EditAppointmentComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router,
     private appointmentApi: AppointmentService,
-    private doctorApi: DoctorService,
+    private doctorApi: DoctorService
   ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.appointmentApi.GetAppointment(id).valueChanges().subscribe(data => {
