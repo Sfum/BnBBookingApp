@@ -4,6 +4,7 @@ import { MatChipInputEvent } from '@angular/material';
 import { DoctorService } from './../../shared/doctor.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AppointmentService } from '../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
@@ -39,7 +40,9 @@ export class AddDoctorComponent implements OnInit {
     private doctorApi: DoctorService,
     private appointmentApi: AppointmentService,
     private hospitalApi: HospitalService,
-    private location: Location
+    private location: Location,
+    private actRoute: ActivatedRoute,
+    private router: Router,
   ) {
     this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
@@ -98,6 +101,7 @@ export class AddDoctorComponent implements OnInit {
     if (this.doctorForm.valid){
       this.doctorApi.AddDoctor(this.doctorForm.value)
       this.resetForm();
+      this.router.navigate(['doctors-list']);
     }
   }
   goBack(){

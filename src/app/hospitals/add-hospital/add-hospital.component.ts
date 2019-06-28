@@ -3,6 +3,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Appointment } from '../../shared/appointment';
 import { AppointmentService } from '../../shared/appointment.service';
@@ -38,7 +39,9 @@ export class AddHospitalComponent implements OnInit {
     private hospitalApi: HospitalService,
     private appointmentApi: AppointmentService,
     private doctorApi: DoctorService,
-    private location: Location
+    private location: Location,
+    private actRoute: ActivatedRoute,
+    private router: Router,
   ) {
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
@@ -97,6 +100,7 @@ export class AddHospitalComponent implements OnInit {
     if (this.hospitalForm.valid){
       this.hospitalApi.AddHospital(this.hospitalForm.value)
       this.resetForm();
+      this.router.navigate(['hospitals-list']);
     }
   }
   goBack(){

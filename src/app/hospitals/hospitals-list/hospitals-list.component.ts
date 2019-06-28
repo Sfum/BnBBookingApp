@@ -1,6 +1,8 @@
 import { Hospital } from './../../shared/hospital';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { Location } from '@angular/common';
+
 import { HospitalService } from './../../shared/hospital.service';
 
 @Component({
@@ -20,7 +22,9 @@ export class HospitalsListComponent {
     'in_stock',
     'action'
   ];
-  constructor(private hospitalApi: HospitalService){
+  constructor(
+    private hospitalApi: HospitalService,
+    private location: Location) {
     this.hospitalApi.GetHospitalList()
     .snapshotChanges().subscribe(hospitals => {
         hospitals.forEach(item => {
@@ -43,5 +47,8 @@ export class HospitalsListComponent {
       this.dataSource.data = data;
       this.hospitalApi.DeleteHospital(e.$key)
     }
+  }
+  goBack(){
+    this.location.back();
   }
 }

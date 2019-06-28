@@ -42,8 +42,6 @@
              You must provide a <strong>type of medical specialist.</strong>
            </mat-error>
          </mat-form-field>
-
-          Publication date
          <mat-form-field>
            <input matInput readonly [matDatepicker]="picker" placeholder="Publication date"
              formControlName="publication_date" (dateChange)="formatDate($event)">
@@ -99,16 +97,22 @@
            </i>
          </mat-form-field>
        </div>
-     </mat-card>
+       <button mat-raised-button color="warn" class="button-length" >Submit</button>
 
-     <!-- Submit & Reset -->
-     <mat-card>
-       <div class="full-wrapper button-wrapper">
-         <div class="button-wrapper">
-           <button mat-flat-button color="warn">Submit</button>
-           <button mat-flat-button color="war" (click)="resetForm()">Clear</button>
-         </div>
-       </div>
      </mat-card>
    </form>
+   <!-- Submit & Reset -->
+   <mat-card>
+     <div class="full-wrapper button-wrapper">
+       <div class="button-wrapper">
+         <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
+         <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
+           <mat-icon>assignment</mat-icon> View Appointments
+         </button>
+         <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/doctors-list">
+           <mat-icon>view_list</mat-icon> View Doctors
+         </button>
+       </div>
+     </div>
+   </mat-card>
  </div>

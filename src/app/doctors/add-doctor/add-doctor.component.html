@@ -42,8 +42,6 @@
              You must provide a <strong>type of medical specialist.</strong>
            </mat-error>
          </mat-form-field>
-
-          Publication date
          <mat-form-field>
            <input matInput readonly [matDatepicker]="picker" placeholder="Publication date"
              formControlName="publication_date" (dateChange)="formatDate($event)">
@@ -61,14 +59,14 @@
        <div class="controlers-wrapper">
          <!-- Area/Hospital -->
          <mat-form-field>
-           <mat-label>Select a Doctor</mat-label>
+           <mat-label>Select a Hospital</mat-label>
            <mat-select [(value)]="selected" formControlName="binding_type">
              <mat-option *ngFor="let element of AppointmentData" [value]="element.book_name">
                {{element.book_name}}
              </mat-option>
            </mat-select>
            <mat-error *ngIf="handleError('binding_type', 'required')">
-             Binding type is required
+             Hospital is required
            </mat-error>
          </mat-form-field>
 
@@ -98,16 +96,22 @@
            </i>
          </mat-form-field>
        </div>
-     </mat-card>
-
-     <!-- Submit & Reset -->
-     <mat-card>
-       <div class="full-wrapper button-wrapper">
-         <div class="button-wrapper">
-           <button mat-flat-button color="warn">Submit</button>
-           <button mat-flat-button color="war" (click)="resetForm()">Clear</button>
-         </div>
-       </div>
+       <button mat-raised-button color="warn" class="button-length" >Submit</button>
      </mat-card>
    </form>
+   <!-- Submit & Reset -->
+   <mat-card>
+     <div class="full-wrapper button-wrapper">
+       <div class="button-wrapper">
+
+         <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
+         <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
+           <mat-icon>local_hospital</mat-icon> View Hospitals
+         </button>
+         <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
+           <mat-icon>assignment</mat-icon> View Appointments
+         </button>
+       </div>
+     </div>
+   </mat-card>
  </div>

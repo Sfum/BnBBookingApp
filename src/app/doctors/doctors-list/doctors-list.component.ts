@@ -2,6 +2,7 @@ import { Doctor } from './../../shared/doctor';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { DoctorService } from './../../shared/doctor.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-doctors-list',
@@ -19,7 +20,9 @@ export class DoctorsListComponent {
     'in_stock',
     'action'
   ];
-  constructor(private doctorApi: DoctorService){
+  constructor(
+    private doctorApi: DoctorService,
+    private location: Location) {
     this.doctorApi.GetDoctorList()
     .snapshotChanges().subscribe(doctors => {
         doctors.forEach(item => {
@@ -42,5 +45,8 @@ export class DoctorsListComponent {
       this.dataSource.data = data;
       this.doctorApi.DeleteDoctor(e.$key)
     }
+  }
+  goBack(){
+    this.location.back();
   }
 }

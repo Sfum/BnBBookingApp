@@ -3,11 +3,13 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatTableDataSource } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AppointmentService } from './../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
 
 import { DoctorService } from './../../shared/doctor.service';
+
 
 export interface Language {
   name: string;
@@ -40,7 +42,9 @@ export class AddAppointmentComponent implements OnInit {
     public fb: FormBuilder,
     private appointmentApi: AppointmentService,
     private doctorApi: DoctorService,
-    private location: Location
+    private location: Location,
+    private actRoute: ActivatedRoute,
+    private router: Router,
   ) {
 
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
@@ -100,6 +104,7 @@ export class AddAppointmentComponent implements OnInit {
     if (this.appointmentForm.valid){
       this.appointmentApi.AddAppointment(this.appointmentForm.value)
       this.resetForm();
+      this.router.navigate(['appointments-list']);
     }
   }
   goBack(){

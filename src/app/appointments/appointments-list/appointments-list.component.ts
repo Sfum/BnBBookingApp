@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { Location } from '@angular/common';
 
 import { AppointmentService } from './../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
@@ -22,7 +23,10 @@ export class AppointmentListComponent {
     'in_stock',
     'action'
   ];
-  constructor(private appointmentApi: AppointmentService){
+  constructor(
+    private appointmentApi: AppointmentService,
+    private location: Location
+){
     this.appointmentApi.GetAppointmentList()
     .snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
@@ -45,5 +49,8 @@ export class AppointmentListComponent {
       this.dataSource.data = data;
       this.appointmentApi.DeleteAppointment(e.$key)
     }
+  }
+  goBack(){
+    this.location.back();
   }
 }
