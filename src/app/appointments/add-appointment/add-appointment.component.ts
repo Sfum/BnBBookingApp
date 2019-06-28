@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatTableDataSource } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Location } from '@angular/common';
 
 import { AppointmentService } from './../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
@@ -39,6 +40,7 @@ export class AddAppointmentComponent implements OnInit {
     public fb: FormBuilder,
     private appointmentApi: AppointmentService,
     private doctorApi: DoctorService,
+    private location: Location
   ) {
 
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
@@ -100,5 +102,7 @@ export class AddAppointmentComponent implements OnInit {
       this.resetForm();
     }
   }
-
+  goBack(){
+    this.location.back();
+  }
 }

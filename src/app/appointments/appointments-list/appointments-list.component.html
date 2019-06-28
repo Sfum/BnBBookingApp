@@ -52,8 +52,17 @@
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
+  <br>
+  <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-appointment">
+    <mat-icon>alarm</mat-icon> Make an Appointment
+  </a>
 
-  <div>
+  <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-doctor">
+    <mat-icon>work</mat-icon> Add Another Doctor
+  </a>
 
-  </div>
+  <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-hospital">
+    <mat-icon>playlist_add</mat-icon> Add A Hospital</a>
+
+
 </div>

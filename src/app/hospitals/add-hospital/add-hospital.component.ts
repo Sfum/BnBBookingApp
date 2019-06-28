@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Location } from '@angular/common';
 
 import { Appointment } from '../../shared/appointment';
 import { AppointmentService } from '../../shared/appointment.service';
@@ -36,7 +37,8 @@ export class AddHospitalComponent implements OnInit {
     public fb: FormBuilder,
     private hospitalApi: HospitalService,
     private appointmentApi: AppointmentService,
-    private doctorApi: DoctorService
+    private doctorApi: DoctorService,
+    private location: Location
   ) {
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
@@ -96,5 +98,8 @@ export class AddHospitalComponent implements OnInit {
       this.hospitalApi.AddHospital(this.hospitalForm.value)
       this.resetForm();
     }
+  }
+  goBack(){
+    this.location.back();
   }
 }

@@ -3,7 +3,6 @@
   <h1 class="mat-h1">Doctor List</h1>
   <mat-divider fxFlex="1 0"></mat-divider>
 </div>
-
 <!-- No data message -->
 <p *ngIf="DoctorData.length <= 0" class="no-data">There is no data added yet!</p>
 
@@ -39,7 +38,17 @@
       <tr mat-header-row *matHeaderRowDef="columnsDisplay"></tr>
       <tr mat-row *matRowDef="let row; columns: columnsDisplay;"></tr>
     </table>
-
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
+  <br>
+  <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-doctor">
+    <mat-icon>work</mat-icon> Add Another Doctor
+  </a>
+
+  <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-hospital">
+    <mat-icon>playlist_add</mat-icon> Add A Hospital</a>
+
+  <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-appointment">
+    <mat-icon>alarm</mat-icon> Make an Appointment
+  </a>
 </div>
