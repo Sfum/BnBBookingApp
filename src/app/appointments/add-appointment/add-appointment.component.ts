@@ -10,7 +10,6 @@ import { Appointment } from '../../shared/appointment';
 
 import { DoctorService } from './../../shared/doctor.service';
 
-
 export interface Language {
   name: string;
 }
