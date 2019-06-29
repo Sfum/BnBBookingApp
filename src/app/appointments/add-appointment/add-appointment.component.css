@@ -3,3 +3,16 @@
   min-width: unset!important;
   text-align: left;
 }
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.box div {
+  width: 200px;
+  height: 100px;
+}

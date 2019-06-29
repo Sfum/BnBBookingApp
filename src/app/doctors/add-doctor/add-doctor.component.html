@@ -100,10 +100,7 @@
      </mat-card>
    </form>
    <!-- Submit & Reset -->
-   <mat-card>
-     <div class="full-wrapper button-wrapper">
-       <div class="button-wrapper">
-
+   <mat-card class="box">
          <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
          <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
            <mat-icon>local_hospital</mat-icon> View Hospitals
@@ -111,7 +108,6 @@
          <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
            <mat-icon>assignment</mat-icon> View Appointments
          </button>
-       </div>
-     </div>
    </mat-card>
+   
  </div>
