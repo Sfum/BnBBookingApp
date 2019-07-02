@@ -16,11 +16,9 @@ export class AppointmentListComponent {
   AppointmentData: any = [];
   dataSource: MatTableDataSource<Appointment>;
   columnsDisplay: any[] = [
-    'book_name',
     'author_name',
     'publication_date',
     'binding_type',
-    'in_stock',
     'action'
   ];
   constructor(

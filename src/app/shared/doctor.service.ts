@@ -38,7 +38,7 @@ export class DoctorService {
     })
       .catch(error => {
         this.errorMgmt(error);
-      })
+      });
   }
 
   /* Update doctor */
@@ -54,7 +54,7 @@ export class DoctorService {
     })
       .catch(error => {
         this.errorMgmt(error);
-      })
+      });
   }
 
   /* Delete doctor */
@@ -63,11 +63,11 @@ export class DoctorService {
     this.doctorRef.remove()
       .catch(error => {
         this.errorMgmt(error);
-      })
+      });
   }
 
   // Error management
   private errorMgmt(error) {
-    console.log(error)
+    console.log(error);
   }
 }

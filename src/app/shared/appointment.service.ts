@@ -36,7 +36,7 @@ export class AppointmentService {
     })
     .catch(error => {
       this.errorMgmt(error);
-    })
+    });
   }
 
   /* Update appointment */
@@ -52,7 +52,7 @@ export class AppointmentService {
     })
     .catch(error => {
       this.errorMgmt(error);
-    })
+    });
   }
 
   /* Delete appointment */
@@ -61,11 +61,11 @@ export class AppointmentService {
     this.appointmentRef.remove()
     .catch(error => {
       this.errorMgmt(error);
-    })
+    });
   }
 
   // Error management
   private errorMgmt(error) {
-    console.log(error)
+    console.log(error);
   }
 }

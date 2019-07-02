@@ -19,7 +19,6 @@ export class HospitalsListComponent {
     'book_name',
     'author_name',
     'binding_type',
-    'in_stock',
     'action'
   ];
   constructor(

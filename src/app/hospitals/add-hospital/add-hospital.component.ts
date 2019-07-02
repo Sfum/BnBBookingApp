@@ -48,8 +48,8 @@ export class AddHospitalComponent implements OnInit {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
         this.AppointmentData.push(a as Appointment)
-      })
-    })
+      });
+    });
   }
   remove(language: Language): void {
     const index = this.languageArray.indexOf(language);
@@ -66,7 +66,7 @@ export class AddHospitalComponent implements OnInit {
       binding_type: ['', [Validators.required]],
       in_stock: ['Yes'],
       languages: [this.languageArray]
-    })
+    });
   }
   public handleError = (controlName: string, errorName: string) => {
     return this.hospitalForm.controls[controlName].hasError(errorName);
@@ -87,7 +87,7 @@ export class AddHospitalComponent implements OnInit {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.hospitalForm.get('publication_date').setValue(convertDate, {
       onlyself: true
-    })
+    });
   }
   resetForm() {
     this.languageArray = [];

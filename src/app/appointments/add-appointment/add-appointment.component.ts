@@ -30,7 +30,7 @@ export class AddAppointmentComponent implements OnInit {
   languageArray: Language[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   appointmentForm: FormGroup;
-
+  
   ngOnInit() {
     this.appointmentApi.GetAppointmentList();
     this.doctorApi.GetDoctorList();

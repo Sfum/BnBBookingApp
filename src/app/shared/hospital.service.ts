@@ -37,7 +37,7 @@ export class HospitalService {
     })
       .catch(error => {
         this.errorMgmt(error);
-      })
+      });
   }
 
   /* Update hospital */
@@ -53,7 +53,7 @@ export class HospitalService {
     })
       .catch(error => {
         this.errorMgmt(error);
-      })
+      });
   }
 
   /* Delete hospital */
@@ -62,11 +62,11 @@ export class HospitalService {
     this.hospitalRef.remove()
       .catch(error => {
         this.errorMgmt(error);
-      })
+      });
   }
 
-  // Error management
+  // Error managementng
   private errorMgmt(error) {
-    console.log(error)
+    console.log(error);
   }
 }
