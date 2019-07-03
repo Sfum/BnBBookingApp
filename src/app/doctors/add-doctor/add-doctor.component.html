@@ -62,7 +62,7 @@
            <mat-label>Select a Hospital</mat-label>
            <mat-select [(value)]="selected" formControlName="binding_type">
              <mat-option *ngFor="let element of AppointmentData" [value]="element.book_name">
-               {{element.book_name}}
+               {{element.book_name}} / {{element.author_name}}
              </mat-option>
            </mat-select>
            <mat-error *ngIf="handleError('binding_type', 'required')">
