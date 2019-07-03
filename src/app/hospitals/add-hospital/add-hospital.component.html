@@ -42,43 +42,12 @@
              You must provide a <strong>type of medical specialist.</strong>
            </mat-error>
          </mat-form-field>
-         <mat-form-field>
-           <input matInput readonly [matDatepicker]="picker" placeholder="Publication date"
-             formControlName="publication_date" (dateChange)="formatDate($event)">
-           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-           <mat-datepicker #picker></mat-datepicker>
-           <mat-error *ngIf="handleError('publication_date', 'required')">
-             Publication date is required
-           </mat-error>
-         </mat-form-field>
        </div>
      </mat-card>
 
      <!-- Right block -->
      <mat-card>
        <div class="controlers-wrapper">
-
-         <!-- Area/Hospital -->
-         <mat-form-field>
-           <mat-label>Select a Doctor</mat-label>
-           <mat-select [(value)]="selected" formControlName="binding_type">
-             <mat-option *ngFor="let element of AppointmentData" [value]="element.book_name">
-               {{element.book_name}}
-             </mat-option>
-           </mat-select>
-           <mat-error *ngIf="handleError('binding_type', 'required')">
-             Binding type is required
-           </mat-error>
-         </mat-form-field>
-
-         <!-- Taking On New Patients -->
-         <div class="misc-bottom-padding">
-           <mat-label>Taking On New Patients: </mat-label>
-           <mat-radio-group aria-label="Select an option" formControlName="in_stock">
-             <mat-radio-button value="Yes">Yes</mat-radio-button>
-             <mat-radio-button value="No">No</mat-radio-button>
-           </mat-radio-group>
-         </div>
 
          <!-- Notes -->
          <mat-form-field class="multiple-items">

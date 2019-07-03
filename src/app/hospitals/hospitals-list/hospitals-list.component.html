@@ -23,11 +23,6 @@
         <td mat-cell class="container" *matCellDef="let element"> {{element.author_name}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="binding_type">
-        <th mat-header-cell class="container" *matHeaderCellDef> Doctor </th>
-        <td mat-cell class="container" *matCellDef="let element"> {{element.binding_type}} </td>
-      </ng-container>
-
       <ng-container matColumnDef="action">
         <th mat-header-cell class="container" *matHeaderCellDef> Edit / Delete </th>
         <td mat-cell class="container" *matCellDef="let element; let i = index;">
