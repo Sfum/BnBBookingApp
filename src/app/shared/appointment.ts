@@ -6,5 +6,4 @@ export interface Appointment {
   appointment_date: Date;
   doctor_select: string;
   confirmation: string;
-  notes: Array<string>;
 }

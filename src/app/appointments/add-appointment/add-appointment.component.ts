@@ -45,14 +45,6 @@ export class AddAppointmentComponent implements OnInit {
         this.AppointmentData.push(a as Appointment);
       });
     });
-
-    this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
-      appointments.forEach(item => {
-        let a = item.payload.toJSON();
-        a['$key'] = item.key;
-        this.AppointmentData1.push(a as Appointment);
-      });
-    });
   }
   submitAppointmentForm() {
     this.appointmentForm = this.fb.group({
@@ -62,7 +54,6 @@ export class AddAppointmentComponent implements OnInit {
       appointment_date: ['', [Validators.required]],
       doctor_select: ['', [Validators.required]],
       confirmation: ['Yes'],
-      notes: [this.notesArray],
     });
   }
   public handleError = (controlName: string, errorName: string) => {

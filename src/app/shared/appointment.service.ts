@@ -31,8 +31,7 @@ export class AppointmentService {
       last_name: appointment.last_name,
       appointment_date: appointment.appointment_date,
       doctor_select: appointment.doctor_select,
-      confirmation: appointment.confirmation,
-      notes: appointment.notes
+      confirmation: appointment.confirmation
     })
     .catch(error => {
       this.errorMgmt(error);
@@ -47,8 +46,7 @@ export class AppointmentService {
       last_name: appointment.last_name,
       appointment_date: appointment.appointment_date,
       doctor_select: appointment.doctor_select,
-      confirmation: appointment.confirmation,
-      notes: appointment.notes
+      confirmation: appointment.confirmation
     })
     .catch(error => {
       this.errorMgmt(error);
