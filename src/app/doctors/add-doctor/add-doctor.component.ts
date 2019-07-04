@@ -104,7 +104,7 @@ export class AddDoctorComponent implements OnInit {
       this.router.navigate(['doctors-list']);
     }
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }
