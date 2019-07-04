@@ -1,10 +1,7 @@
 export interface Hospital {
   $key: string;
-  book_name: string;
-  isbn_10: number;
-  author_name: string;
-  publication_date: Date;
-  binding_type: string;
-  in_stock: string;
-  languages: Array<string>;
+  hospital_name: string;
+  contact_number: number;
+  address: string;
+  addNotes: Array<string>;
 }
