@@ -5,10 +5,11 @@ import { Location } from '@angular/common';
 import { AppointmentService } from './../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
 
+
 @Component({
   selector: 'app-appointments-list',
   templateUrl: './appointments-list.component.html',
-  styleUrls: ['./appointments-list.component.css']
+  styleUrls: ['./appointments-list.component.css'],
 })
 
 export class AppointmentListComponent {

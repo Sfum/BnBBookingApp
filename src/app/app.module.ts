@@ -27,7 +27,7 @@ import { AppointmentService } from './shared/appointment.service';
 import { DoctorService } from './shared/doctor.service';
 import { HospitalService } from './shared/hospital.service';
 
-
+import { RoundEdgesDirective } from './directives/roundEdges';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -42,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DoctorsListComponent,
     AddHospitalComponent,
     EditHospitalComponent,
-    HospitalsListComponent
+    HospitalsListComponent,
+    RoundEdgesDirective
   ],
   imports: [
     BrowserModule,

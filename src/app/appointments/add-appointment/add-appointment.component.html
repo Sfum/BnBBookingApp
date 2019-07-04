@@ -9,7 +9,7 @@
  <div class="inner-wrapper">
    <form [formGroup]="appointmentForm" (ngSubmit)="submitAppointment()" #resetAppointmentForm="ngForm" novalidate>
      <!-- Left block -->
-     <mat-card>
+     <mat-card  appRoundEdges>
        <div class="controlers-wrapper">
 
          <!-- Appointment Reference Number -->
@@ -55,11 +55,9 @@
          </mat-form-field>
        </div>
      </mat-card>
-
-     <!-- Right block -->
-     <mat-card>
+     <br><br>
+     <mat-card appRoundEdges>
        <div class="controlers-wrapper">
-
          <!-- Select a Doctor -->
          <mat-form-field>
            <mat-label>Select a Doctor</mat-label>
@@ -90,7 +88,8 @@
        </div>
      </mat-card>
    </form>
-   <mat-card class="box">
+   <br>
+   <mat-card class="box" appRoundEdges>
    <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
    <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
      <mat-icon>local_hospital</mat-icon> View Hospitals

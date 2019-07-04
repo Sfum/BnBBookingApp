@@ -8,7 +8,7 @@
  <div class="inner-wrapper">
    <form [formGroup]="hospitalForm" (ngSubmit)="submitHospital()" #resetHospitalForm="ngForm" novalidate>
      <!-- Left block -->
-     <mat-card>
+     <mat-card appRoundEdges>
        <div class="controlers-wrapper">
 
          <!-- Hospital name -->
@@ -43,17 +43,18 @@
          </mat-form-field>
        </div>
      </mat-card>
-
+     <br><br>
      <!-- Right block -->
-     <mat-card>
+     <mat-card appRoundEdges>
        <div class="controlers-wrapper">
        </div>
        <button mat-raised-button color="warn" class="button-length" >Submit</button>
 
      </mat-card>
    </form>
+   <br>
    <!-- Submit & Reset -->
-   <mat-card class="box">
+   <mat-card class="box" appRoundEdges>
          <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
            <mat-icon>assignment</mat-icon> View Appointments
          </button>
