@@ -32,31 +32,11 @@
             The Doctor's <strong>mobile contact</strong> must be 10 digit long!
           </mat-error>
         </mat-form-field>
-
-        <!-- Type Of Specialist -->
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Type Of Specialist" formControlName="author_name">
-          <mat-error *ngIf="handleError('author_name', 'required')">
-            You must provide a <strong>type of medical specialist.</strong>
-          </mat-error>
-        </mat-form-field>
-
-        <!-- Publication date -->
-        <mat-form-field>
-          <input matInput readonly [matDatepicker]="picker" placeholder="Publication date"
-            formControlName="publication_date" (dateChange)="formatDate($event)">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="handleError('publication_date', 'required')">
-            Publication date is required
-          </mat-error>
-        </mat-form-field>
       </div>
     </mat-card>
-
+    <!-- Area/Hospital -->
     <mat-card>
       <div class="controlers-wrapper">
-        <!-- Area/Hospital -->
         <mat-form-field>
           <mat-label>Select a Hospital</mat-label>
           <mat-select [(value)]="selected" formControlName="binding_type">
