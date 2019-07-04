@@ -12,23 +12,23 @@
 
         <!-- Doctor name -->
         <mat-form-field class="Doctor-name">
-          <input matInput placeholder="Doctor name" formControlName="book_name">
-          <mat-error *ngIf="handleError('book_name', 'required')">
+          <input matInput placeholder="Doctor name" formControlName="doctor_name">
+          <mat-error *ngIf="handleError('doctor_name', 'required')">
             You must provide a <strong>doctor name!</strong>
           </mat-error>
         </mat-form-field>
 
         <!-- Contact Number -->
         <mat-form-field class="Contact-Number">
-          <input matInput placeholder="Contact Number" formControlName="isbn_10" pattern="[0-9]*" minlength="10"
+          <input matInput placeholder="Contact Number" formControlName="doctor_number" pattern="[0-9]*" minlength="10"
                  maxlength="10">
-          <mat-error *ngIf="handleError('isbn_10', 'required')">
+          <mat-error *ngIf="handleError('doctor_number', 'required')">
             You must provide a <strong>valid mobile number!</strong>
           </mat-error>
-          <mat-error *ngIf="handleError('isbn_10', 'pattern')">
+          <mat-error *ngIf="handleError('doctor_number', 'pattern')">
             Only numbers are allowed!
           </mat-error>
-          <mat-error *ngIf="handleError('isbn_10', 'minlength')">
+          <mat-error *ngIf="handleError('doctor_number', 'minlength')">
             The Doctor's <strong>mobile contact</strong> must be 10 digit long!
           </mat-error>
         </mat-form-field>
@@ -39,12 +39,12 @@
       <div class="controlers-wrapper">
         <mat-form-field>
           <mat-label>Select a Hospital</mat-label>
-          <mat-select [(value)]="selected" formControlName="binding_type">
+          <mat-select [(value)]="selected" formControlName="hospital_names">
             <mat-option *ngFor="let element of AppointmentData" [value]="element.hospital_name">
               {{element.hospital_name}} / {{element.address}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="handleError('binding_type', 'required')">
+          <mat-error *ngIf="handleError('hospital_names', 'required')">
             Binding type is required
           </mat-error>
         </mat-form-field>
@@ -52,7 +52,7 @@
         <!-- Taking On New Patients -->
         <div class="misc-bottom-padding">
           <mat-label>Taking On New Patients: </mat-label>
-          <mat-radio-group aria-label="Select an option" formControlName="in_stock">
+          <mat-radio-group aria-label="Select an option" formControlName="new_patients">
             <mat-radio-button value="Yes">Yes</mat-radio-button>
             <mat-radio-button value="No">No</mat-radio-button>
           </mat-radio-group>

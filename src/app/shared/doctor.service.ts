@@ -28,10 +28,10 @@ export class DoctorService {
   /* Create doctor */
   AddDoctor(doctor: Doctor) {
     this.doctorsRef.push({
-      book_name: doctor.book_name,
-      isbn_10: doctor.isbn_10,
-      binding_type: doctor.binding_type,
-      in_stock: doctor.in_stock,
+      doctor_name: doctor.doctor_name,
+      doctor_number: doctor.doctor_number,
+      hospital_names: doctor.hospital_names,
+      new_patients: doctor.new_patients,
     })
       .catch(error => {
         this.errorMgmt(error);
@@ -41,10 +41,10 @@ export class DoctorService {
   /* Update doctor */
   UpdateDoctor(id, doctor: Doctor) {
     this.doctorRef.update({
-      book_name: doctor.book_name,
-      isbn_10: doctor.isbn_10,
-      binding_type: doctor.binding_type,
-      in_stock: doctor.in_stock,
+      doctor_name: doctor.doctor_name,
+      doctor_number: doctor.doctor_number,
+      hospital_names: doctor.hospital_names,
+      new_patients: doctor.new_patients,
     })
       .catch(error => {
         this.errorMgmt(error);

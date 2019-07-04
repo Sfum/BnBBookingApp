@@ -1,7 +1,7 @@
 export interface Doctor {
   $key: string;
-  book_name: string;
-  isbn_10: number;
-  binding_type: string;
-  in_stock: string;
+  doctor_name: string;
+  doctor_number: number;
+  hospital_names: string;
+  new_patients: string;
 }

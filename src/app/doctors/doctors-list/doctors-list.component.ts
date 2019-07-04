@@ -15,8 +15,8 @@ export class DoctorsListComponent {
   dataSource: MatTableDataSource<Doctor>;
   DoctorData: any = [];
   columnsDisplay: any[] = [
-    'book_name',
-    'author_name',
+    'doctor_name',
+    'doctor_number',
     'action'
   ];
   constructor(

@@ -48,10 +48,10 @@ export class AddDoctorComponent implements OnInit {
   }
   submitDoctorForm() {
     this.doctorForm = this.fb.group({
-      book_name: ['', [Validators.required]],
-      isbn_10: ['', [Validators.required]],
-      binding_type: ['', [Validators.required]],
-      in_stock: ['Yes'],
+      doctor_name: ['', [Validators.required]],
+      doctor_number: ['', [Validators.required]],
+      hospital_names: ['', [Validators.required]],
+      new_patients: ['Yes'],
     });
   }
   public handleError = (controlName: string, errorName: string) => {
