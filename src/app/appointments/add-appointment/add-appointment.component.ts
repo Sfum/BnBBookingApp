@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent, MatTableDataSource } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,24 +19,16 @@ export interface Language {
   styleUrls: ['./add-appointment.component.css']
 })
 export class AddAppointmentComponent implements OnInit {
-
-  @ViewChild('chipList') chipList;
   @ViewChild('resetAppointmentForm') myNgForm;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
   AppointmentData: any = [];
   AppointmentData1: any = [];
   notesArray: Language[] = [];
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   appointmentForm: FormGroup;
-  
   ngOnInit() {
     this.appointmentApi.GetAppointmentList();
     this.doctorApi.GetDoctorList();
     this.submitAppointmentForm();
   }
-
   constructor(
     public fb: FormBuilder,
     private appointmentApi: AppointmentService,
@@ -48,7 +38,6 @@ export class AddAppointmentComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router,
   ) {
-
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
@@ -65,12 +54,6 @@ export class AddAppointmentComponent implements OnInit {
       });
     });
   }
-  remove(language: Language): void {
-    const index = this.notesArray.indexOf(language);
-    if (index >= 0) {
-      this.notesArray.splice(index, 1);
-    }
-  }
   submitAppointmentForm() {
     this.appointmentForm = this.fb.group({
       first_name: ['', [Validators.required]],
@@ -85,26 +68,13 @@ export class AddAppointmentComponent implements OnInit {
   public handleError = (controlName: string, errorName: string) => {
     return this.appointmentForm.controls[controlName].hasError(errorName);
   }
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-    // Add language
-    if ((value || '').trim() && this.notesArray.length < 5) {
-      this.notesArray.push({ name: value.trim() })
-    }
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-  }
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.appointmentForm.get('appointment_date').setValue(convertDate, {
       onlyself: true
-    })
+    });
   }
   resetForm() {
-    this.notesArray = [];
     this.appointmentForm.reset();
     Object.keys(this.appointmentForm.controls).forEach(key => {
       this.appointmentForm.controls[key].setErrors(null);
@@ -117,7 +87,7 @@ export class AddAppointmentComponent implements OnInit {
       this.router.navigate(['appointments-list']);
     }
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }

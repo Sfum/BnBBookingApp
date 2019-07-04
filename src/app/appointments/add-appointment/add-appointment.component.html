@@ -81,20 +81,6 @@
              <mat-radio-button value="No">No</mat-radio-button>
            </mat-radio-group>
          </div>
-
-         <!-- Additional Notes -->
-         <mat-form-field class="multiple-items">
-           <mat-chip-list #chipList>
-             <mat-chip *ngFor="let lang of notesArray" [selectable]="selectable" [removable]="removable"
-               (removed)="remove(lang)">
-               {{lang.name}}
-               <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-             </mat-chip>
-             <input placeholder="Additional Notes" [matChipInputFor]="chipList"
-               [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-               (matChipInputTokenEnd)="add($event)">
-           </mat-chip-list>
-         </mat-form-field>
          <!-- Submit & Reset -->
        </div>
        <div class="full-wrapper button-wrapper">

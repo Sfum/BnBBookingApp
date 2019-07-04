@@ -10,10 +10,6 @@ import { Appointment } from '../../shared/appointment';
 
 import { DoctorService } from './../../shared/doctor.service';
 
-export interface Language {
-  name: string;
-}
-
 @Component({
   selector: 'app-edit-appointment',
   templateUrl: './edit-appointment.component.html',
@@ -21,13 +17,7 @@ export interface Language {
 })
 
 export class EditAppointmentComponent implements OnInit {
-  @ViewChild('chipList') chipList;
-  selectable = true;
   AppointmentData: any = [];
-  removable = true;
-  addOnBlur = true;
-  languageArray: Language[] = [];
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   editAppointmentForm: FormGroup;
 
   ngOnInit() {
@@ -43,17 +33,16 @@ export class EditAppointmentComponent implements OnInit {
   ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.appointmentApi.GetAppointment(id).valueChanges().subscribe(data => {
-      this.languageArray = data.notes;
       this.editAppointmentForm.setValue(data);
 
       this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
           a['$key'] = item.key;
-          this.AppointmentData.push(a as Appointment)
-        })
-      })
-    })
+          this.AppointmentData.push(a as Appointment);
+        });
+      });
+    });
   }
   updateAppointmentForm(){
     this.editAppointmentForm = this.fb.group({
@@ -71,24 +60,6 @@ export class EditAppointmentComponent implements OnInit {
     if(window.confirm('Are you sure you wanna update?')){
       this.appointmentApi.UpdateAppointment(id, this.editAppointmentForm.value);
       this.router.navigate(['appointments-list']);
-    }
-  }
-  add(event: MatChipInputEvent): void {
-    var input: any = event.input;
-    var value: any = event.value;
-
-    if ((value || '').trim() && this.languageArray.length < 5) {
-      this.languageArray.push({name: value.trim()});
-    }
-
-    if (input) {
-      input.value = '';
-    }
-  }
-  remove(language: any): void {
-    const index = this.languageArray.indexOf(language);
-    if (index >= 0) {
-      this.languageArray.splice(index, 1);
     }
   }
   public handleError = (controlName: string, errorName: string) => {

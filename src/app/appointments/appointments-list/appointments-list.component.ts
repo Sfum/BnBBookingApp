@@ -41,7 +41,7 @@ export class AppointmentListComponent {
     });
   }
   deleteAppointment(index: number, e) {
-    if(window.confirm('Are you sure?')) {
+    if (window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
       data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
       this.dataSource.data = data;
