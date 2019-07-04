@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatTableDataSource } from '@angular/material';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { AppointmentService } from './../../shared/appointment.service';
 import { Appointment } from '../../shared/appointment';
 
 import { DoctorService } from './../../shared/doctor.service';
+import { HospitalService } from '../../shared/hospital.service';
 
 export interface Language {
   name: string;
@@ -27,6 +28,7 @@ export class AddAppointmentComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   AppointmentData: any = [];
+  AppointmentData1: any = [];
   languageArray: Language[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   appointmentForm: FormGroup;
@@ -41,6 +43,7 @@ export class AddAppointmentComponent implements OnInit {
     public fb: FormBuilder,
     private appointmentApi: AppointmentService,
     private doctorApi: DoctorService,
+    private hospitalApi: HospitalService,
     private location: Location,
     private actRoute: ActivatedRoute,
     private router: Router,
@@ -50,9 +53,17 @@ export class AddAppointmentComponent implements OnInit {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
-        this.AppointmentData.push(a as Appointment)
-      })
-    })
+        this.AppointmentData.push(a as Appointment);
+      });
+    });
+
+    this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
+      appointments.forEach(item => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.AppointmentData1.push(a as Appointment);
+      });
+    });
   }
   remove(language: Language): void {
     const index = this.languageArray.indexOf(language);
@@ -96,7 +107,7 @@ export class AddAppointmentComponent implements OnInit {
     this.languageArray = [];
     this.appointmentForm.reset();
     Object.keys(this.appointmentForm.controls).forEach(key => {
-      this.appointmentForm.controls[key].setErrors(null)
+      this.appointmentForm.controls[key].setErrors(null);
     });
   }
   submitAppointment() {
