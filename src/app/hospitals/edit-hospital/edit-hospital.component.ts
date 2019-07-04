@@ -21,10 +21,6 @@ export interface Language {
 
 export class EditHospitalComponent implements OnInit {
   @ViewChild('chipList') chipList;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  languageArray: Language[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   editHospitalForm: FormGroup;
   AppointmentData: any = [];
@@ -44,7 +40,6 @@ export class EditHospitalComponent implements OnInit {
   ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.hospitalApi.GetHospital(id).valueChanges().subscribe(data => {
-      this.languageArray = data.languages;
       this.editHospitalForm.setValue(data);
 
       this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
@@ -60,13 +55,9 @@ export class EditHospitalComponent implements OnInit {
   /* Update form */
   updateHospitalForm(){
     this.editHospitalForm = this.fb.group({
-      book_name: ['', [Validators.required]],
-      isbn_10: ['', [Validators.required]],
-      author_name: ['', [Validators.required]],
-      publication_date: ['', [Validators.required]],
-      binding_type: ['', [Validators.required]],
-      in_stock: ['Yes'],
-      languages: ['']
+      hospital_name: ['', [Validators.required]],
+      contact_number: ['', [Validators.required]],
+      address: ['', [Validators.required]],
     })
   }
 
@@ -74,24 +65,11 @@ export class EditHospitalComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     var input: any = event.input;
     var value: any = event.value;
-    // Add language
-    if ((value || '').trim() && this.languageArray.length < 5) {
-      this.languageArray.push({name: value.trim()});
-    }
     // Reset the input value
     if (input) {
       input.value = '';
     }
   }
-
-  /* Remove language */
-  remove(language: any): void {
-    const index = this.languageArray.indexOf(language);
-    if (index >= 0) {
-      this.languageArray.splice(index, 1);
-    }
-  }
-
   /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
     return this.editHospitalForm.controls[controlName].hasError(errorName);

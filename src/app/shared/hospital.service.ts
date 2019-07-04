@@ -27,13 +27,9 @@ export class HospitalService {
   /* Create hospital */
   AddHospital(hospital: Hospital) {
     this.hospitalsRef.push({
-      book_name: hospital.book_name,
-      isbn_10: hospital.isbn_10,
-      author_name: hospital.author_name,
-      publication_date: hospital.publication_date,
-      binding_type: hospital.binding_type,
-      in_stock: hospital.in_stock,
-      languages: hospital.languages
+      hospital_name: hospital.hospital_name,
+      contact_number: hospital.contact_number,
+      address: hospital.address,
     })
       .catch(error => {
         this.errorMgmt(error);
@@ -43,13 +39,9 @@ export class HospitalService {
   /* Update hospital */
   UpdateHospital(id, hospital: Hospital) {
     this.hospitalRef.update({
-      book_name: hospital.book_name,
-      isbn_10: hospital.isbn_10,
-      author_name: hospital.author_name,
-      publication_date: hospital.publication_date,
-      binding_type: hospital.binding_type,
-      in_stock: hospital.in_stock,
-      languages: hospital.languages
+      hospital_name: hospital.hospital_name,
+      contact_number: hospital.contact_number,
+      address: hospital.address,
     })
       .catch(error => {
         this.errorMgmt(error);

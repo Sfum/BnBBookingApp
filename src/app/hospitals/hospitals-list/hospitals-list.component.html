@@ -13,14 +13,14 @@
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
 
-      <ng-container matColumnDef="book_name">
+      <ng-container matColumnDef="hospital_name">
         <th mat-header-cell class="container" *matHeaderCellDef> Hospital </th>
-        <td mat-cell class="container" *matCellDef="let element"> {{element.book_name}} </td>
+        <td mat-cell class="container" *matCellDef="let element"> {{element.hospital_name}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="author_name">
+      <ng-container matColumnDef="address">
         <th mat-header-cell class="container" *matHeaderCellDef> Address </th>
-        <td mat-cell class="container" *matCellDef="let element"> {{element.author_name}} </td>
+        <td mat-cell class="container" *matCellDef="let element"> {{element.address}} </td>
       </ng-container>
 
       <ng-container matColumnDef="action">

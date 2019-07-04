@@ -12,60 +12,36 @@
 
         <!-- Hospital name -->
         <mat-form-field class="Hospital-name">
-          <input matInput placeholder="Hospital name" formControlName="book_name">
-          <mat-error *ngIf="handleError('book_name', 'required')">
+          <input matInput placeholder="Hospital name" formControlName="hospital_name">
+          <mat-error *ngIf="handleError('hospital_name', 'required')">
             You must provide a <strong>hospital name!</strong>
           </mat-error>
         </mat-form-field>
 
         <!-- Contact Number -->
         <mat-form-field class="Contact-Number">
-          <input matInput placeholder="Contact Number" formControlName="isbn_10" pattern="[0-9]*" minlength="10"
+          <input matInput placeholder="Contact Number" formControlName="contact_number" pattern="[0-9]*" minlength="10"
                  maxlength="10">
-          <mat-error *ngIf="handleError('isbn_10', 'required')">
+          <mat-error *ngIf="handleError('contact_number', 'required')">
             You must provide a <strong>valid mobile number!</strong>
           </mat-error>
-          <mat-error *ngIf="handleError('isbn_10', 'pattern')">
+          <mat-error *ngIf="handleError('contact_number', 'pattern')">
             Only numbers are allowed!
           </mat-error>
-          <mat-error *ngIf="handleError('isbn_10', 'minlength')">
+          <mat-error *ngIf="handleError('contact_number', 'minlength')">
             The Hospital's <strong>mobile contact</strong> must be 10 digit long!
           </mat-error>
         </mat-form-field>
 
         <!-- Address -->
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Address" formControlName="author_name">
-          <mat-error *ngIf="handleError('author_name', 'required')">
+          <input matInput placeholder="Address" formControlName="address">
+          <mat-error *ngIf="handleError('address', 'required')">
             You must provide a <strong>type of medical specialist.</strong>
           </mat-error>
         </mat-form-field>
-
       </div>
     </mat-card>
-
-    <mat-card>
-      <div class="controlers-wrapper">
-
-        <!-- Notes -->
-        <mat-form-field class="multiple-items">
-          <mat-chip-list #chipList>
-            <mat-chip *ngFor="let lang of languageArray" [selectable]="selectable" [removable]="removable"
-                      (removed)="remove(lang)">
-              {{lang.name}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="Add Notes" [matChipInputFor]="chipList"
-                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-                   (matChipInputTokenEnd)="add($event)">
-          </mat-chip-list>
-          <i class="material-icons tooltip-info" matTooltip="Enter item name and press enter to add multiple items">
-            info
-          </i>
-        </mat-form-field>
-      </div>
-    </mat-card>
-
     <!-- Submit & Reset -->
     <mat-card>
       <div class="full-wrapper button-wrapper">

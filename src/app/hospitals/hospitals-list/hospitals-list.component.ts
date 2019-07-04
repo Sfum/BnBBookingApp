@@ -1,9 +1,10 @@
-import { Hospital } from './../../shared/hospital';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Location } from '@angular/common';
 
 import { HospitalService } from './../../shared/hospital.service';
+import { Hospital } from './../../shared/hospital';
+
 
 @Component({
   selector: 'app-hospitals-list',
@@ -16,8 +17,8 @@ export class HospitalsListComponent {
   dataSource: MatTableDataSource<Hospital>;
   HospitalData: any = [];
   columnsDisplay: any[] = [
-    'book_name',
-    'author_name',
+    'hospital_name',
+    'address',
     'action'
   ];
   constructor(

@@ -3,5 +3,4 @@ export interface Hospital {
   hospital_name: string;
   contact_number: number;
   address: string;
-  addNotes: Array<string>;
 }

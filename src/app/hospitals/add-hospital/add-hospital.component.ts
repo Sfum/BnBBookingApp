@@ -20,12 +20,7 @@ export interface Language {
   styleUrls: ['./add-hospital.component.css']
 })
 export class AddHospitalComponent implements OnInit {
-  @ViewChild('chipList') chipList;
   @ViewChild('resetHospitalForm') myNgForm;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  languageArray: Language[] = [];
   AppointmentData: any = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   hospitalForm: FormGroup;
@@ -51,37 +46,15 @@ export class AddHospitalComponent implements OnInit {
       });
     });
   }
-  remove(language: Language): void {
-    const index = this.languageArray.indexOf(language);
-    if (index >= 0) {
-      this.languageArray.splice(index, 1);
-    }
-  }
   submitHospitalForm() {
     this.hospitalForm = this.fb.group({
-      book_name: ['', [Validators.required]],
-      isbn_10: ['', [Validators.required]],
-      author_name: ['', [Validators.required]],
-      publication_date: ['', [Validators.required]],
-      binding_type: ['', [Validators.required]],
-      in_stock: ['Yes'],
-      languages: [this.languageArray]
+      hospital_name: ['', [Validators.required]],
+      contact_number: ['', [Validators.required]],
+      address: ['', [Validators.required]]
     });
   }
   public handleError = (controlName: string, errorName: string) => {
     return this.hospitalForm.controls[controlName].hasError(errorName);
-  }
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-    // Add language
-    if ((value || '').trim() && this.languageArray.length < 5) {
-      this.languageArray.push({ name: value.trim() })
-    }
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
   }
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
@@ -90,7 +63,6 @@ export class AddHospitalComponent implements OnInit {
     });
   }
   resetForm() {
-    this.languageArray = [];
     this.hospitalForm.reset();
     Object.keys(this.hospitalForm.controls).forEach(key => {
       this.hospitalForm.controls[key].setErrors(null)
@@ -103,7 +75,7 @@ export class AddHospitalComponent implements OnInit {
       this.router.navigate(['hospitals-list']);
     }
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }
