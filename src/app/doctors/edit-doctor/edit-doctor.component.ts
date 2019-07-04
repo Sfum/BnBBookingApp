@@ -22,10 +22,6 @@ export interface Language {
 
 export class EditDoctorComponent implements OnInit {
   @ViewChild('chipList') chipList;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  languageArray: Language[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   editDoctorForm: FormGroup;
   AppointmentData: any = [];
@@ -46,7 +42,6 @@ export class EditDoctorComponent implements OnInit {
   ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.doctorApi.GetDoctor(id).valueChanges().subscribe(data => {
-      this.languageArray = data.languages;
       this.editDoctorForm.setValue(data);
 
       this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
@@ -62,11 +57,8 @@ export class EditDoctorComponent implements OnInit {
     this.editDoctorForm = this.fb.group({
       book_name: ['', [Validators.required]],
       isbn_10: ['', [Validators.required]],
-      author_name: ['', [Validators.required]],
-      publication_date: ['', [Validators.required]],
       binding_type: ['', [Validators.required]],
       in_stock: ['Yes'],
-      languages: [''],
     })
   }
   updateDoctor() {
@@ -79,19 +71,9 @@ export class EditDoctorComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     var input: any = event.input;
     var value: any = event.value;
-    // Add language
-    if ((value || '').trim() && this.languageArray.length < 5) {
-      this.languageArray.push({name: value.trim()});
-    }
     // Reset the input value
     if (input) {
       input.value = '';
-    }
-  }
-  remove(language: any): void {
-    const index = this.languageArray.indexOf(language);
-    if (index >= 0) {
-      this.languageArray.splice(index, 1);
     }
   }
   public handleError = (controlName: string, errorName: string) => {
@@ -103,7 +85,7 @@ export class EditDoctorComponent implements OnInit {
       onlyself: true
     })
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }

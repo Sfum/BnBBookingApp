@@ -15,21 +15,20 @@ import { AddHospitalComponent } from './hospitals/add-hospital/add-hospital.comp
 import { EditHospitalComponent } from './hospitals/edit-hospital/edit-hospital.component';
 import { HospitalsListComponent } from './hospitals/hospitals-list/hospitals-list.component';
 
-/* Angular material */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './material.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-
-/* Firebase */
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 
-/* Angular CRUD services */
 import { AppointmentService } from './shared/appointment.service';
+import { DoctorService } from './shared/doctor.service';
+import { HospitalService } from './shared/hospital.service';
 
-/* Reactive form services in Angular 7 */
+
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -55,7 +54,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AppointmentService],
+  providers: [AppointmentService, DoctorService, HospitalService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

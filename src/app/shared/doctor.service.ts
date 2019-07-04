@@ -30,11 +30,8 @@ export class DoctorService {
     this.doctorsRef.push({
       book_name: doctor.book_name,
       isbn_10: doctor.isbn_10,
-      author_name: doctor.author_name,
-      publication_date: doctor.publication_date,
       binding_type: doctor.binding_type,
       in_stock: doctor.in_stock,
-      languages: doctor.languages
     })
       .catch(error => {
         this.errorMgmt(error);
@@ -46,11 +43,8 @@ export class DoctorService {
     this.doctorRef.update({
       book_name: doctor.book_name,
       isbn_10: doctor.isbn_10,
-      author_name: doctor.author_name,
-      publication_date: doctor.publication_date,
       binding_type: doctor.binding_type,
       in_stock: doctor.in_stock,
-      languages: doctor.languages
     })
       .catch(error => {
         this.errorMgmt(error);
