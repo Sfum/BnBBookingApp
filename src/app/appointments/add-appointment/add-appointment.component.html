@@ -14,31 +14,31 @@
 
          <!-- Appointment Reference Number -->
          <mat-form-field class="Appointment-Reference-Number">
-           <input matInput placeholder="Appointment Reference Number" formControlName="isbn_10" pattern="[0-9]*" minlength="10"
+           <input matInput placeholder="Appointment Reference Number" formControlName="reference_number" pattern="[0-9]*" minlength="10"
                   maxlength="10">
-           <mat-error *ngIf="handleError('isbn_10', 'required')">
+           <mat-error *ngIf="handleError('reference_number', 'required')">
              You must provide a <strong>10 digit ISBN</strong>
            </mat-error>
-           <mat-error *ngIf="handleError('isbn_10', 'pattern')">
+           <mat-error *ngIf="handleError('reference_number', 'pattern')">
              Only numbers are allowed
            </mat-error>
-           <mat-error *ngIf="handleError('isbn_10', 'minlength')">
+           <mat-error *ngIf="handleError('reference_number', 'minlength')">
              Your <strong>ISBN</strong> must be 10 digit
            </mat-error>
          </mat-form-field>
 
          <!-- Patient First Name -->
          <mat-form-field class="Patient-First-Name">
-           <input matInput placeholder="Patient First Name" formControlName="book_name">
-           <mat-error *ngIf="handleError('book_name', 'required')">
+           <input matInput placeholder="Patient First Name" formControlName="first_name">
+           <mat-error *ngIf="handleError('first_name', 'required')">
              You must provide a<strong>appointment name</strong>
            </mat-error>
          </mat-form-field>
 
          <!-- Patient Last Name -->
          <mat-form-field class="Patient-Last-Name">
-           <input matInput placeholder="Patient Last Name" formControlName="author_name">
-           <mat-error *ngIf="handleError('author_name', 'required')">
+           <input matInput placeholder="Patient Last Name" formControlName="last_name">
+           <mat-error *ngIf="handleError('last_name', 'required')">
              You must provide an <strong>author name</strong>
            </mat-error>
          </mat-form-field>
@@ -46,10 +46,10 @@
          <!-- Appointment Date -->
          <mat-form-field>
            <input matInput readonly [matDatepicker]="picker" placeholder="Appointment Date"
-             formControlName="publication_date" (dateChange)="formatDate($event)">
+             formControlName="appointment_date" (dateChange)="formatDate($event)">
            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
            <mat-datepicker #picker></mat-datepicker>
-           <mat-error *ngIf="handleError('publication_date', 'required')">
+           <mat-error *ngIf="handleError('appointment_date', 'required')">
              Publication date is required
            </mat-error>
          </mat-form-field>
@@ -63,12 +63,12 @@
          <!-- Select a Doctor -->
          <mat-form-field>
            <mat-label>Select a Doctor</mat-label>
-           <mat-select [(value)]="selected" formControlName="binding_type">
+           <mat-select [(value)]="selected" formControlName="doctor_select">
              <mat-option *ngFor="let element of AppointmentData" [value]="element.doctor_name">
                {{element.doctor_name}}
              </mat-option>
            </mat-select>
-           <mat-error *ngIf="handleError('binding_type', 'required')">
+           <mat-error *ngIf="handleError('doctor_select', 'required')">
              Binding type is required
            </mat-error>
          </mat-form-field>
@@ -76,7 +76,7 @@
          <!-- Confirmation -->
          <div class="misc-bottom-padding">
            <mat-label>Confirmation: </mat-label>
-           <mat-radio-group aria-label="Select an option" formControlName="in_stock">
+           <mat-radio-group aria-label="Select an option" formControlName="confirmation">
              <mat-radio-button value="Yes">Yes</mat-radio-button>
              <mat-radio-button value="No">No</mat-radio-button>
            </mat-radio-group>
@@ -85,7 +85,7 @@
          <!-- Additional Notes -->
          <mat-form-field class="multiple-items">
            <mat-chip-list #chipList>
-             <mat-chip *ngFor="let lang of languageArray" [selectable]="selectable" [removable]="removable"
+             <mat-chip *ngFor="let lang of notesArray" [selectable]="selectable" [removable]="removable"
                (removed)="remove(lang)">
                {{lang.name}}
                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>

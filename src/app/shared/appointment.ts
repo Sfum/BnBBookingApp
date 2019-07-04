@@ -1,10 +1,10 @@
 export interface Appointment {
-   $key: string;
-   book_name: string;
-   isbn_10: number;
-   author_name: string;
-   publication_date: Date;
-   binding_type: string;
-   in_stock: string;
-   languages: Array<string>;
+  $key: string;
+  first_name: string;
+  reference_number: number;
+  last_name: string;
+  appointment_date: Date;
+  doctor_select: string;
+  confirmation: string;
+  notes: Array<string>;
 }

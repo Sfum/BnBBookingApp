@@ -29,7 +29,7 @@ export class AddAppointmentComponent implements OnInit {
   addOnBlur = true;
   AppointmentData: any = [];
   AppointmentData1: any = [];
-  languageArray: Language[] = [];
+  notesArray: Language[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   appointmentForm: FormGroup;
   
@@ -66,21 +66,21 @@ export class AddAppointmentComponent implements OnInit {
     });
   }
   remove(language: Language): void {
-    const index = this.languageArray.indexOf(language);
+    const index = this.notesArray.indexOf(language);
     if (index >= 0) {
-      this.languageArray.splice(index, 1);
+      this.notesArray.splice(index, 1);
     }
   }
   submitAppointmentForm() {
     this.appointmentForm = this.fb.group({
-      book_name: ['', [Validators.required]],
-      isbn_10: ['', [Validators.required]],
-      author_name: ['', [Validators.required]],
-      publication_date: ['', [Validators.required]],
-      binding_type: ['', [Validators.required]],
-      in_stock: ['Yes'],
-      languages: [this.languageArray],
-    })
+      first_name: ['', [Validators.required]],
+      reference_number: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      appointment_date: ['', [Validators.required]],
+      doctor_select: ['', [Validators.required]],
+      confirmation: ['Yes'],
+      notes: [this.notesArray],
+    });
   }
   public handleError = (controlName: string, errorName: string) => {
     return this.appointmentForm.controls[controlName].hasError(errorName);
@@ -89,8 +89,8 @@ export class AddAppointmentComponent implements OnInit {
     const input = event.input;
     const value = event.value;
     // Add language
-    if ((value || '').trim() && this.languageArray.length < 5) {
-      this.languageArray.push({ name: value.trim() })
+    if ((value || '').trim() && this.notesArray.length < 5) {
+      this.notesArray.push({ name: value.trim() })
     }
     // Reset the input value
     if (input) {
@@ -99,12 +99,12 @@ export class AddAppointmentComponent implements OnInit {
   }
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.appointmentForm.get('publication_date').setValue(convertDate, {
+    this.appointmentForm.get('appointment_date').setValue(convertDate, {
       onlyself: true
     })
   }
   resetForm() {
-    this.languageArray = [];
+    this.notesArray = [];
     this.appointmentForm.reset();
     Object.keys(this.appointmentForm.controls).forEach(key => {
       this.appointmentForm.controls[key].setErrors(null);

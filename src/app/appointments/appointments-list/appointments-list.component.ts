@@ -16,9 +16,9 @@ export class AppointmentListComponent {
   AppointmentData: any = [];
   dataSource: MatTableDataSource<Appointment>;
   columnsDisplay: any[] = [
-    'author_name',
-    'publication_date',
-    'binding_type',
+    'last_name',
+    'appointment_date',
+    'doctor_select',
     'action'
   ];
   constructor(
@@ -38,17 +38,17 @@ export class AppointmentListComponent {
         setTimeout(() => {
           this.dataSource.paginator = this.paginator;
         }, 0);
-    })
+    });
   }
-  deleteAppointment(index: number, e){
+  deleteAppointment(index: number, e) {
     if(window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
       data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
       this.dataSource.data = data;
-      this.appointmentApi.DeleteAppointment(e.$key)
+      this.appointmentApi.DeleteAppointment(e.$key);
     }
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }

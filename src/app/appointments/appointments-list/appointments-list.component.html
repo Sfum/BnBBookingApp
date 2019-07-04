@@ -13,19 +13,19 @@
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
 
-      <ng-container matColumnDef="author_name">
+      <ng-container matColumnDef="last_name">
         <th mat-header-cell class="container" *matHeaderCellDef> Last Name </th>
-        <td mat-cell class="container" *matCellDef="let element"> {{element.author_name}} </td>
+        <td mat-cell class="container" *matCellDef="let element"> {{element.last_name}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="binding_type">
+      <ng-container matColumnDef="doctor_select">
         <th mat-header-cell class="container" *matHeaderCellDef> Doctor </th>
-        <td mat-cell class="container" *matCellDef="let element"> {{element.binding_type}} </td>
+        <td mat-cell class="container" *matCellDef="let element"> {{element.doctor_select}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="publication_date">
+      <ng-container matColumnDef="appointment_date">
         <th mat-header-cell class="container" *matHeaderCellDef> Appointment Date </th>
-        <td mat-cell class="container" *matCellDef="let element"> {{element.publication_date}} </td>
+        <td mat-cell class="container" *matCellDef="let element"> {{element.appointment_date}} </td>
       </ng-container>
 
       <ng-container matColumnDef="action">

@@ -26,13 +26,13 @@ export class AppointmentService {
   /* Create appointment */
   AddAppointment(appointment: Appointment) {
     this.appointmentsRef.push({
-      book_name: appointment.book_name,
-      isbn_10: appointment.isbn_10,
-      author_name: appointment.author_name,
-      publication_date: appointment.publication_date,
-      binding_type: appointment.binding_type,
-      in_stock: appointment.in_stock,
-      languages: appointment.languages
+      first_name: appointment.first_name,
+      reference_number: appointment.reference_number,
+      last_name: appointment.last_name,
+      appointment_date: appointment.appointment_date,
+      doctor_select: appointment.doctor_select,
+      confirmation: appointment.confirmation,
+      notes: appointment.notes
     })
     .catch(error => {
       this.errorMgmt(error);
@@ -42,13 +42,13 @@ export class AppointmentService {
   /* Update appointment */
   UpdateAppointment(id, appointment: Appointment) {
     this.appointmentRef.update({
-      book_name: appointment.book_name,
-      isbn_10: appointment.isbn_10,
-      author_name: appointment.author_name,
-      publication_date: appointment.publication_date,
-      binding_type: appointment.binding_type,
-      in_stock: appointment.in_stock,
-      languages: appointment.languages
+      first_name: appointment.first_name,
+      reference_number: appointment.reference_number,
+      last_name: appointment.last_name,
+      appointment_date: appointment.appointment_date,
+      doctor_select: appointment.doctor_select,
+      confirmation: appointment.confirmation,
+      notes: appointment.notes
     })
     .catch(error => {
       this.errorMgmt(error);

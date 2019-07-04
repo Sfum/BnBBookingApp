@@ -43,7 +43,7 @@ export class EditAppointmentComponent implements OnInit {
   ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.appointmentApi.GetAppointment(id).valueChanges().subscribe(data => {
-      this.languageArray = data.languages;
+      this.languageArray = data.notes;
       this.editAppointmentForm.setValue(data);
 
       this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
@@ -57,13 +57,13 @@ export class EditAppointmentComponent implements OnInit {
   }
   updateAppointmentForm(){
     this.editAppointmentForm = this.fb.group({
-      book_name: ['', [Validators.required]],
-      isbn_10: ['', [Validators.required]],
-      author_name: ['', [Validators.required]],
-      publication_date: ['', [Validators.required]],
-      binding_type: ['', [Validators.required]],
-      in_stock: ['Yes'],
-      languages: ['', [Validators.required]]
+      first_name: ['', [Validators.required]],
+      reference_number: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      appointment_date: ['', [Validators.required]],
+      doctor_select: ['', [Validators.required]],
+      confirmation: ['Yes'],
+      notes: ['', [Validators.required]]
     })
   }
   updateAppointment() {
@@ -96,7 +96,7 @@ export class EditAppointmentComponent implements OnInit {
   }
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.editAppointmentForm.get('publication_date').setValue(convertDate, {
+    this.editAppointmentForm.get('appointment_date').setValue(convertDate, {
       onlyself: true
     })
   }
