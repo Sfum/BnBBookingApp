@@ -52,8 +52,7 @@ export class EditAppointmentComponent implements OnInit {
       appointment_date: ['', [Validators.required]],
       doctor_select: ['', [Validators.required]],
       confirmation: ['Yes'],
-      notes: ['', [Validators.required]]
-    })
+    });
   }
   updateAppointment() {
     var id = this.actRoute.snapshot.paramMap.get('id');
@@ -69,9 +68,9 @@ export class EditAppointmentComponent implements OnInit {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.editAppointmentForm.get('appointment_date').setValue(convertDate, {
       onlyself: true
-    })
+    });
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }
