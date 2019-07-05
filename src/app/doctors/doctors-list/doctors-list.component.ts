@@ -48,4 +48,7 @@ export class DoctorsListComponent {
   goBack(){
     this.location.back();
   }
+  doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
 }

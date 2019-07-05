@@ -10,6 +10,9 @@
 
 <!-- Appointments list Angular material data table -->
 <div class="container" *ngIf="AppointmentData.length > 0">
+  <mat-form-field fxFlex="20%">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Search">
+  </mat-form-field>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
 

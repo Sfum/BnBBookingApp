@@ -50,4 +50,7 @@ export class HospitalsListComponent {
   goBack(){
     this.location.back();
   }
+  doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
 }
