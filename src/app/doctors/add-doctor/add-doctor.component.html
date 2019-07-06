@@ -22,7 +22,7 @@
 
         <!-- Contact Number -->
         <mat-form-field class="Contact-Number">
-          <input matInput placeholder="Contact Number" formControlName="doctor_number" pattern="[0-9]*" minlength="10"
+          <input matInput placeholder="Contact Number" formControlName="doctor_number" pattern="[0-9]*" minlength="5"
                  maxlength="10">
           <mat-error *ngIf="handleError('doctor_number', 'required')">
             You must provide a <strong>valid mobile number!</strong>
@@ -45,7 +45,7 @@
             </mat-option>
           </mat-select>
           <mat-error *ngIf="handleError('hospital_names', 'required')">
-            Hospital is required
+            Hospital is required!
           </mat-error>
         </mat-form-field>
 
@@ -62,16 +62,16 @@
     </mat-card>
   </form>
   <br>
-  <!-- Submit & Reset -->
-  <mat-card class="box" appRoundEdges>
-    <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
-      <mat-icon>local_hospital</mat-icon> View Hospitals
-    </button>
-    <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
-      <mat-icon>assignment</mat-icon> View Appointments
-    </button>
-    <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
-  </mat-card>
 
+<!-- Submit & Reset -->
+<mat-card class="box" appRoundEdges>
+  <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
+    <mat-icon>assignment</mat-icon> View Appointments
+  </button>
+  <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
+    <mat-icon>view_list</mat-icon> View Doctors
+  </button>
+  <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
+</mat-card>
 </div>
 

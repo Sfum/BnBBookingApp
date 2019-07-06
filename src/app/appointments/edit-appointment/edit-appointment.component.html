@@ -15,13 +15,13 @@
           <input matInput placeholder="Appointment Reference Number" formControlName="reference_number" pattern="[0-9]*" minlength="10"
                  maxlength="10">
           <mat-error *ngIf="handleError('reference_number', 'required')">
-            You must provide a <strong>10 digit ISBN</strong>
+            You must provide an <strong>Appointment Reference Number!</strong>
           </mat-error>
           <mat-error *ngIf="handleError('reference_number', 'pattern')">
-            Only numbers are allowed
+            Only numbers are allowed!
           </mat-error>
           <mat-error *ngIf="handleError('reference_number', 'minlength')">
-            Your <strong>ISBN</strong> must be 10 digit
+            Your <strong>Appointment Reference Number</strong> must be 10 digit!
           </mat-error>
         </mat-form-field>
 
@@ -29,7 +29,7 @@
         <mat-form-field class="Patient-First-Name">
           <input matInput placeholder="Patient First Name" formControlName="first_name">
           <mat-error *ngIf="handleError('first_name', 'required')">
-            You must provide a<strong>appointment name</strong>
+            You must provide <strong>First Name!</strong>
           </mat-error>
         </mat-form-field>
 
@@ -37,7 +37,7 @@
         <mat-form-field class="Patient-Last-Name">
           <input matInput placeholder="Patient Last Name" formControlName="last_name">
           <mat-error *ngIf="handleError('last_name', 'required')">
-            You must provide an <strong>author name</strong>
+            You must provide <strong>Last Name!</strong>
           </mat-error>
         </mat-form-field>
 
@@ -48,7 +48,7 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="handleError('appointment_date', 'required')">
-            Publication date is required
+            Appointment date is required!
           </mat-error>
         </mat-form-field>
       </div>
@@ -65,7 +65,7 @@
             </mat-option>
           </mat-select>
           <mat-error *ngIf="handleError('doctor_select', 'required')">
-            Binding type is required
+            Doctor is required!
           </mat-error>
         </mat-form-field>
 

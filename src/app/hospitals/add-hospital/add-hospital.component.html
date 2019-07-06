@@ -15,22 +15,22 @@
          <mat-form-field class="Hospital-name">
            <input matInput placeholder="Hospital Name" formControlName="hospital_name">
            <mat-error *ngIf="handleError('hospital_name', 'required')">
-             You must provide a <strong>hospital name!</strong>
+             You must provide a <strong>Hospital name!</strong>
            </mat-error>
          </mat-form-field>
 
          <!-- Contact Number -->
          <mat-form-field class="Contact-Number">
-           <input matInput placeholder="Contact Number" formControlName="contact_number" pattern="[0-9]*" minlength="10"
+           <input matInput placeholder="Contact Number" formControlName="contact_number" pattern="[0-9]*" minlength="5"
                   maxlength="10">
            <mat-error *ngIf="handleError('contact_number', 'required')">
-             You must provide a <strong>valid mobile number!</strong>
+             You must provide a <strong>valid phone number!</strong>
            </mat-error>
            <mat-error *ngIf="handleError('contact_number', 'pattern')">
              Only numbers are allowed!
            </mat-error>
            <mat-error *ngIf="handleError('contact_number', 'minlength')">
-             The Hospital's <strong>mobile contact</strong> must be 10 digit long!
+             <strong>Phone contact</strong> must be 10 digit long!
            </mat-error>
          </mat-form-field>
 
@@ -38,7 +38,7 @@
          <mat-form-field class="example-full-width">
            <input matInput placeholder="Address" formControlName="address">
            <mat-error *ngIf="handleError('address', 'required')">
-             You must provide a <strong>type of medical specialist.</strong>
+             You must provide Hospital <strong>address!</strong>
            </mat-error>
          </mat-form-field>
        </div>
@@ -62,6 +62,5 @@
            <mat-icon>view_list</mat-icon> View Doctors
          </button>
      <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
-
    </mat-card>
  </div>
