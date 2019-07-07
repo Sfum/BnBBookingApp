@@ -23,7 +23,7 @@ export class AddDoctorComponent implements OnInit {
   @ViewChild('resetDoctorForm') myNgForm;
   doctorForm: FormGroup;
   AppointmentData: any = [];
-
+  selected: any;
 
   ngOnInit() {
     this.doctorApi.GetDoctorList();
@@ -77,6 +77,9 @@ export class AddDoctorComponent implements OnInit {
       this.resetForm();
       this.router.navigate(['doctors-list']);
     }
+  }
+  goBack() {
+    this.location.back();
   }
 }
 

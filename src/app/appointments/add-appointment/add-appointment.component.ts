@@ -21,8 +21,7 @@ export interface Language {
 export class AddAppointmentComponent implements OnInit {
   @ViewChild('resetAppointmentForm') myNgForm;
   AppointmentData: any = [];
-  AppointmentData1: any = [];
-  notesArray: Language[] = [];
+  selected: any;
   appointmentForm: FormGroup;
   ngOnInit() {
     this.appointmentApi.GetAppointmentList();

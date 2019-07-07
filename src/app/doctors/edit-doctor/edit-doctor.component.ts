@@ -25,7 +25,7 @@ export class EditDoctorComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   editDoctorForm: FormGroup;
   AppointmentData: any = [];
-
+  selected: any;
 
   ngOnInit() {
     this.doctorApi.GetDoctorList();

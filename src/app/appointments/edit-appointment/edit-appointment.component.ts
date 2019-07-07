@@ -19,6 +19,7 @@ import { DoctorService } from './../../shared/doctor.service';
 export class EditAppointmentComponent implements OnInit {
   AppointmentData: any = [];
   editAppointmentForm: FormGroup;
+  selected: any;
 
   ngOnInit() {
     this.updateAppointmentForm();
