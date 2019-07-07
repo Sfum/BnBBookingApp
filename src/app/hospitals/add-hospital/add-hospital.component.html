@@ -49,12 +49,13 @@
    <br>
    <!-- Submit & Reset -->
    <div class="box" appRoundEdges>
+     <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
          <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
            <mat-icon>assignment</mat-icon> View Appointments
          </button>
          <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/doctors-list">
            <mat-icon>view_list</mat-icon> View Doctors
          </button>
-     <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
+
    </div>
  </div>
