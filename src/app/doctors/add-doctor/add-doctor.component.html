@@ -62,16 +62,14 @@
     </mat-card>
   </form>
   <br>
-
-<!-- Submit & Reset -->
-<div class="box" appRoundEdges>
-  <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
-    <mat-icon>assignment</mat-icon> View Appointments
-  </button>
-  <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
-    <mat-icon>view_list</mat-icon> View Doctors
-  </button>
-  <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
-</div>
+  <div class="box" appRoundEdges>
+    <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
+    <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
+      <mat-icon>assignment</mat-icon> View Appointments
+    </button>
+    <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
+      <mat-icon>view_list</mat-icon> View Doctors
+    </button>
+  </div>
 </div>
 
