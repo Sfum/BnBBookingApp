@@ -1,4 +1,5 @@
 <div class="title-group">
+
    <h1 class="mat-h1">Add Hospital</h1>
    <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
    <mat-divider fxFlex="1 0"></mat-divider>
@@ -8,7 +9,7 @@
  <div class="inner-wrapper">
    <form [formGroup]="hospitalForm" (ngSubmit)="submitHospital()" #resetHospitalForm="ngForm" novalidate>
      <!-- Left block -->
-     <mat-card appRoundEdges>
+     <mat-card class="card-length" appRoundEdges>
        <div class="controlers-wrapper">
 
          <!-- Hospital name -->
@@ -22,15 +23,12 @@
          <!-- Contact Number -->
          <mat-form-field class="Contact-Number">
            <input matInput placeholder="Contact Number" formControlName="contact_number" pattern="[0-9]*" minlength="5"
-                  maxlength="10">
+                  maxlength="15">
            <mat-error *ngIf="handleError('contact_number', 'required')">
              You must provide a <strong>valid phone number!</strong>
            </mat-error>
            <mat-error *ngIf="handleError('contact_number', 'pattern')">
              Only numbers are allowed!
-           </mat-error>
-           <mat-error *ngIf="handleError('contact_number', 'minlength')">
-             <strong>Phone contact</strong> must be 10 digit long!
            </mat-error>
          </mat-form-field>
 
@@ -45,17 +43,10 @@
        </div>
      </mat-card>
      <br><br>
+     <div class="box">
+       <button mat-raised-button (click)="resetForm()">Clear Form</button>
+     </div>
+     <br><br>
    </form>
    <br>
-   <!-- Submit & Reset -->
-   <div class="box" appRoundEdges>
-     <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
-         <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
-           <mat-icon>assignment</mat-icon> View Appointments
-         </button>
-         <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/doctors-list">
-           <mat-icon>view_list</mat-icon> View Doctors
-         </button>
-
-   </div>
  </div>

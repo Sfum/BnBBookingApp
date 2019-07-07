@@ -21,7 +21,7 @@ export class AppointmentListComponent {
     'appointment_date',
     'doctor_select',
     'action',
-    'confirmation'
+    // 'confirmation'
   ];
   constructor(
     private appointmentApi: AppointmentService,

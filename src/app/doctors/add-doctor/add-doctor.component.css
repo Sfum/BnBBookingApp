@@ -1,5 +1,5 @@
 .button-length{
-  width: 200px;
+  width: 140px;
   min-width: unset!important;
   text-align: left;
 }
@@ -15,4 +15,17 @@
 .box div {
   width: 200px;
   height: 100px;
+}
+
+
+.card-length {
+
+  width: 320px;
+
+}
+
+.button-length-clear {
+  width: 40px;
+  text-align: center;
+
 }

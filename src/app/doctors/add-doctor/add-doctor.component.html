@@ -9,7 +9,7 @@
 <div class="inner-wrapper">
   <form [formGroup]="doctorForm" (ngSubmit)="submitDoctor()" #resetDoctorForm="ngForm" novalidate>
     <!-- Left block -->
-    <mat-card appRoundEdges>
+    <mat-card class="card-length" appRoundEdges>
       <div class="controlers-wrapper">
 
         <!-- Doctor name -->
@@ -48,28 +48,25 @@
             Hospital is required!
           </mat-error>
         </mat-form-field>
-
+        <br>
         <!-- Taking On New Patients -->
         <div class="misc-bottom-padding">
-          <mat-label>Taking On New Patients: </mat-label>
+          <mat-label>Accepting New Patients? </mat-label>
+          <br>
           <mat-radio-group aria-label="Select an option" formControlName="new_patients">
+            <br>
             <mat-radio-button value="Yes">Yes</mat-radio-button>
             <mat-radio-button value="No">No</mat-radio-button>
           </mat-radio-group>
         </div>
+        <br>
       </div>
       <button mat-raised-button color="warn" class="button-length" >Submit</button>
     </mat-card>
   </form>
   <br>
-  <div class="box" appRoundEdges>
-    <button mat-raised-button (click)="resetForm()" class="button-length">Clear</button>
-    <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
-      <mat-icon>assignment</mat-icon> View Appointments
-    </button>
-    <button mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
-      <mat-icon>view_list</mat-icon> View Hospitals
-    </button>
+  <div class="card-length">
+    <button mat-raised-button (click)="resetForm()">Clear Form</button>
   </div>
 </div>
 
