@@ -1,12 +1,12 @@
-<!-- Title group  -->
-<div class="title-group">
+<!-- Title -->
+<div class="title">
   <h1 class="mat-h1">Hospital List</h1>
   <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
   <mat-divider fxFlex="1 0"></mat-divider>
 </div>
 
-<!-- No data message -->
-<p *ngIf="HospitalData.length <= 0" class="no-data">There is no data added yet!</p>
+<!-- No Entries message -->
+<p *ngIf="HospitalData.length <= 0" class="no-data">There are no entries added yet!</p>
 
 <!-- Hospitals list Angular material data table -->
 <div class="container" *ngIf="HospitalData.length > 0">
@@ -39,17 +39,17 @@
       <tr mat-row *matRowDef="let row; columns: columnsDisplay;"></tr>
     </table>
 
+<!--    Paginator-->
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
   <br>
 
+<!--  Bottom Buttons-->
   <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-hospital">
     <mat-icon>playlist_add</mat-icon> Add Another Hospital</a>
-
   <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-doctor">
     <mat-icon>work</mat-icon> Add A Doctor
   </a>
-
   <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-appointment">
     <mat-icon>alarm</mat-icon> Make an Appointment
   </a>

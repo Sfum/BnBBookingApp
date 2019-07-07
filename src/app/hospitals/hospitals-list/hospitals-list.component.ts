@@ -29,7 +29,7 @@ export class HospitalsListComponent {
         hospitals.forEach(item => {
           let a = item.payload.toJSON();
           a['$key'] = item.key;
-          this.HospitalData.push(a as Hospital)
+          this.HospitalData.push(a as Hospital);
         })
         /* Data table */
         this.dataSource = new MatTableDataSource(this.HospitalData);
@@ -37,20 +37,20 @@ export class HospitalsListComponent {
         setTimeout(() => {
           this.dataSource.paginator = this.paginator;
         }, 0);
-    })
+    });
   }
-  deleteHospital(index: number, e){
-    if(window.confirm('Are you sure?')) {
+  deleteHospital(index: number, e) {
+    if (window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
       data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
       this.dataSource.data = data;
-      this.hospitalApi.DeleteHospital(e.$key)
+      this.hospitalApi.DeleteHospital(e.$key);
     }
-  }
-  goBack(){
-    this.location.back();
   }
   doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+  goBack() {
+    this.location.back();
   }
 }
