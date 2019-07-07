@@ -1,14 +1,14 @@
-<!-- Title group  -->
-<div class="title-group">
+<!-- Title  -->
+<div class="title">
   <h1 class="mat-h1">Appointment List</h1>
   <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
   <mat-divider fxFlex="1 0"></mat-divider>
 </div>
 
-<!-- No data message -->
+<!-- No entries message -->
 <p *ngIf="AppointmentData.length <= 0" class="no-data">There is no data added yet!</p>
 
-<!-- Appointments list Angular material data table -->
+<!-- Appointments list Data Table -->
 <div class="container" *ngIf="AppointmentData.length > 0">
   <mat-form-field fxFlex="20%">
     <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Search">
@@ -31,11 +31,6 @@
         <td mat-cell class="container" *matCellDef="let element"> {{element.appointment_date}} </td>
       </ng-container>
 
-<!--      <ng-container matColumnDef="confirmation">-->
-<!--        <th mat-header-cell class="container" *matHeaderCellDef> Confirmed? </th>-->
-<!--        <td mat-cell class="container" *matCellDef="let element"> {{element.confirmation}} </td>-->
-<!--      </ng-container>-->
-
       <ng-container matColumnDef="action">
         <th mat-header-cell class="container" *matHeaderCellDef> Edit / Delete </th>
         <td mat-cell class="container" *matCellDef="let element; let i = index;">
@@ -49,10 +44,12 @@
       <tr mat-row *matRowDef="let row; columns: columnsDisplay;"></tr>
     </table>
 
+<!--Pagination-->
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
   <br>
 
+<!--  Footer Buttons-->
   <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-appointment">
     <mat-icon>alarm</mat-icon> Make an Appointment
   </a>

@@ -20,13 +20,12 @@ export class AppointmentListComponent {
     'last_name',
     'appointment_date',
     'doctor_select',
-    'action',
-    // 'confirmation'
+    'action'
   ];
   constructor(
     private appointmentApi: AppointmentService,
     private location: Location
-){
+) {
     this.appointmentApi.GetAppointmentList()
     .snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
@@ -50,13 +49,13 @@ export class AppointmentListComponent {
       this.appointmentApi.DeleteAppointment(e.$key);
     }
   }
-  goBack() {
-    this.location.back();
-  }
   doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
   public handleError = (controlName: string, errorName: string) => {
     return this.AppointmentData.controls[controlName].hasError(errorName);
+  }
+  goBack() {
+    this.location.back();
   }
 }

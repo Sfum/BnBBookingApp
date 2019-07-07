@@ -9,10 +9,6 @@ import { Appointment } from '../../shared/appointment';
 import { DoctorService } from './../../shared/doctor.service';
 import { HospitalService } from '../../shared/hospital.service';
 
-export interface Language {
-  name: string;
-}
-
 @Component({
   selector: 'app-add-appointment',
   templateUrl: './add-appointment.component.html',
@@ -28,6 +24,7 @@ export class AddAppointmentComponent implements OnInit {
     this.doctorApi.GetDoctorList();
     this.submitAppointmentForm();
   }
+  // Constructor
   constructor(
     public fb: FormBuilder,
     private appointmentApi: AppointmentService,
