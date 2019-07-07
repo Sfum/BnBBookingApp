@@ -56,4 +56,7 @@ export class AppointmentListComponent {
   doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
+  public handleError = (controlName: string, errorName: string) => {
+    return this.AppointmentData.controls[controlName].hasError(errorName);
+  }
 }

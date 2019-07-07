@@ -63,9 +63,10 @@ export class AddHospitalComponent implements OnInit {
     });
   }
   resetForm() {
-    this.hospitalForm.reset();
-    Object.keys(this.hospitalForm.controls).forEach(key => {
-      this.hospitalForm.controls[key].setErrors(null)
+    this.hospitalForm = this.fb.group({
+      hospital_name: ['', [Validators.required]],
+      contact_number: ['', [Validators.required]],
+      address: ['', [Validators.required]]
     });
   }
   submitHospital() {

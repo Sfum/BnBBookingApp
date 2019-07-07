@@ -66,9 +66,11 @@ export class AddDoctorComponent implements OnInit {
     }
   }
   resetForm() {
-    this.doctorForm.reset();
-    Object.keys(this.doctorForm.controls).forEach(key => {
-      this.doctorForm.controls[key].setErrors(null);
+    this.doctorForm = this.fb.group({
+      doctor_name: ['', [Validators.required]],
+      doctor_number: ['', [Validators.required]],
+      hospital_names: ['', [Validators.required]],
+      new_patients: ['Yes'],
     });
   }
   submitDoctor() {

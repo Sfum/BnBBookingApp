@@ -52,7 +52,7 @@ export class AddAppointmentComponent implements OnInit {
       last_name: ['', [Validators.required]],
       appointment_date: ['', [Validators.required]],
       doctor_select: ['', [Validators.required]],
-      confirmation: ['Yes'],
+      confirmation: [''],
     });
   }
   public handleError = (controlName: string, errorName: string) => {
@@ -65,13 +65,17 @@ export class AddAppointmentComponent implements OnInit {
     });
   }
   resetForm() {
-    this.appointmentForm.reset();
-    Object.keys(this.appointmentForm.controls).forEach(key => {
-      this.appointmentForm.controls[key].setErrors(null);
+    this.appointmentForm = this.fb.group({
+      first_name: ['', [Validators.required]],
+      reference_number: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      appointment_date: ['', [Validators.required]],
+      doctor_select: ['', [Validators.required]],
+      confirmation: ['No'],
     });
   }
   submitAppointment() {
-    if (this.appointmentForm.valid){
+    if (this.appointmentForm.valid) {
       this.appointmentApi.AddAppointment(this.appointmentForm.value)
       this.resetForm();
       this.router.navigate(['appointments-list']);

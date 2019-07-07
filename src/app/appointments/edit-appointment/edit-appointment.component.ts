@@ -45,19 +45,19 @@ export class EditAppointmentComponent implements OnInit {
       });
     });
   }
-  updateAppointmentForm(){
+  updateAppointmentForm() {
     this.editAppointmentForm = this.fb.group({
       first_name: ['', [Validators.required]],
       reference_number: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
       appointment_date: ['', [Validators.required]],
       doctor_select: ['', [Validators.required]],
-      confirmation: ['Yes'],
+      confirmation: ['No'],
     });
   }
   updateAppointment() {
     var id = this.actRoute.snapshot.paramMap.get('id');
-    if(window.confirm('Are you sure you wanna update?')){
+    if(window.confirm('Are you sure you wanna update?')) {
       this.appointmentApi.UpdateAppointment(id, this.editAppointmentForm.value);
       this.router.navigate(['appointments-list']);
     }
