@@ -31,6 +31,11 @@
         <td mat-cell class="container" *matCellDef="let element"> {{element.appointment_date}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="confirmation">
+        <th mat-header-cell class="container" *matHeaderCellDef> Confirmed? </th>
+        <td mat-cell class="container" *matCellDef="let element"> {{element.confirmation}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="action">
         <th mat-header-cell class="container" *matHeaderCellDef> Edit / Delete </th>
         <td mat-cell class="container" *matCellDef="let element; let i = index;">
@@ -58,7 +63,4 @@
 
   <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-hospital">
     <mat-icon>playlist_add</mat-icon> Add a Hospital</a>
-
 </div>
-
-
