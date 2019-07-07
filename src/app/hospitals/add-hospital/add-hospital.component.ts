@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,10 +8,6 @@ import { AppointmentService } from '../../shared/appointment.service';
 import { HospitalService } from '../../shared/hospital.service';
 import { DoctorService } from './../../shared/doctor.service';
 
-export interface Language {
-  name: string;
-}
-
 @Component({
   selector: 'app-add-hospital',
   templateUrl: './add-hospital.component.html',
@@ -22,7 +16,6 @@ export interface Language {
 export class AddHospitalComponent implements OnInit {
   @ViewChild('resetHospitalForm') myNgForm;
   AppointmentData: any = [];
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   hospitalForm: FormGroup;
 
   ngOnInit() {
@@ -42,7 +35,7 @@ export class AddHospitalComponent implements OnInit {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
-        this.AppointmentData.push(a as Appointment)
+        this.AppointmentData.push(a as Appointment);
       });
     });
   }
@@ -70,7 +63,7 @@ export class AddHospitalComponent implements OnInit {
     });
   }
   submitHospital() {
-    if (this.hospitalForm.valid){
+    if (this.hospitalForm.valid) {
       this.hospitalApi.AddHospital(this.hospitalForm.value)
       this.resetForm();
       this.router.navigate(['hospitals-list']);

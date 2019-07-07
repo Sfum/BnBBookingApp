@@ -1,14 +1,15 @@
-<!-- Title group  -->
-<div class="title-group">
+<!-- Title -->
+<div class="title">
   <h1 class="mat-h1">Doctor List</h1>
   <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
   <mat-divider fxFlex="1 0"></mat-divider>
 </div>
-<!-- No data message -->
-<p *ngIf="DoctorData.length <= 0" class="no-data">There is no data added yet!</p>
+<!-- No entries message -->
+<p *ngIf="DoctorData.length <= 0" class="no-data">There are no entries added yet!</p>
 
 <!-- Doctors list Angular material data table -->
 <div class="container" *ngIf="DoctorData.length > 0">
+
   <mat-form-field fxFlex="20%">
     <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Search">
   </mat-form-field>
@@ -37,16 +38,18 @@
       <tr mat-header-row *matHeaderRowDef="columnsDisplay"></tr>
       <tr mat-row *matRowDef="let row; columns: columnsDisplay;"></tr>
     </table>
+
+<!--    Pagination-->
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
   <br>
+
+<!--  Footer Buttons-->
   <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-doctor">
     <mat-icon>work</mat-icon> Add Another Doctor
   </a>
-
   <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-hospital">
     <mat-icon>playlist_add</mat-icon> Add A Hospital</a>
-
   <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-appointment">
     <mat-icon>alarm</mat-icon> Make an Appointment
   </a>

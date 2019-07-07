@@ -9,7 +9,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: row-reverse;
-  justify-content: flex-end;
 }
 
 .box div {
@@ -17,15 +16,12 @@
   height: 100px;
 }
 
-
 .card-length {
 
   width: 320px;
-
 }
 
 .button-length-clear {
   width: 40px;
   text-align: center;
-
 }

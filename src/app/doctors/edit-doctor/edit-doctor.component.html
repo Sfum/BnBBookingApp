@@ -1,10 +1,10 @@
-<!-- Title group  -->
-<div class="title-group">
+<!-- Title  -->
+<div class="title-">
   <h1 class="mat-h1">Edit Doctor</h1>
   <mat-divider fxFlex="1 0"></mat-divider>
 </div>
 
-<!-- Doctor form -->
+<!-- Edit Doctor form -->
 <div class="inner-wrapper">
   <form [formGroup]="editDoctorForm" (ngSubmit)="updateDoctor()" novalidate>
     <mat-card>
@@ -34,6 +34,7 @@
         </mat-form-field>
       </div>
     </mat-card>
+
     <!-- Area/Hospital -->
     <mat-card>
       <div class="controlers-wrapper">
@@ -45,7 +46,7 @@
             </mat-option>
           </mat-select>
           <mat-error *ngIf="handleError('hospital_names', 'required')">
-            Binding type is required
+            Hospital is required!
           </mat-error>
         </mat-form-field>
 

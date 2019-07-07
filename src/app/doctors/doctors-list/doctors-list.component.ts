@@ -1,8 +1,9 @@
-import { Doctor } from './../../shared/doctor';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { DoctorService } from './../../shared/doctor.service';
 import { Location } from '@angular/common';
+
+import { DoctorService } from './../../shared/doctor.service';
+import { Doctor } from './../../shared/doctor';
 
 @Component({
   selector: 'app-doctors-list',
@@ -27,7 +28,7 @@ export class DoctorsListComponent {
         doctors.forEach(item => {
           let a = item.payload.toJSON();
           a['$key'] = item.key;
-          this.DoctorData.push(a as Doctor)
+          this.DoctorData.push(a as Doctor);
         })
         /* Data table */
         this.dataSource = new MatTableDataSource(this.DoctorData);
@@ -35,20 +36,20 @@ export class DoctorsListComponent {
         setTimeout(() => {
           this.dataSource.paginator = this.paginator;
         }, 0);
-    })
+    });
   }
-  deleteDoctor(index: number, e){
-    if(window.confirm('Are you sure?')) {
+  deleteDoctor(index: number, e) {
+    if (window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
       data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
       this.dataSource.data = data;
-      this.doctorApi.DeleteDoctor(e.$key)
+      this.doctorApi.DeleteDoctor(e.$key);
     }
-  }
-  goBack(){
-    this.location.back();
   }
   doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+  goBack() {
+    this.location.back();
   }
 }

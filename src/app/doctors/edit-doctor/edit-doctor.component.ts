@@ -1,18 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { Appointment } from '../../shared/appointment';
 import { AppointmentService } from '../../shared/appointment.service';
 import { HospitalService } from '../../shared/hospital.service';
 import { DoctorService } from './../../shared/doctor.service';
-import { Appointment } from '../../shared/appointment';
-
-export interface Language {
-  name: string;
-}
 
 @Component({
   selector: 'app-edit-doctor',
@@ -22,7 +17,6 @@ export interface Language {
 
 export class EditDoctorComponent implements OnInit {
   @ViewChild('chipList') chipList;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   editDoctorForm: FormGroup;
   AppointmentData: any = [];
   selected: any;
@@ -48,22 +42,22 @@ export class EditDoctorComponent implements OnInit {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
           a['$key'] = item.key;
-          this.AppointmentData.push(a as Appointment)
-        })
-      })
-    })
+          this.AppointmentData.push(a as Appointment);
+        });
+      });
+    });
   }
-  updateDoctorForm(){
+  updateDoctorForm() {
     this.editDoctorForm = this.fb.group({
       doctor_name: ['', [Validators.required]],
       doctor_number: ['', [Validators.required]],
       hospital_names: ['', [Validators.required]],
       new_patients: ['Yes'],
-    })
+    });
   }
   updateDoctor() {
     var id = this.actRoute.snapshot.paramMap.get('id');
-    if(window.confirm('Are you sure you wanna update?')){
+    if(window.confirm('Are you sure you wanna update?')) {
       this.doctorApi.UpdateDoctor(id, this.editDoctorForm.value);
       this.router.navigate(['doctors-list']);
     }
@@ -71,7 +65,7 @@ export class EditDoctorComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     var input: any = event.input;
     var value: any = event.value;
-    // Reset the input value
+  // Input Reset
     if (input) {
       input.value = '';
     }
@@ -83,7 +77,7 @@ export class EditDoctorComponent implements OnInit {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.editDoctorForm.get('publication_date').setValue(convertDate, {
       onlyself: true
-    })
+    });
   }
   goBack() {
     this.location.back();
