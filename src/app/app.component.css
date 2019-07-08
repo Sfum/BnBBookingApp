@@ -10,3 +10,11 @@
 
   display: flex;
 }
+
+[disabled] {
+  pointer-events: none;
+}
+
+[disabled="false"] {
+  pointer-events: initial;
+}

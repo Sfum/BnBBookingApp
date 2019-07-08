@@ -8,6 +8,7 @@ import { Appointment } from '../../shared/appointment';
 
 import { DoctorService } from './../../shared/doctor.service';
 import { HospitalService } from '../../shared/hospital.service';
+import { MdePopoverTrigger } from '@material-extended/mde';
 
 @Component({
   selector: 'app-add-appointment',
@@ -16,6 +17,7 @@ import { HospitalService } from '../../shared/hospital.service';
 })
 export class AddAppointmentComponent implements OnInit {
   @ViewChild('resetAppointmentForm') myNgForm;
+  @ViewChild( MdePopoverTrigger, {}) trigger: MdePopoverTrigger;
   AppointmentData: any = [];
   selected: any;
   appointmentForm: FormGroup;
@@ -80,5 +82,12 @@ export class AddAppointmentComponent implements OnInit {
   }
   goBack() {
     this.location.back();
+  }
+  closePopover() {
+    this.trigger.togglePopover();
+  }
+  onSubmit() {
+
+    this.closePopover();
   }
 }

@@ -30,7 +30,10 @@ import { HospitalService } from './shared/hospital.service';
 import { RoundEdgesDirective } from './directives/roundEdges';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatExpansionModule, MatTabsModule} from '@angular/material';
+import { MatExpansionModule, MatTabsModule } from '@angular/material';
+
+import { MdePopoverModule } from '@material-extended/mde';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +59,8 @@ import {MatExpansionModule, MatTabsModule} from '@angular/material';
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
+    MdePopoverModule
   ],
   providers: [AppointmentService, DoctorService, HospitalService],
   bootstrap: [AppComponent],

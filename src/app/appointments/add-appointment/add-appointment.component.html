@@ -75,16 +75,30 @@
          <div class="misc-bottom-padding">
            <mat-label>Confirmation: </mat-label>
            <mat-radio-group aria-label="Select an option" formControlName="confirmation">
+             <br>
              <mat-radio-button value="Yes">Yes</mat-radio-button>
              <mat-radio-button value="No">No</mat-radio-button>
            </mat-radio-group>
          </div>
+         <br>
 
          <!-- Submit & Reset -->
-       </div>
-       <div class="full-wrapper button-wrapper">
-         <div class="button-wrapper">
-           <button mat-raised-button color="warn" class="button-length">Submit</button>
+         <div class="container">
+           <button mat-stroked-button color="warn"
+                   [mdePopoverTriggerFor]="appPopover"
+                   mdePopoverTriggerOn="click">
+             Add Appointment
+           </button>
+           <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverCloseOnClick]="false">
+             <mat-card style="max-width: 300px">
+               <mat-card-content>
+                 Please, fill the required fields!
+               </mat-card-content>
+               <mat-card-actions align="right">
+                 <button (click)="closePopover()" mat-button>Close</button>
+               </mat-card-actions>
+             </mat-card>
+           </mde-popover>
          </div>
        </div>
      </mat-card>
