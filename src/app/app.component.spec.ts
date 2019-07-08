@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-material7-firebase-crud-app'`, () => {
+  it(`should have as title 'health-clinic-appointment-centre'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-material7-firebase-crud-app');
+    expect(app.title).toEqual('health-clinic-appointment-centre');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-material7-firebase-crud-app!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to health-clinic-appointment-centre!');
   });
 });
