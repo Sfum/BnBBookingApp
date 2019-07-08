@@ -38,16 +38,17 @@
              You must provide Hospital <strong>address!</strong>
            </mat-error>
          </mat-form-field>
-         <button mat-raised-button color="warn" class="button-length" >Submit</button>
+         <!-- Submit & Reset -->
+       </div>
+       <div class="full-wrapper button-wrapper">
+         <div class="button-wrapper">
+           <button mat-raised-button color="warn" class="button-length">Submit</button>
+         </div>
        </div>
      </mat-card>
-     <br><br>
-
-<!--     Reset Button-->
-     <div class="box">
-       <button mat-raised-button (click)="resetForm()">Clear Form</button>
-     </div>
-     <br><br>
    </form>
    <br>
+   <div class="card-length">
+     <button mat-raised-button (click)="resetForm()">Clear Form</button>
+   </div>
  </div>
