@@ -30,6 +30,7 @@ import { HospitalService } from './shared/hospital.service';
 import { RoundEdgesDirective } from './directives/roundEdges';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatExpansionModule, MatTabsModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatTabsModule
   ],
   providers: [AppointmentService, DoctorService, HospitalService],
   bootstrap: [AppComponent],
