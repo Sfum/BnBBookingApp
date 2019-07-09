@@ -12,18 +12,18 @@ export class AppointmentService {
 
   constructor(private db: AngularFireDatabase) {}
 
-  /* Get appointment */
+  // Get Appointment
   GetAppointment(id: string) {
     this.appointmentRef = this.db.object('appointments-list/' + id);
     return this.appointmentRef;
   }
-  /* Get appointment list */
+  // Get Appointment List
   GetAppointmentList() {
     this.appointmentsRef = this.db.list('appointments-list');
     return this.appointmentsRef;
   }
 
-  /* Create appointment */
+  // Create Appointment
   AddAppointment(appointment: Appointment) {
     this.appointmentsRef.push({
       first_name: appointment.first_name,
@@ -38,7 +38,7 @@ export class AppointmentService {
     });
   }
 
-  /* Update appointment */
+  // Update Appointment
   UpdateAppointment(id, appointment: Appointment) {
     this.appointmentRef.update({
       first_name: appointment.first_name,
@@ -53,7 +53,7 @@ export class AppointmentService {
     });
   }
 
-  /* Delete appointment */
+  // Delete Appointment
   DeleteAppointment(id: string) {
     this.appointmentRef = this.db.object('appointments-list/' + id);
     this.appointmentRef.remove()

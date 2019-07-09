@@ -26,7 +26,6 @@ export class AddAppointmentComponent implements OnInit {
     this.doctorApi.GetDoctorList();
     this.submitAppointmentForm();
   }
-  // Constructor
   constructor(
     public fb: FormBuilder,
     private appointmentApi: AppointmentService,
@@ -36,6 +35,7 @@ export class AddAppointmentComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router,
   ) {
+    // Get Doctors List
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
@@ -44,6 +44,7 @@ export class AddAppointmentComponent implements OnInit {
       });
     });
   }
+  // Submit Appointment Form
   submitAppointmentForm() {
     this.appointmentForm = this.fb.group({
       first_name: ['', [Validators.required]],
@@ -54,15 +55,18 @@ export class AddAppointmentComponent implements OnInit {
       confirmation: [''],
     });
   }
+  // Error Handling
   public handleError = (controlName: string, errorName: string) => {
     return this.appointmentForm.controls[controlName].hasError(errorName);
   }
+  // Format Date
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.appointmentForm.get('appointment_date').setValue(convertDate, {
       onlyself: true
     });
   }
+  // Reset Form
   resetForm() {
     this.appointmentForm = this.fb.group({
       first_name: ['', [Validators.required]],
@@ -73,6 +77,7 @@ export class AddAppointmentComponent implements OnInit {
       confirmation: ['No'],
     });
   }
+  // Submit Appointment
   submitAppointment() {
     if (this.appointmentForm.valid) {
       this.appointmentApi.AddAppointment(this.appointmentForm.value)
@@ -80,9 +85,11 @@ export class AddAppointmentComponent implements OnInit {
       this.router.navigate(['appointments-list']);
     }
   }
+  // Go Back
   goBack() {
     this.location.back();
   }
+  // Close PopOver
   closePopover() {
     this.trigger.togglePopover();
   }

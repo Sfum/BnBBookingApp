@@ -15,6 +15,7 @@ export class DoctorsListComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<Doctor>;
   DoctorData: any = [];
+  // Display Table Columns
   columnsDisplay: any[] = [
     'doctor_name',
     'doctor_number',
@@ -23,6 +24,7 @@ export class DoctorsListComponent {
   constructor(
     private doctorApi: DoctorService,
     private location: Location) {
+    // Get Doctor List
     this.doctorApi.GetDoctorList()
     .snapshotChanges().subscribe(doctors => {
         doctors.forEach(item => {
@@ -30,14 +32,15 @@ export class DoctorsListComponent {
           a['$key'] = item.key;
           this.DoctorData.push(a as Doctor);
         })
-        /* Data table */
+        // Data Table
         this.dataSource = new MatTableDataSource(this.DoctorData);
-        /* Pagination */
+        // Pagination
         setTimeout(() => {
           this.dataSource.paginator = this.paginator;
         }, 0);
     });
   }
+  // Delete Doctor
   deleteDoctor(index: number, e) {
     if (window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
@@ -46,9 +49,11 @@ export class DoctorsListComponent {
       this.doctorApi.DeleteDoctor(e.$key);
     }
   }
+  // Filtering
   doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
+  // Go Back
   goBack() {
     this.location.back();
   }

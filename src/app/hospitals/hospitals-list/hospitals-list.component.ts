@@ -16,6 +16,7 @@ export class HospitalsListComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<Hospital>;
   HospitalData: any = [];
+  // Display Table Columns
   columnsDisplay: any[] = [
     'hospital_name',
     'address',
@@ -24,6 +25,7 @@ export class HospitalsListComponent {
   constructor(
     private hospitalApi: HospitalService,
     private location: Location) {
+    // Get Hospital List
     this.hospitalApi.GetHospitalList()
     .snapshotChanges().subscribe(hospitals => {
         hospitals.forEach(item => {
@@ -31,14 +33,15 @@ export class HospitalsListComponent {
           a['$key'] = item.key;
           this.HospitalData.push(a as Hospital);
         })
-        /* Data table */
+        // Data table
         this.dataSource = new MatTableDataSource(this.HospitalData);
-        /* Pagination */
+        // Pagination
         setTimeout(() => {
           this.dataSource.paginator = this.paginator;
         }, 0);
     });
   }
+  // Delete Hospital
   deleteHospital(index: number, e) {
     if (window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
@@ -47,9 +50,11 @@ export class HospitalsListComponent {
       this.hospitalApi.DeleteHospital(e.$key);
     }
   }
+  // Filtering
   doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
+  // Go Back
   goBack() {
     this.location.back();
   }

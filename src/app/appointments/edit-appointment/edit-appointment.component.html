@@ -1,17 +1,16 @@
 <!-- Title -->
 <div class="title">
   <h1 class="mat-h1">Edit Appointment</h1>
-  <mat-divider fxFlex="1 0"></mat-divider>
 </div>
 
 <!-- Appointment form -->
-<div class="inner-wrapper">
+<div class="appointment-form">
   <form [formGroup]="editAppointmentForm" (ngSubmit)="updateAppointment()" novalidate>
-    <mat-card class="card-length">
+    <mat-card class="card-length" appRoundEdges>
       <div class="controlers-wrapper">
 
         <!-- Appointment Reference Number -->
-        <mat-form-field class="Appointment-Reference-Number">
+        <mat-form-field class="appointment-reference-number">
           <input matInput placeholder="Appointment Reference Number" formControlName="reference_number" pattern="[0-9]*" minlength="10"
                  maxlength="10">
           <mat-error *ngIf="handleError('reference_number', 'required')">
@@ -26,7 +25,7 @@
         </mat-form-field>
 
         <!-- Patient First Name -->
-        <mat-form-field class="Patient-First-Name">
+        <mat-form-field class="patient-first-name">
           <input matInput placeholder="Patient First Name" formControlName="first_name">
           <mat-error *ngIf="handleError('first_name', 'required')">
             You must provide <strong>First Name!</strong>
@@ -34,7 +33,7 @@
         </mat-form-field>
 
         <!-- Patient Last Name -->
-        <mat-form-field class="Patient-Last-Name">
+        <mat-form-field class="patient-last-name">
           <input matInput placeholder="Patient Last Name" formControlName="last_name">
           <mat-error *ngIf="handleError('last_name', 'required')">
             You must provide <strong>Last Name!</strong>
@@ -53,7 +52,8 @@
         </mat-form-field>
       </div>
     </mat-card>
-    <mat-card class="card-length">
+    <br>
+    <mat-card class="card-length" appRoundEdges>
       <div class="controlers-wrapper">
 
         <!-- Select a Doctor -->
@@ -70,7 +70,7 @@
         </mat-form-field>
 
         <!-- Confirmation -->
-        <div class="misc-bottom-padding">
+        <div class="confirmation">
           <mat-label>Confirmed?: </mat-label>
           <mat-radio-group aria-label="Select an option" formControlName="confirmation">
             <mat-radio-button value="Yes">Yes</mat-radio-button>
@@ -79,9 +79,9 @@
         </div>
       </div>
     </mat-card>
-
+    <br>
     <!-- Submit & Reset -->
-    <mat-card class="card-length">
+    <mat-card class="card-length" appRoundEdges>
       <div class="full-wrapper button-wrapper">
         <div class="button-wrapper">
           <button mat-flat-button color="warn">Update</button>
@@ -91,3 +91,4 @@
     </mat-card>
   </form>
 </div>
+<br>

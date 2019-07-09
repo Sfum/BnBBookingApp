@@ -14,11 +14,9 @@ import { DoctorService } from './../../shared/doctor.service';
 })
 
 export class EditAppointmentComponent implements OnInit {
-
   AppointmentData: any = [];
   editAppointmentForm: FormGroup;
   selected: any;
-
   ngOnInit() {
     this.updateAppointmentForm();
   }
@@ -30,10 +28,11 @@ export class EditAppointmentComponent implements OnInit {
     private appointmentApi: AppointmentService,
     private doctorApi: DoctorService
   ) {
+    // Get Appointment By Id
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.appointmentApi.GetAppointment(id).valueChanges().subscribe(data => {
       this.editAppointmentForm.setValue(data);
-
+    // Get Doctors List
       this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
@@ -43,6 +42,7 @@ export class EditAppointmentComponent implements OnInit {
       });
     });
   }
+  // Update Appointment Form
   updateAppointmentForm() {
     this.editAppointmentForm = this.fb.group({
       first_name: ['', [Validators.required]],
@@ -53,6 +53,7 @@ export class EditAppointmentComponent implements OnInit {
       confirmation: ['No'],
     });
   }
+  // Update Appointment
   updateAppointment() {
     var id = this.actRoute.snapshot.paramMap.get('id');
     if(window.confirm('Are you sure you wanna update?')) {
@@ -60,15 +61,18 @@ export class EditAppointmentComponent implements OnInit {
       this.router.navigate(['appointments-list']);
     }
   }
+  // Error Handling
   public handleError = (controlName: string, errorName: string) => {
     return this.editAppointmentForm.controls[controlName].hasError(errorName);
   }
+  // Format Date
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.editAppointmentForm.get('appointment_date').setValue(convertDate, {
       onlyself: true
     });
   }
+  // Go Back
   goBack() {
     this.location.back();
   }

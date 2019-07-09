@@ -1,17 +1,16 @@
 <!-- Title  -->
 <div class="title-">
   <h1 class="mat-h1">Edit Doctor</h1>
-  <mat-divider fxFlex="1 0"></mat-divider>
 </div>
 
 <!-- Edit Doctor form -->
-<div class="inner-wrapper">
+<div class="edit-doctor-form">
   <form [formGroup]="editDoctorForm" (ngSubmit)="updateDoctor()" novalidate>
-    <mat-card class="card-length">
+    <mat-card class="card-length" appRoundEdges>
       <div class="controlers-wrapper">
 
         <!-- Doctor name -->
-        <mat-form-field class="Doctor-name">
+        <mat-form-field class="doctor-name">
           <input matInput placeholder="Doctor name" formControlName="doctor_name">
           <mat-error *ngIf="handleError('doctor_name', 'required')">
             You must provide a <strong>doctor name!</strong>
@@ -19,7 +18,7 @@
         </mat-form-field>
 
         <!-- Contact Number -->
-        <mat-form-field class="Contact-Number">
+        <mat-form-field class="contact-number">
           <input matInput placeholder="Contact Number" formControlName="doctor_number" pattern="[0-9]*" minlength="10"
                  maxlength="10">
           <mat-error *ngIf="handleError('doctor_number', 'required')">
@@ -34,9 +33,9 @@
         </mat-form-field>
       </div>
     </mat-card>
-
+    <br>
     <!-- Area/Hospital -->
-    <mat-card class="card-length">
+    <mat-card class="card-length" appRoundEdges>
       <div class="controlers-wrapper">
         <mat-form-field>
           <mat-label>Select a Hospital</mat-label>
@@ -51,8 +50,9 @@
         </mat-form-field>
 
         <!-- Taking On New Patients -->
-        <div class="misc-bottom-padding">
+        <div class="card-length">
           <mat-label>Taking On New Patients: </mat-label>
+          <br><br>
           <mat-radio-group aria-label="Select an option" formControlName="new_patients">
             <mat-radio-button value="Yes">Yes</mat-radio-button>
             <mat-radio-button value="No">No</mat-radio-button>
@@ -60,9 +60,9 @@
         </div>
       </div>
     </mat-card>
-
+    <br>
     <!-- Submit & Reset -->
-    <mat-card class="card-length">
+    <mat-card class="card-length" appRoundEdges>
       <div class="full-wrapper button-wrapper">
         <div class="button-wrapper">
           <button mat-flat-button color="warn">Update</button>
@@ -72,3 +72,4 @@
     </mat-card>
   </form>
 </div>
+<br>

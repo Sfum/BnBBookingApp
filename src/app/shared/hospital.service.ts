@@ -12,19 +12,19 @@ export class HospitalService {
 
   constructor(private db: AngularFireDatabase) {}
 
-  /* Get hospital */
+  // Get hospital
   GetHospital(id: string) {
     this.hospitalRef = this.db.object('hospitals-list/' + id);
     return this.hospitalRef;
   }
 
-  /* Get hospital list */
+  // Get hospital list
   GetHospitalList() {
     this.hospitalsRef = this.db.list('hospitals-list');
     return this.hospitalsRef;
   }
 
-  /* Create hospital */
+  // Create hospital
   AddHospital(hospital: Hospital) {
     this.hospitalsRef.push({
       hospital_name: hospital.hospital_name,
@@ -36,7 +36,7 @@ export class HospitalService {
       });
   }
 
-  /* Update hospital */
+  // Update hospital
   UpdateHospital(id, hospital: Hospital) {
     this.hospitalRef.update({
       hospital_name: hospital.hospital_name,
@@ -48,7 +48,7 @@ export class HospitalService {
       });
   }
 
-  /* Delete hospital */
+  // Delete hospital
   DeleteHospital(id: string) {
     this.hospitalRef = this.db.object('hospitals-list/' + id);
     this.hospitalRef.remove()

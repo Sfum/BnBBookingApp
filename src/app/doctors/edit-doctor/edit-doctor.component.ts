@@ -20,7 +20,6 @@ export class EditDoctorComponent implements OnInit {
   editDoctorForm: FormGroup;
   AppointmentData: any = [];
   selected: any;
-
   ngOnInit() {
     this.doctorApi.GetDoctorList();
     this.updateDoctorForm();
@@ -34,10 +33,11 @@ export class EditDoctorComponent implements OnInit {
     private doctorApi: DoctorService,
     private hospitalApi: HospitalService,
   ) {
+    // Get Doctor By Id
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.doctorApi.GetDoctor(id).valueChanges().subscribe(data => {
       this.editDoctorForm.setValue(data);
-
+    // Get Hospital List
       this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
@@ -47,6 +47,7 @@ export class EditDoctorComponent implements OnInit {
       });
     });
   }
+  // Update Doctor Form
   updateDoctorForm() {
     this.editDoctorForm = this.fb.group({
       doctor_name: ['', [Validators.required]],
@@ -55,19 +56,12 @@ export class EditDoctorComponent implements OnInit {
       new_patients: ['Yes'],
     });
   }
+  // Update Doctor
   updateDoctor() {
     var id = this.actRoute.snapshot.paramMap.get('id');
     if(window.confirm('Are you sure you wanna update?')) {
       this.doctorApi.UpdateDoctor(id, this.editDoctorForm.value);
       this.router.navigate(['doctors-list']);
-    }
-  }
-  add(event: MatChipInputEvent): void {
-    var input: any = event.input;
-    var value: any = event.value;
-  // Input Reset
-    if (input) {
-      input.value = '';
     }
   }
   public handleError = (controlName: string, errorName: string) => {

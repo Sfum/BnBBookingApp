@@ -16,6 +16,7 @@ export class AppointmentListComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   AppointmentData: any = [];
   dataSource: MatTableDataSource<Appointment>;
+  // Get Column Display Tabs
   columnsDisplay: any[] = [
     'last_name',
     'appointment_date',
@@ -26,6 +27,7 @@ export class AppointmentListComponent {
     private appointmentApi: AppointmentService,
     private location: Location
 ) {
+    // Get Appointment List
     this.appointmentApi.GetAppointmentList()
     .snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
@@ -33,14 +35,15 @@ export class AppointmentListComponent {
           a['$key'] = item.key;
           this.AppointmentData.push(a as Appointment)
         })
-        /* Data table */
+        // Data Table
         this.dataSource = new MatTableDataSource(this.AppointmentData);
-        /* Pagination */
+        // Pagionation
         setTimeout(() => {
           this.dataSource.paginator = this.paginator;
         }, 0);
     });
   }
+  // Delete Appointment
   deleteAppointment(index: number, e) {
     if (window.confirm('Are you sure?')) {
       const data = this.dataSource.data;
@@ -49,12 +52,15 @@ export class AppointmentListComponent {
       this.appointmentApi.DeleteAppointment(e.$key);
     }
   }
+  // Search Filtering
   doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
+  // Error Handling
   public handleError = (controlName: string, errorName: string) => {
     return this.AppointmentData.controls[controlName].hasError(errorName);
   }
+  // Go Back
   goBack() {
     this.location.back();
   }

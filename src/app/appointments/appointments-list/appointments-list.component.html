@@ -33,9 +33,9 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell class="container" *matHeaderCellDef> Edit / Delete </th>
         <td mat-cell class="container" *matCellDef="let element; let i = index;">
-          <mat-icon color="primary" class="push-right"
-            [routerLink]="['/edit-appointment/', element.$key]">edit</mat-icon>
-          <mat-icon mat-raised-button color="accent" (click)="deleteAppointment(i, element)">delete</mat-icon>
+          <mat-icon class="push-right"
+            [routerLink]="['/edit-appointment/', element.$key]">insert_chart</mat-icon>
+          <mat-icon mat-raised-button color="warn" (click)="deleteAppointment(i, element)">delete_sweep</mat-icon>
         </td>
       </ng-container>
 

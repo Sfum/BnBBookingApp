@@ -17,11 +17,9 @@ import { Appointment } from '../../shared/appointment';
 export class EditHospitalComponent implements OnInit {
   editHospitalForm: FormGroup;
   AppointmentData: any = [];
-
   ngOnInit() {
     this.updateHospitalForm();
   }
-
   constructor(
     public fb: FormBuilder,
     private location: Location,
@@ -31,10 +29,11 @@ export class EditHospitalComponent implements OnInit {
     private doctorApi: DoctorService,
     private hospitalApi: HospitalService,
   ) {
+    // Get Hospital By Id
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.hospitalApi.GetHospital(id).valueChanges().subscribe(data => {
       this.editHospitalForm.setValue(data);
-
+    // Get Doctor List
       this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
@@ -44,6 +43,7 @@ export class EditHospitalComponent implements OnInit {
       });
     });
   }
+  // Update Hospital Form
   updateHospitalForm() {
     this.editHospitalForm = this.fb.group({
       hospital_name: ['', [Validators.required]],
@@ -51,6 +51,7 @@ export class EditHospitalComponent implements OnInit {
       address: ['', [Validators.required]],
     });
   }
+  // Update Hospital
   updateHospital() {
     var id = this.actRoute.snapshot.paramMap.get('id');
     if(window.confirm('Are you sure you wanna update?')) {
@@ -58,15 +59,18 @@ export class EditHospitalComponent implements OnInit {
       this.router.navigate(['hospitals-list']);
     }
   }
+  // Error Handling
   public handleError = (controlName: string, errorName: string) => {
     return this.editHospitalForm.controls[controlName].hasError(errorName);
   }
+  // Format Date
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.editHospitalForm.get('publication_date').setValue(convertDate, {
       onlyself: true
     });
   }
+  // Go Back
   goBack() {
     this.location.back();
   }

@@ -2,17 +2,17 @@
 <div class="title">
   <h1 class="mat-h1">Add Doctor</h1>
   <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
-</div>
+</div><br>
 
 <!-- Doctor form -->
-<div class="inner-wrapper">
+<div class="doctor-form">
   <form [formGroup]="doctorForm" (ngSubmit)="submitDoctor()" #resetDoctorForm="ngForm" novalidate>
     <!-- Left block -->
     <mat-card class="card-length" appRoundEdges>
       <div class="controlers-wrapper">
 
         <!-- Doctor name -->
-        <mat-form-field class="Doctor-name">
+        <mat-form-field class="doctor-name">
           <input matInput placeholder="Doctor name" formControlName="doctor_name">
           <mat-error *ngIf="handleError('doctor_name', 'required')">
             You must provide a <strong>doctor name!</strong>
@@ -20,7 +20,7 @@
         </mat-form-field>
 
         <!-- Contact Number -->
-        <mat-form-field class="Contact-Number">
+        <mat-form-field class="contact-number">
           <input matInput placeholder="Contact Number" formControlName="doctor_number" pattern="[0-9]*" minlength="5"
                  maxlength="10">
           <mat-error *ngIf="handleError('doctor_number', 'required')">
@@ -34,9 +34,9 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="controlers-wrapper">
 
-        <!-- Area/Hospital -->
+      <!-- Area/Hospital -->
+      <div class="controlers-wrapper">
         <mat-form-field>
           <mat-label>Select a Hospital</mat-label>
           <mat-select [(value)]="selected" formControlName="hospital_names">
@@ -51,7 +51,7 @@
         <br>
 
         <!-- Taking On New Patients -->
-        <div class="misc-bottom-padding">
+        <div class="new-patients">
           <mat-label>Accepting New Patients? </mat-label>
           <br>
           <mat-radio-group aria-label="Select an option" formControlName="new_patients">
@@ -62,7 +62,7 @@
         </div>
         <br>
         <!-- Submit & Reset -->
-        <div class="container">
+        <div class="reset">
           <button mat-stroked-button color="warn"
                   [mdePopoverTriggerFor]="appPopover"
                   mdePopoverTriggerOn="click">
@@ -87,3 +87,4 @@
     <button mat-raised-button (click)="resetForm()">Clear Form</button>
   </div>
 </div>
+<br>

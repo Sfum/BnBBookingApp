@@ -2,16 +2,16 @@
 <div class="title">
    <h1 class="mat-h1">Add Hospital</h1>
    <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
-</div>
+</div><br>
 
  <!-- Hospital form -->
- <div class="inner-wrapper">
+ <div class="hospital-form">
    <form [formGroup]="hospitalForm" (ngSubmit)="submitHospital()" #resetHospitalForm="ngForm" novalidate>
      <mat-card class="card-length" appRoundEdges>
        <div class="controlers-wrapper">
 
          <!-- Hospital name -->
-         <mat-form-field class="Hospital-name">
+         <mat-form-field class="hospital-name">
            <input matInput placeholder="Hospital Name" formControlName="hospital_name">
            <mat-error *ngIf="handleError('hospital_name', 'required')">
              You must provide a <strong>Hospital name!</strong>
@@ -19,7 +19,7 @@
          </mat-form-field>
 
          <!-- Contact Number -->
-         <mat-form-field class="Contact-Number">
+         <mat-form-field class="contact-number">
            <input matInput placeholder="Contact Number" formControlName="contact_number" pattern="[0-9]*" minlength="5"
                   maxlength="15">
            <mat-error *ngIf="handleError('contact_number', 'required')">
@@ -31,7 +31,7 @@
          </mat-form-field>
 
          <!-- Address -->
-         <mat-form-field class="example-full-width">
+         <mat-form-field class="address">
            <input matInput placeholder="Address" formControlName="address">
            <mat-error *ngIf="handleError('address', 'required')">
              You must provide Hospital <strong>address!</strong>
@@ -61,3 +61,4 @@
      <button mat-raised-button (click)="resetForm()">Clear Form</button>
    </div>
  </div>
+<br>

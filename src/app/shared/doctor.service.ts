@@ -13,19 +13,19 @@ export class DoctorService {
   constructor(private db: AngularFireDatabase) {}
 
 
-  /* Get doctor */
+  // Get doctor
   GetDoctor(id: string) {
     this.doctorRef = this.db.object('doctors-list/' + id);
     return this.doctorRef;
   }
 
-  /* Get doctor list */
+  // Get doctor list
   GetDoctorList() {
     this.doctorsRef = this.db.list('doctors-list');
     return this.doctorsRef;
   }
 
-  /* Create doctor */
+  // Create doctor
   AddDoctor(doctor: Doctor) {
     this.doctorsRef.push({
       doctor_name: doctor.doctor_name,
@@ -38,7 +38,7 @@ export class DoctorService {
       });
   }
 
-  /* Update doctor */
+  // Update doctor
   UpdateDoctor(id, doctor: Doctor) {
     this.doctorRef.update({
       doctor_name: doctor.doctor_name,
@@ -51,7 +51,7 @@ export class DoctorService {
       });
   }
 
-  /* Delete doctor */
+  // Delete doctor
   DeleteDoctor(id: string) {
     this.doctorRef = this.db.object('doctors-list/' + id);
     this.doctorRef.remove()

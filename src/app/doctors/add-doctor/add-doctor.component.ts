@@ -18,11 +18,9 @@ import { MdePopoverTrigger } from '@material-extended/mde';
 export class AddDoctorComponent implements OnInit {
   @ViewChild('resetDoctorForm') myNgForm;
   @ViewChild( MdePopoverTrigger, {}) trigger: MdePopoverTrigger;
-
   doctorForm: FormGroup;
   AppointmentData: any = [];
   selected: any;
-
   ngOnInit() {
     this.doctorApi.GetDoctorList();
     this.submitDoctorForm();
@@ -36,6 +34,7 @@ export class AddDoctorComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router,
   ) {
+    // Get Hospital List
     this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
@@ -44,6 +43,7 @@ export class AddDoctorComponent implements OnInit {
       });
     });
   }
+  // Submit Doctors Form
   submitDoctorForm() {
     this.doctorForm = this.fb.group({
       doctor_name: ['', [Validators.required]],
@@ -52,17 +52,11 @@ export class AddDoctorComponent implements OnInit {
       new_patients: ['Yes'],
     });
   }
+  // Error Handling
   public handleError = (controlName: string, errorName: string) => {
     return this.doctorForm.controls[controlName].hasError(errorName);
   }
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-  }
+  // Reset Form
   resetForm() {
     this.doctorForm = this.fb.group({
       doctor_name: ['', [Validators.required]],
@@ -71,6 +65,7 @@ export class AddDoctorComponent implements OnInit {
       new_patients: ['Yes'],
     });
   }
+  // Submit Doctor
   submitDoctor() {
     if (this.doctorForm.valid) {
       this.doctorApi.AddDoctor(this.doctorForm.value)
@@ -78,9 +73,11 @@ export class AddDoctorComponent implements OnInit {
       this.router.navigate(['doctors-list']);
     }
   }
+  // Go Back
   goBack() {
     this.location.back();
   }
+  // Close Popover
   closePopover() {
     this.trigger.togglePopover();
   }

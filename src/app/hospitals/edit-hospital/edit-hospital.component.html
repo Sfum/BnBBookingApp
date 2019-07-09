@@ -6,7 +6,7 @@
 <!-- Hospital form -->
 <div class="inner-wrapper">
   <form [formGroup]="editHospitalForm" (ngSubmit)="updateHospital()" novalidate>
-    <mat-card class="card-length">
+    <mat-card class="card-length" appRoundEdges >
       <div class="controlers-wrapper">
 
         <!-- Hospital name -->
@@ -41,9 +41,9 @@
         </mat-form-field>
       </div>
     </mat-card>
-
+    <br><br>
     <!-- Submit & Reset -->
-    <mat-card class="card-length">
+    <mat-card class="card-length" appRoundEdges>
       <div class="full-wrapper button-wrapper">
         <div class="button-wrapper">
           <button mat-flat-button color="warn">Update</button>

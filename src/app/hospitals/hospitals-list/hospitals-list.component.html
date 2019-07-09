@@ -28,9 +28,9 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell class="container" *matHeaderCellDef> Edit / Delete </th>
         <td mat-cell class="container" *matCellDef="let element; let i = index;">
-          <mat-icon color="primary" class="push-right"
-            [routerLink]="['/edit-hospital/', element.$key]">edit</mat-icon>
-          <mat-icon mat-raised-button color="accent" (click)="deleteHospital(i, element)">delete</mat-icon>
+          <mat-icon class="push-right"
+            [routerLink]="['/edit-hospital/', element.$key]">insert_chart</mat-icon>
+          <mat-icon mat-raised-button color="warn" (click)="deleteHospital(i, element)">delete_sweep</mat-icon>
         </td>
       </ng-container>
 
@@ -53,3 +53,4 @@
     <mat-icon>alarm</mat-icon> Make an Appointment
   </a>
 </div>
+<br>

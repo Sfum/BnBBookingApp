@@ -17,10 +17,8 @@ import { MdePopoverTrigger } from '@material-extended/mde';
 export class AddHospitalComponent implements OnInit {
   @ViewChild('resetHospitalForm') myNgForm;
   @ViewChild( MdePopoverTrigger, {}) trigger: MdePopoverTrigger;
-
   AppointmentData: any = [];
   hospitalForm: FormGroup;
-
   ngOnInit() {
     this.hospitalApi.GetHospitalList();
     this.submitHospitalForm();
@@ -34,6 +32,7 @@ export class AddHospitalComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router,
   ) {
+    // Get Doctor List
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
@@ -42,6 +41,7 @@ export class AddHospitalComponent implements OnInit {
       });
     });
   }
+  // Submit Hospital Form
   submitHospitalForm() {
     this.hospitalForm = this.fb.group({
       hospital_name: ['', [Validators.required]],
@@ -49,15 +49,18 @@ export class AddHospitalComponent implements OnInit {
       address: ['', [Validators.required]]
     });
   }
+  // Error Handling
   public handleError = (controlName: string, errorName: string) => {
     return this.hospitalForm.controls[controlName].hasError(errorName);
   }
+  // Format Date
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.hospitalForm.get('publication_date').setValue(convertDate, {
       onlyself: true
     });
   }
+  // Reset Form
   resetForm() {
     this.hospitalForm = this.fb.group({
       hospital_name: ['', [Validators.required]],
@@ -65,6 +68,7 @@ export class AddHospitalComponent implements OnInit {
       address: ['', [Validators.required]]
     });
   }
+  // Submit Hospital
   submitHospital() {
     if (this.hospitalForm.valid) {
       this.hospitalApi.AddHospital(this.hospitalForm.value)
@@ -72,9 +76,11 @@ export class AddHospitalComponent implements OnInit {
       this.router.navigate(['hospitals-list']);
     }
   }
+  // Go Back
   goBack() {
     this.location.back();
   }
+  // Close Popover
   closePopover() {
     this.trigger.togglePopover();
   }

@@ -2,17 +2,17 @@
  <div class="title">
    <h1 class="mat-h1">Add Appointment</h1>
    <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
- </div>
+ </div><br>
 
  <!-- Appointment form -->
- <div class="inner-wrapper">
+ <div class="appointment-form">
    <form [formGroup]="appointmentForm" (ngSubmit)="submitAppointment()" #resetAppointmentForm="ngForm" novalidate>
      <!-- Left block -->
      <mat-card class="card-length" appRoundEdges>
        <div class="controlers-wrapper">
 
          <!-- Appointment Reference Number -->
-         <mat-form-field class="Appointment-Reference-Number">
+         <mat-form-field class="appointment-reference-number">
            <input matInput placeholder="Appointment Reference Number" formControlName="reference_number" pattern="[0-9]*" minlength="5"
                   maxlength="10">
            <mat-error *ngIf="handleError('reference_number', 'required')">
@@ -27,7 +27,7 @@
          </mat-form-field>
 
          <!-- Patient First Name -->
-         <mat-form-field class="Patient-First-Name">
+         <mat-form-field class="patient-first-name">
            <input matInput placeholder="Patient First Name" formControlName="first_name">
            <mat-error *ngIf="handleError('first_name', 'required')">
              You must provide <strong>First Name!</strong>
@@ -35,7 +35,7 @@
          </mat-form-field>
 
          <!-- Patient Last Name -->
-         <mat-form-field class="Patient-Last-Name">
+         <mat-form-field class="patient-last-name">
            <input matInput placeholder="Patient Last Name" formControlName="last_name">
            <mat-error *ngIf="handleError('last_name', 'required')">
              You must provide <strong>Last Name!</strong>
@@ -54,7 +54,7 @@
          </mat-form-field>
        </div>
      </mat-card>
-     <br><br>
+     <br>
      <mat-card class="card-length" appRoundEdges>
        <div class="controlers-wrapper">
 
@@ -72,7 +72,7 @@
          </mat-form-field>
 
          <!-- Confirmation -->
-         <div class="misc-bottom-padding">
+         <div class="confirmation">
            <mat-label>Confirmation: </mat-label>
            <mat-radio-group aria-label="Select an option" formControlName="confirmation">
              <br><br>
@@ -83,7 +83,7 @@
          <br>
 
          <!-- Submit & Reset -->
-         <div class="container">
+         <div class="submit-form">
            <button mat-stroked-button color="warn"
                    [mdePopoverTriggerFor]="appPopover"
                    mdePopoverTriggerOn="click">
@@ -108,3 +108,4 @@
      <button mat-raised-button (click)="resetForm()">Clear Form</button>
    </div>
  </div>
+ <br>
