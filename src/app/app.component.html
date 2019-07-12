@@ -11,23 +11,23 @@
   <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
     [fixedTopGap]>
     <mat-nav-list>
-      <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-appointment">
+      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/add-appointment">
         <mat-icon>alarm</mat-icon> Add Appointment
       </a>
-      <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-doctor">
+      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/add-doctor">
         <mat-icon>work</mat-icon> Add Doctor
       </a>
-      <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-hospital">
+      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/add-hospital">
         <mat-icon>playlist_add</mat-icon> Add Hospital
       </a>
       <br><br>
-      <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/appointments-list">
+      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/appointments-list">
         <mat-icon>assignment</mat-icon> View Appointments
       </a>
-      <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/doctors-list">
+      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/doctors-list">
         <mat-icon>view_list</mat-icon> View Doctors
       </a>
-      <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/hospitals-list">
+      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/hospitals-list">
         <mat-icon>local_hospital</mat-icon> View Hospitals
       </a>
     </mat-nav-list>
