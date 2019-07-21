@@ -18,7 +18,7 @@ import { MdePopoverTrigger } from '@material-extended/mde';
 export class AddAppointmentComponent implements OnInit {
   @ViewChild('resetAppointmentForm') myNgForm;
   @ViewChild( MdePopoverTrigger, {}) trigger: MdePopoverTrigger;
-  AppointmentData: any = [];
+  DoctorData: any = [];
   selected: any;
   appointmentForm: FormGroup;
   ngOnInit() {
@@ -40,7 +40,7 @@ export class AddAppointmentComponent implements OnInit {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
-        this.AppointmentData.push(a as Appointment);
+        this.DoctorData.push(a as Appointment);
       });
     });
   }

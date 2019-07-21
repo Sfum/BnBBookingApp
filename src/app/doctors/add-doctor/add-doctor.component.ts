@@ -19,7 +19,7 @@ export class AddDoctorComponent implements OnInit {
   @ViewChild('resetDoctorForm') myNgForm;
   @ViewChild( MdePopoverTrigger, {}) trigger: MdePopoverTrigger;
   doctorForm: FormGroup;
-  AppointmentData: any = [];
+  HospitalData: any = [];
   selected: any;
   ngOnInit() {
     this.doctorApi.GetDoctorList();
@@ -39,7 +39,7 @@ export class AddDoctorComponent implements OnInit {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
-        this.AppointmentData.push(a as Appointment);
+        this.HospitalData.push(a as Appointment);
       });
     });
   }

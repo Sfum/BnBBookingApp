@@ -18,7 +18,7 @@ import { DoctorService } from './../../shared/doctor.service';
 export class EditDoctorComponent implements OnInit {
   @ViewChild('chipList') chipList;
   editDoctorForm: FormGroup;
-  AppointmentData: any = [];
+  HospitalData: any = [];
   selected: any;
   ngOnInit() {
     this.doctorApi.GetDoctorList();
@@ -42,7 +42,7 @@ export class EditDoctorComponent implements OnInit {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
           a['$key'] = item.key;
-          this.AppointmentData.push(a as Appointment);
+          this.HospitalData.push(a as Appointment);
         });
       });
     });

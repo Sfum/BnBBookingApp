@@ -62,7 +62,7 @@
          <mat-form-field>
            <mat-label>Select a Doctor</mat-label>
            <mat-select [(value)]="selected" formControlName="doctor_select">
-             <mat-option *ngFor="let element of AppointmentData" [value]="element.doctor_name">
+             <mat-option *ngFor="let element of DoctorData" [value]="element.doctor_name">
                {{element.doctor_name}} / {{element.hospital_names}}
              </mat-option>
            </mat-select>
