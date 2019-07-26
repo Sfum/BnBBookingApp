@@ -33,11 +33,11 @@ export class EditDoctorComponent implements OnInit {
     private doctorApi: DoctorService,
     private hospitalApi: HospitalService,
   ) {
-    // Get Doctor By Id
+    // Get Doctor, Subscribe & Push
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.doctorApi.GetDoctor(id).valueChanges().subscribe(data => {
       this.editDoctorForm.setValue(data);
-    // Get Hospital List
+    // Get Hospital, Subscribe & Push
       this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
@@ -47,7 +47,7 @@ export class EditDoctorComponent implements OnInit {
       });
     });
   }
-  // Update Doctor Form
+  // Update Doctor Form / Validation
   updateDoctorForm() {
     this.editDoctorForm = this.fb.group({
       doctor_name: ['', [Validators.required]],
@@ -64,6 +64,7 @@ export class EditDoctorComponent implements OnInit {
       this.router.navigate(['doctors-list']);
     }
   }
+  // Error Handling
   public handleError = (controlName: string, errorName: string) => {
     return this.editDoctorForm.controls[controlName].hasError(errorName);
   }

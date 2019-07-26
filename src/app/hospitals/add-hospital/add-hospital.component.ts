@@ -32,7 +32,7 @@ export class AddHospitalComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router,
   ) {
-    // Get Doctor List
+    // Get Doctor List, Subscribe & Push
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
@@ -41,7 +41,7 @@ export class AddHospitalComponent implements OnInit {
       });
     });
   }
-  // Submit Hospital Form
+  // Submit Hospital Form / Validation
   submitHospitalForm() {
     this.hospitalForm = this.fb.group({
       hospital_name: ['', [Validators.required]],

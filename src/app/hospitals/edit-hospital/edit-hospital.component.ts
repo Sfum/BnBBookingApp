@@ -29,11 +29,11 @@ export class EditHospitalComponent implements OnInit {
     private doctorApi: DoctorService,
     private hospitalApi: HospitalService,
   ) {
-    // Get Hospital By Id
+    // Get Hospital, Subscribe & Push
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.hospitalApi.GetHospital(id).valueChanges().subscribe(data => {
       this.editHospitalForm.setValue(data);
-    // Get Doctor List
+    // Get Doctor List, Subscribe & Push
       this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
@@ -43,7 +43,7 @@ export class EditHospitalComponent implements OnInit {
       });
     });
   }
-  // Update Hospital Form
+  // Update Hospital Form / Validation
   updateHospitalForm() {
     this.editHospitalForm = this.fb.group({
       hospital_name: ['', [Validators.required]],

@@ -35,7 +35,7 @@ export class AddAppointmentComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router,
   ) {
-    // Get Doctors List
+    // Get Doctors List, Subscribe & Push
     this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
@@ -44,7 +44,7 @@ export class AddAppointmentComponent implements OnInit {
       });
     });
   }
-  // Submit Appointment Form
+  // Submit Appointment Form / Validation
   submitAppointmentForm() {
     this.appointmentForm = this.fb.group({
       first_name: ['', [Validators.required]],

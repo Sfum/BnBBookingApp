@@ -14,7 +14,7 @@ import { DoctorService } from './../../shared/doctor.service';
 })
 
 export class EditAppointmentComponent implements OnInit {
-  AppointmentData: any = [];
+  DoctorData: any = [];
   editAppointmentForm: FormGroup;
   selected: any;
   ngOnInit() {
@@ -28,21 +28,21 @@ export class EditAppointmentComponent implements OnInit {
     private appointmentApi: AppointmentService,
     private doctorApi: DoctorService
   ) {
-    // Get Appointment By Id
+    // Get Appointment, Subscribe & Push
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.appointmentApi.GetAppointment(id).valueChanges().subscribe(data => {
       this.editAppointmentForm.setValue(data);
-    // Get Doctors List
+    // Get Doctors List, Subscribe & Push
       this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
           let a = item.payload.toJSON();
           a['$key'] = item.key;
-          this.AppointmentData.push(a as Appointment);
+          this.DoctorData.push(a as Appointment);
         });
       });
     });
   }
-  // Update Appointment Form
+  // Update Appointment Form / Validation
   updateAppointmentForm() {
     this.editAppointmentForm = this.fb.group({
       first_name: ['', [Validators.required]],

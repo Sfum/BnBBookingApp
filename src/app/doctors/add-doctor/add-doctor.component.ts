@@ -34,7 +34,7 @@ export class AddDoctorComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router,
   ) {
-    // Get Hospital List
+    // Get Hospital List, Subscribe & Push
     this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
       appointments.forEach(item => {
         let a = item.payload.toJSON();
@@ -43,7 +43,7 @@ export class AddDoctorComponent implements OnInit {
       });
     });
   }
-  // Submit Doctors Form
+  // Submit Doctors Form / Validation
   submitDoctorForm() {
     this.doctorForm = this.fb.group({
       doctor_name: ['', [Validators.required]],
@@ -56,7 +56,7 @@ export class AddDoctorComponent implements OnInit {
   public handleError = (controlName: string, errorName: string) => {
     return this.doctorForm.controls[controlName].hasError(errorName);
   }
-  // Reset Form
+  // Reset Form / Validation
   resetForm() {
     this.doctorForm = this.fb.group({
       doctor_name: ['', [Validators.required]],
