@@ -4,7 +4,10 @@ import { Location } from '@angular/common';
 import { MatChipInputEvent } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+// import Appointment Model
 import { Appointment } from '../../models/appointment';
+
+// import Services
 import { AppointmentService } from '../../services/appointment.service';
 import { HospitalService } from '../../services/hospital.service';
 import { DoctorService } from '../../services/doctor.service';
@@ -16,7 +19,6 @@ import { DoctorService } from '../../services/doctor.service';
 })
 
 export class EditDoctorComponent implements OnInit {
-  @ViewChild('chipList') chipList;
   editDoctorForm: FormGroup;
   HospitalData: any = [];
   selected: any;
@@ -67,12 +69,6 @@ export class EditDoctorComponent implements OnInit {
   // Error Handling
   public handleError = (controlName: string, errorName: string) => {
     return this.editDoctorForm.controls[controlName].hasError(errorName);
-  }
-  formatDate(e) {
-    var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.editDoctorForm.get('publication_date').setValue(convertDate, {
-      onlyself: true
-    });
   }
   goBack() {
     this.location.back();

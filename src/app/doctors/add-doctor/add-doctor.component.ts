@@ -1,13 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatChipInputEvent } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AppointmentService } from '../../services/appointment.service';
+// import Appointment Model
 import { Appointment } from '../../models/appointment';
+
+// import Services
 import { HospitalService } from '../../services/hospital.service';
 import { DoctorService } from '../../services/doctor.service';
+
+// import Mde Popover
 import { MdePopoverTrigger } from '@material-extended/mde';
 
 @Component({
@@ -28,7 +31,6 @@ export class AddDoctorComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private doctorApi: DoctorService,
-    private appointmentApi: AppointmentService,
     private hospitalApi: HospitalService,
     private location: Location,
     private actRoute: ActivatedRoute,
@@ -49,7 +51,7 @@ export class AddDoctorComponent implements OnInit {
       doctor_name: ['', [Validators.required]],
       doctor_number: ['', [Validators.required]],
       hospital_names: ['', [Validators.required]],
-      new_patients: ['Yes'],
+      new_patients: ['', [Validators.required]],
     });
   }
   // Error Handling
@@ -59,10 +61,10 @@ export class AddDoctorComponent implements OnInit {
   // Reset Form / Validation
   resetForm() {
     this.doctorForm = this.fb.group({
-      doctor_name: ['', [Validators.required]],
-      doctor_number: ['', [Validators.required]],
-      hospital_names: ['', [Validators.required]],
-      new_patients: ['Yes'],
+      doctor_name: [''],
+      doctor_number: [''],
+      hospital_names: [''],
+      new_patients: [''],
     });
   }
   // Submit Doctor
@@ -80,10 +82,6 @@ export class AddDoctorComponent implements OnInit {
   // Close Popover
   closePopover() {
     this.trigger.togglePopover();
-  }
-  onSubmit() {
-
-    this.closePopover();
   }
 }
 

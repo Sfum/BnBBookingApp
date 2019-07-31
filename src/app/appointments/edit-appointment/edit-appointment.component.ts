@@ -3,7 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+// import Appointment Model
 import { Appointment } from '../../models/appointment';
+
+// import Services
 import { AppointmentService } from '../../services/appointment.service';
 import { DoctorService } from '../../services/doctor.service';
 
@@ -50,7 +53,7 @@ export class EditAppointmentComponent implements OnInit {
       last_name: ['', [Validators.required]],
       appointment_date: ['', [Validators.required]],
       doctor_select: ['', [Validators.required]],
-      confirmation: ['No'],
+      confirmation: ['', [Validators.required]],
     });
   }
   // Update Appointment

@@ -54,7 +54,7 @@ export class AddAppointmentComponent implements OnInit {
       last_name: ['', [Validators.required]],
       appointment_date: ['', [Validators.required]],
       doctor_select: ['', [Validators.required]],
-      confirmation: [''],
+      confirmation: ['', [Validators.required]],
     });
   }
   // Error Handling
@@ -71,12 +71,12 @@ export class AddAppointmentComponent implements OnInit {
   // Reset Form
   resetForm() {
     this.appointmentForm = this.fb.group({
-      first_name: ['', [Validators.required]],
-      reference_number: ['', [Validators.required]],
-      last_name: ['', [Validators.required]],
-      appointment_date: ['', [Validators.required]],
-      doctor_select: ['', [Validators.required]],
-      confirmation: ['No'],
+      first_name: [''],
+      reference_number: [''],
+      last_name: [''],
+      appointment_date: [''],
+      doctor_select: [''],
+      confirmation: [''],
     });
   }
   // Submit Appointment

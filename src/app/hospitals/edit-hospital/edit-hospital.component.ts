@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { HospitalService } from '../../services/hospital.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AppointmentService } from '../../services/appointment.service';
-import { DoctorService } from '../../services/doctor.service';
-import { Appointment } from '../../models/appointment';
+// import Services
+import { HospitalService } from '../../services/hospital.service';
+
 
 @Component({
   selector: 'app-edit-hospital',
@@ -25,22 +24,12 @@ export class EditHospitalComponent implements OnInit {
     private location: Location,
     private actRoute: ActivatedRoute,
     private router: Router,
-    private appointmentApi: AppointmentService,
-    private doctorApi: DoctorService,
     private hospitalApi: HospitalService,
   ) {
     // Get Hospital, Subscribe & Push
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.hospitalApi.GetHospital(id).valueChanges().subscribe(data => {
       this.editHospitalForm.setValue(data);
-    // Get Doctor List, Subscribe & Push
-      this.doctorApi.GetDoctorList().snapshotChanges().subscribe(appointments => {
-        appointments.forEach(item => {
-          let a = item.payload.toJSON();
-          a['$key'] = item.key;
-          this.AppointmentData.push(a as Appointment);
-        });
-      });
     });
   }
   // Update Hospital Form / Validation
@@ -62,13 +51,6 @@ export class EditHospitalComponent implements OnInit {
   // Error Handling
   public handleError = (controlName: string, errorName: string) => {
     return this.editHospitalForm.controls[controlName].hasError(errorName);
-  }
-  // Format Date
-  formatDate(e) {
-    var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.editHospitalForm.get('publication_date').setValue(convertDate, {
-      onlyself: true
-    });
   }
   // Go Back
   goBack() {

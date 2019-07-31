@@ -2,9 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Location } from '@angular/common';
 
+// import Appointment Services
 import { AppointmentService } from '../../services/appointment.service';
-import { Appointment } from '../../models/appointment';
 
+// import Appointment Model
+import { Appointment } from '../../models/appointment';
 
 @Component({
   selector: 'app-appointments-list',
@@ -27,7 +29,7 @@ export class AppointmentListComponent {
     private appointmentApi: AppointmentService,
     private location: Location
 ) {
-    // Get Appointment List
+    // Display Appointment List
     this.appointmentApi.GetAppointmentList()
     .snapshotChanges().subscribe(appointments => {
         appointments.forEach(item => {
