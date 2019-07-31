@@ -1,6 +1,5 @@
 import { Component, ViewChild, HostListener, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { MdePopoverTrigger } from '@material-extended/mde';
 
 @Component({
   selector: 'app-root',

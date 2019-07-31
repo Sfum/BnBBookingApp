@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Location } from '@angular/common';
 
-import { AppointmentService } from './../../shared/appointment.service';
-import { Appointment } from '../../shared/appointment';
+import { AppointmentService } from '../../services/appointment.service';
+import { Appointment } from '../../models/appointment';
 
 
 @Component({

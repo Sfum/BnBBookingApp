@@ -3,11 +3,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AppointmentService } from './../../shared/appointment.service';
-import { Appointment } from '../../shared/appointment';
+// import Appointment Model
+import { Appointment } from '../../models/appointment';
 
-import { DoctorService } from './../../shared/doctor.service';
-import { HospitalService } from '../../shared/hospital.service';
+// import Services
+import { AppointmentService } from '../../services/appointment.service';
+import { DoctorService } from '../../services/doctor.service';
+
+// import Mde Popover
 import { MdePopoverTrigger } from '@material-extended/mde';
 
 @Component({
@@ -30,7 +33,6 @@ export class AddAppointmentComponent implements OnInit {
     public fb: FormBuilder,
     private appointmentApi: AppointmentService,
     private doctorApi: DoctorService,
-    private hospitalApi: HospitalService,
     private location: Location,
     private actRoute: ActivatedRoute,
     private router: Router,

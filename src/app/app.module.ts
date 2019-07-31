@@ -23,9 +23,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 
-import { AppointmentService } from './shared/appointment.service';
-import { DoctorService } from './shared/doctor.service';
-import { HospitalService } from './shared/hospital.service';
+import { AppointmentService } from './services/appointment.service';
+import { DoctorService } from './services/doctor.service';
+import { HospitalService } from './services/hospital.service';
 
 import { RoundEdgesDirective } from './directives/roundEdges';
 

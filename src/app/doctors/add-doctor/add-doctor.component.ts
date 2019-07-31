@@ -4,10 +4,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AppointmentService } from '../../shared/appointment.service';
-import { Appointment } from '../../shared/appointment';
-import { HospitalService } from '../../shared/hospital.service';
-import { DoctorService } from './../../shared/doctor.service';
+import { AppointmentService } from '../../services/appointment.service';
+import { Appointment } from '../../models/appointment';
+import { HospitalService } from '../../services/hospital.service';
+import { DoctorService } from '../../services/doctor.service';
 import { MdePopoverTrigger } from '@material-extended/mde';
 
 @Component({

@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Appointment } from '../../shared/appointment';
-import { AppointmentService } from './../../shared/appointment.service';
-import { DoctorService } from './../../shared/doctor.service';
+import { Appointment } from '../../models/appointment';
+import { AppointmentService } from '../../services/appointment.service';
+import { DoctorService } from '../../services/doctor.service';
 
 @Component({
   selector: 'app-edit-appointment',

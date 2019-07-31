@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { HospitalService } from './../../shared/hospital.service';
+import { HospitalService } from '../../services/hospital.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AppointmentService } from '../../shared/appointment.service';
-import { DoctorService } from '../../shared/doctor.service';
-import { Appointment } from '../../shared/appointment';
+import { AppointmentService } from '../../services/appointment.service';
+import { DoctorService } from '../../services/doctor.service';
+import { Appointment } from '../../models/appointment';
 
 @Component({
   selector: 'app-edit-hospital',

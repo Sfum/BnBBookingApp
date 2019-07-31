@@ -3,10 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Appointment } from '../../shared/appointment';
-import { AppointmentService } from '../../shared/appointment.service';
-import { HospitalService } from '../../shared/hospital.service';
-import { DoctorService } from './../../shared/doctor.service';
+import { Appointment } from '../../models/appointment';
+import { AppointmentService } from '../../services/appointment.service';
+import { HospitalService } from '../../services/hospital.service';
+import { DoctorService } from '../../services/doctor.service';
 import { MdePopoverTrigger } from '@material-extended/mde';
 
 @Component({

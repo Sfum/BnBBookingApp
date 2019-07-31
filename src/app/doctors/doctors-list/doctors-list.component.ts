@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Location } from '@angular/common';
 
-import { DoctorService } from './../../shared/doctor.service';
-import { Doctor } from './../../shared/doctor';
+import { DoctorService } from '../../services/doctor.service';
+import { Doctor } from '../../models/doctor';
 
 @Component({
   selector: 'app-doctors-list',
