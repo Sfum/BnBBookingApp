@@ -7,10 +7,13 @@
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
+
   <!-- Sidenav -->
   <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
     [fixedTopGap]>
     <mat-nav-list>
+
+      <!--      Add Appointment, Doctor & Hospital Menu-->
       <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/add-appointment">
         <mat-icon>alarm</mat-icon> Add Appointment
       </a>
@@ -21,6 +24,8 @@
         <mat-icon>playlist_add</mat-icon> Add Hospital
       </a>
       <br><br>
+
+      <!--       Appointment, Doctor & Hospital List Menu-->
       <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/appointments-list">
         <mat-icon>assignment</mat-icon> View Appointments
       </a>

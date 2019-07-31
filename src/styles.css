@@ -24,10 +24,6 @@ body {
   cursor: pointer;
 }
 
-.hamburger {
-  visibility: hidden !important;
-}
-
 .mat-sidenav,
 .mat-sidenav-content {
   padding: 15px;
@@ -58,11 +54,6 @@ mat-sidenav mat-icon {
   margin-right: 12px;
 }
 
-.hamburger {
-  margin-top: 5px;
-  cursor: pointer;
-}
-
 .mat-radio-button,
 .mat-radio-group {
   margin-right: 25px;
@@ -70,7 +61,7 @@ mat-sidenav mat-icon {
 
 .mat-sidenav {
   background-color: #F2F2F2;
-  width: 250px;
+  width: 200px;
 }
 
 .header {
@@ -177,10 +168,6 @@ table {
 @media (max-width: 767px) {
   .nav-tool-items {
     margin-right: 0;
-  }
-
-  .hamburger {
-    visibility: visible !important;
   }
 }
 html, body { height: 100%; }
