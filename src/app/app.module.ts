@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AddAccomodationComponent } from './crud/accomodation-details/add-accomodation/add-accomodation.component';
-import { EditAccomodationComponent } from './crud/accomodation-details/edit-accomodation/edit-accomodation.component';
-import { AccomodationListComponent } from './crud/accomodation-details/accomodation-list/accomodation-list.component';
+import { AddAccommodationComponent } from './crud/accommodation-details/add-accommodation/add-accommodation.component';
+import { EditAccommodationComponent } from './crud/accommodation-details/edit-accommodation/edit-accommodation.component';
+import { AccommodationListComponent } from './crud/accommodation-details/accommodation-list/accommodation-list.component';
 import { AddBookingComponent } from './crud/booking/add-booking/add-booking.component';
 import { EditBookingComponent } from './crud/booking/edit-booking/edit-booking.component';
 import { BookingsListComponent } from './crud/booking/bookings-list/bookings-list.component';
@@ -15,9 +15,9 @@ import { HostsListComponent } from './crud/host/hosts-list/hosts-list.component'
 @NgModule({
   declarations: [
     AppComponent,
-    AddAccomodationComponent,
-    EditAccomodationComponent,
-    AccomodationListComponent,
+    AddAccommodationComponent,
+    EditAccommodationComponent,
+    AccommodationListComponent,
     AddBookingComponent,
     EditBookingComponent,
     BookingsListComponent,
