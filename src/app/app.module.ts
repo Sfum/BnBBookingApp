@@ -12,6 +12,11 @@ import { AddHostComponent } from './crud/host/add-host/add-host.component';
 import { EditHostComponent } from './crud/host/edit-host/edit-host.component';
 import { HostsListComponent } from './crud/host/hosts-list/hosts-list.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +31,9 @@ import { HostsListComponent } from './crud/host/hosts-list/hosts-list.component'
     HostsListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
