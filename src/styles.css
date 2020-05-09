@@ -15,53 +15,31 @@ body {
   width: flex;
 }
 
-.button-length{
+.button-length {
   width: 140px;
   min-width: unset!important;
   text-align: left;
 }
 
-.box {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.box div {
-  width: 200px;
-  height: 100px;
-}
-
-.button-length-clear {
-  width: 40px;
-  text-align: center;
-
-}
-
-
 .header {
   justify-content: space-between;
 }
 
-.nav-tool-items {
-  display: inline-block;
-  margin-right: 13px;
+.mat-sidenav {
+  background-color: #F2F2F2;
+  width: 240px;
+  padding: 20px;
 }
-
-.user-profile {
-  margin-left: 15px;
-  cursor: pointer;
-}
-
-.mat-sidenav,
-.mat-sidenav-content {
-  padding: 15px;
-}
-
 
 .mat-sidenav-content {
-  padding: 25px 40px 0;
+  padding: 20px;
 }
+/* 
+/* .mat-sidenav-container {
+  height: 100%;
+  display: flex;
+  flex: 1 1 auto;
+} */ */
 
 body .push-right {
   margin-right: 10px;
@@ -70,19 +48,17 @@ body .push-right {
 .button-wrapper {
   margin: 20px 0 0 0;
 }
-mat-sidenav mat-icon {
+
+.mat-icon {
   margin-right: 12px;
 }
 
 .mat-radio-button,
 .mat-radio-group {
-  margin-right: 25px;
+  margin-right: 10px;
+  margin-left: 5px;
 }
 
-.mat-sidenav {
-  background-color: #F2F2F2;
-  width: 240px;
-}
 
 .header {
   position: sticky;
@@ -96,36 +72,19 @@ mat-sidenav mat-icon {
   padding: 0;
 }
 
-.misc-bottom-padding {
-  margin: 8px 0 10px;
-}
-
-.user-profile {
-  margin-left: 15px;
-}
-
-.mat-sidenav-container {
-  height: 100%;
-  display: flex;
-  flex: 1 1 auto;
-}
-
-.mat-nav-list .mat-list-item {
+.mat-nav-list {
   font-size: 15px;
 }
-.misc-bottom-padding mat-label {
+
+.mat-label {
   margin-right: 15px;
 }
 
-mat-radio-group mat-radio-button {
-  margin-left: 5px;
-}
-
-.inner-wrapper mat-card {
+.inner-wrapper
+.mat-card {
   display: inline-block;
   margin: 0 6% 0 0;
   vertical-align: top;
-  width: 44%;
 }
 
 .button-wrapper button {
@@ -137,57 +96,34 @@ table {
   width: 100%;
 }
 
-.inner-wrapper {
-  padding: 15px 0 130px;
-  width: 100%;
-}
-
 .full-wrapper {
-  width: 100%;
+  width: flex;
 }
-
-.multiple-items {
-  position: relative;
-}
-
-.multiple-items .tooltip-info {
-  right: 0;
-  top: 7px;
-  cursor: pointer;
-  color: #a1a7c7;
-  position: absolute;
-  font-size: 20px;
-}
-
 
 @media (max-width: 1024px) {
 
-  .inner-wrapper mat-card {
-    width: 100%;
+  .inner-wrapper 
+   mat-card {
+    width: flex;
   }
 
   .mat-sidenav-content {
     padding: 20px 20px 0;
   }
 
-  .misc-bottom-padding mat-label {
+  .mat-label {
     display: block;
     padding-bottom: 10px;
   }
 
   .mat-sidenav {
-    width: 230px;
-  }
-
-  .mat-nav-list .mat-list-item {
-    font-size: 14px;
+    width: flex;
   }
 
 }
 
-@media (max-width: 767px) {
-  .nav-tool-items {
-    margin-right: 0;
-  }
+@media (max-width: 760px) {
+ 
+  
 }
 

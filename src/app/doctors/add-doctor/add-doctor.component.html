@@ -16,8 +16,7 @@
 <br>
 
 <!-- Doctor form -->
-<div class="doctor-form">
-
+<div>
   <form [formGroup]="doctorForm" 
         (ngSubmit)="submitDoctor()" 
         #resetDoctorForm="ngForm" 
@@ -25,11 +24,10 @@
 
     <!-- Left block -->
     <mat-card class="card-length" appRoundEdges>
-
       <div class="controlers-wrapper">
 
         <!-- Doctor name -->
-        <mat-form-field class="doctor-name">
+        <mat-form-field>
 
           <input matInput placeholder="Doctor name" 
                           formControlName="doctor_name">

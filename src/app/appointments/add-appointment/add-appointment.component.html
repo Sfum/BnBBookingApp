@@ -16,7 +16,7 @@
  <br>
 
  <!-- Appointment form -->
- <div class="appointment-form">
+ <div>
    <form [formGroup]="appointmentForm" 
          (ngSubmit)="submitAppointment()" 
          #resetAppointmentForm="ngForm" 
@@ -27,7 +27,7 @@
        <div class="controlers-wrapper">
 
          <!-- Appointment Reference Number -->
-         <mat-form-field class="appointment-reference-number">
+         <mat-form-field>
 
            <input matInput placeholder="Appointment Reference Number" 
                            formControlName="reference_number" 
