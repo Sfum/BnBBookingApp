@@ -78,40 +78,16 @@
         
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="columnsDisplay"></tr>
+      <tr mat-header-row *matHeaderRowDef="columnsDisplay; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: columnsDisplay;"></tr>
 
     </table>
 
 <!--    Paginator-->
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" 
+    <mat-paginator [pageSizeOptions]="[10, 20]" 
                     showFirstLastButtons>
     </mat-paginator>
 
   </div>
-
   <br>
-
-<!--  Bottom Buttons-->
-  <a mat-raised-button class="button-length" 
-                       routerLinkActive="active" 
-                       routerLink="/add-hospital">
-                       <mat-icon>playlist_add</mat-icon> 
-                       Add Another Hospital
-  </a>
-
-  <a mat-raised-button class="button-length" 
-                       routerLinkActive="active" 
-                       routerLink="/add-doctor">
-                       <mat-icon>work</mat-icon> 
-                       Add A Doctor
-  </a>
-
-  <a mat-raised-button class="button-length" 
-                       routerLinkActive="active" 
-                       routerLink="/add-appointment">
-                       <mat-icon>alarm</mat-icon> 
-                       Make an Appointment
-  </a>
-
 </div>

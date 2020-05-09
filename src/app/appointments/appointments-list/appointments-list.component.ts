@@ -25,7 +25,6 @@ export class AppointmentListComponent {
   columnsDisplay:  any[] = [
     'last_name',
     'appointment_date',
-    'doctor_select',
     'action'
   ];
   constructor(

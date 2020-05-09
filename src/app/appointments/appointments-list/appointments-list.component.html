@@ -28,13 +28,12 @@
 
       <ng-container matColumnDef="last_name">
         <th mat-header-cell class="container" 
-                            *matHeaderCellDef> 
+                            *matHeaderCellDef>
                             Last Name 
         </th>
-
         <td mat-cell class="container" 
                      *matCellDef="let element"> 
-                     {{element.last_name}} 
+                     {{element.last_name}}
         </td>
 
       </ng-container>
@@ -89,41 +88,20 @@
       </ng-container>
 
       <tr mat-header-row 
-          *matHeaderRowDef="columnsDisplay">
+          *matHeaderRowDef="columnsDisplay; sticky: true">
       </tr>
 
       <tr mat-row 
           *matRowDef="let row; columns: columnsDisplay;">
       </tr>
 
+
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" 
+    <mat-paginator [pageSizeOptions]="[10, 20]" 
                    showFirstLastButtons>
     </mat-paginator>
+
   </div>
-
   <br>
-
-<!--  Footer Buttons-->
-  <a mat-raised-button class="button-length" 
-                       routerLinkActive="active" 
-                       routerLink="/add-appointment">
-                       <mat-icon>alarm</mat-icon> 
-                       Make an Appointment
-  </a>
-
-  <a mat-raised-button class="button-length" 
-                       routerLinkActive="active" 
-                       routerLink="/add-doctor">
-                       <mat-icon>work</mat-icon> 
-                       Add a Doctor
-  </a>
-
-  <a mat-raised-button class="button-length" 
-                       routerLinkActive="active" 
-                       routerLink="/add-hospital">
-                       <mat-icon>playlist_add</mat-icon> 
-                       Add a Hospital
-  </a>
 </div>
