@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Appointment } from '../models/appointment';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { Injectable }        from '@angular/core';
+import { Appointment }       from '../models/appointment';
+import { AngularFireDatabase, 
+         AngularFireList, 
+         AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AppointmentService {
-  appointmentsRef: AngularFireList<any>;
-  appointmentRef: AngularFireObject<any>;
+
+  appointmentsRef: AngularFireList  <any>;
+  appointmentRef:  AngularFireObject<any>;
 
   constructor(private db: AngularFireDatabase) {}
 
@@ -26,12 +29,12 @@ export class AppointmentService {
   // Create Appointment
   AddAppointment(appointment: Appointment) {
     this.appointmentsRef.push({
-      first_name: appointment.first_name,
-      reference_number: appointment.reference_number,
-      last_name: appointment.last_name,
-      appointment_date: appointment.appointment_date,
-      doctor_select: appointment.doctor_select,
-      confirmation: appointment.confirmation
+         first_name:        appointment.first_name,
+         reference_number: appointment.reference_number,
+         last_name:        appointment.last_name,
+         appointment_date: appointment.appointment_date,
+         doctor_select:    appointment.doctor_select,
+         confirmation:      appointment.confirmation
     })
     .catch(error => {
       this.errorMgmt(error);
@@ -41,12 +44,12 @@ export class AppointmentService {
   // Update Appointment
   UpdateAppointment(id, appointment: Appointment) {
     this.appointmentRef.update({
-      first_name: appointment.first_name,
-      reference_number: appointment.reference_number,
-      last_name: appointment.last_name,
-      appointment_date: appointment.appointment_date,
-      doctor_select: appointment.doctor_select,
-      confirmation: appointment.confirmation
+         first_name:        appointment.first_name,
+         reference_number: appointment.reference_number,
+         last_name:        appointment.last_name,
+         appointment_date: appointment.appointment_date,
+         doctor_select:    appointment.doctor_select,
+         confirmation:      appointment.confirmation
     })
     .catch(error => {
       this.errorMgmt(error);
@@ -55,9 +58,10 @@ export class AppointmentService {
 
   // Delete Appointment
   DeleteAppointment(id: string) {
-    this.appointmentRef = this.db.object('appointments-list/' + id);
+    this.appointmentRef = this.db
+                       .object('appointments-list/' + id);
     this.appointmentRef.remove()
-    .catch(error => {
+                       .catch(error => {
       this.errorMgmt(error);
     });
   }

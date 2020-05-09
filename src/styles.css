@@ -10,6 +10,34 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.card-length {
+
+  width: flex;
+}
+
+.button-length{
+  width: 140px;
+  min-width: unset!important;
+  text-align: left;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box div {
+  width: 200px;
+  height: 100px;
+}
+
+.button-length-clear {
+  width: 40px;
+  text-align: center;
+}
+
+
 .header {
   justify-content: space-between;
 }
@@ -61,7 +89,7 @@ mat-sidenav mat-icon {
 
 .mat-sidenav {
   background-color: #F2F2F2;
-  width: 200px;
+  width: 240px;
 }
 
 .header {

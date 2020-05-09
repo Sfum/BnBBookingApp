@@ -1,43 +1,86 @@
 <!-- Toolbar -->
-<mat-toolbar (click)="sidenav.toggle()" class="button-length" color="warn" class="header"><mat-icon>local_hospital</mat-icon>Health Clinic Appointment Centre
+<mat-toolbar class="button-length" 
+             (click)="sidenav.toggle()" 
+             color="warn" class="header">
+             <mat-icon>local_hospital</mat-icon>
+             Health Clinic Appointment Centre
 </mat-toolbar>
+
 <mat-card>
+
   <mat-accordion>
-<mat-sidenav-container>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
+
+    <mat-sidenav-container>
+
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
 
   <!-- Sidenav -->
-  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
-    [fixedTopGap]>
-    <mat-nav-list>
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" 
+                        [(opened)]="opened" 
+                        [fixedInViewport]="true"
+                        [fixedTopGap]>
+  <mat-nav-list>
 
       <!--      Add Appointment, Doctor & Hospital Menu-->
-      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/add-appointment">
-        <mat-icon>alarm</mat-icon> Add Appointment
+      <a mat-raised-button class="button-length" 
+                           (click)="sidenav.close()" 
+                           routerLinkActive="active" 
+                           routerLink="/add-appointment">
+                           <mat-icon>alarm</mat-icon> 
+                           Add Appointment
       </a>
-      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/add-doctor">
-        <mat-icon>work</mat-icon> Add Doctor
+
+      <a mat-raised-button class="button-length" 
+                           (click)="sidenav.close()" 
+                           routerLinkActive="active" 
+                           routerLink="/add-doctor">
+                           <mat-icon>work</mat-icon> 
+                           Add Doctor
       </a>
-      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/add-hospital">
-        <mat-icon>playlist_add</mat-icon> Add Hospital
+
+      <a mat-raised-button class="button-length" 
+                           (click)="sidenav.close()" 
+                           routerLinkActive="active" 
+                           routerLink="/add-hospital">
+                           <mat-icon>playlist_add</mat-icon> 
+                           Add Hospital
       </a>
+
       <br><br>
 
       <!--       Appointment, Doctor & Hospital List Menu-->
-      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/appointments-list">
-        <mat-icon>assignment</mat-icon> View Appointments
+      <a mat-raised-button class="button-length" 
+                           (click)="sidenav.close()" 
+                           routerLinkActive="active" 
+                           routerLink="/appointments-list">
+                           <mat-icon>assignment</mat-icon> 
+                           View Appointments
       </a>
-      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/doctors-list">
-        <mat-icon>view_list</mat-icon> View Doctors
+
+      <a mat-raised-button class="button-length" 
+                           (click)="sidenav.close()" 
+                           routerLinkActive="active" 
+                           routerLink="/doctors-list">
+                           <mat-icon>view_list</mat-icon> 
+                           View Doctors
       </a>
-      <a mat-raised-button class="button-length" (click)="sidenav.close()" routerLinkActive="active" routerLink="/hospitals-list">
-        <mat-icon>local_hospital</mat-icon> View Hospitals
+
+      <a mat-raised-button class="button-length" 
+                           (click)="sidenav.close()" 
+                           routerLinkActive="active" 
+                           routerLink="/hospitals-list">
+                           <mat-icon>local_hospital</mat-icon> 
+                           View Hospitals
       </a>
+
     </mat-nav-list>
+
   </mat-sidenav>
+
 </mat-sidenav-container>
+
   </mat-accordion>
 </mat-card>
 

@@ -1,62 +1,129 @@
 <!-- Title  -->
 <div class="title">
+
   <h1 class="mat-h1">Appointment List</h1>
-  <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
+  <button mat-flat-button color="war" 
+                         type="button" 
+                         (click)="goBack()">Go Back</button>
 </div>
 
 <!-- No entries message -->
-<p *ngIf="AppointmentData.length <= 0" class="no-data">There is no data added yet!</p>
+<p *ngIf="AppointmentData.length <= 0" 
+   class="no-data">
+   There is no data added yet!
+</p>
 
 <!-- Appointments list Data Table -->
 <div class="container" *ngIf="AppointmentData.length > 0">
+
   <mat-form-field fxFlex="20%">
-    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Search">
+    <input matInput type="text" 
+           (keyup)="doFilter($event.target.value)" 
+           placeholder="Search">
   </mat-form-field>
+
   <div class="mat-elevation-z8">
+
     <table mat-table [dataSource]="dataSource">
 
       <ng-container matColumnDef="last_name">
-        <th mat-header-cell class="container" *matHeaderCellDef> Last Name </th>
-        <td mat-cell class="container" *matCellDef="let element"> {{element.last_name}} </td>
+        <th mat-header-cell class="container" 
+                            *matHeaderCellDef> 
+                            Last Name 
+        </th>
+
+        <td mat-cell class="container" 
+                     *matCellDef="let element"> 
+                     {{element.last_name}} 
+        </td>
+
       </ng-container>
 
       <ng-container matColumnDef="doctor_select">
-        <th mat-header-cell class="container" *matHeaderCellDef> Doctor </th>
-        <td mat-cell class="container" *matCellDef="let element"> {{element.doctor_select}} </td>
+
+        <th mat-header-cell class="container" 
+                            *matHeaderCellDef> 
+                            Doctor 
+        </th>
+        <td mat-cell class="container" 
+                            *matCellDef="let element"> 
+                            {{element.doctor_select}} 
+        </td>
+
       </ng-container>
 
       <ng-container matColumnDef="appointment_date">
-        <th mat-header-cell class="container" *matHeaderCellDef> Appointment Date </th>
-        <td mat-cell class="container" *matCellDef="let element"> {{element.appointment_date}} </td>
+
+        <th mat-header-cell class="container" 
+                            *matHeaderCellDef> 
+                            Appointment Date 
+        </th>
+
+        <td mat-cell class="container" 
+                     *matCellDef="let element"> 
+                     {{element.appointment_date}} 
+        </td>
+
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <th mat-header-cell class="container" *matHeaderCellDef> Edit / Delete </th>
-        <td mat-cell class="container" *matCellDef="let element; let i = index;">
+        <th mat-header-cell class="container" 
+                            *matHeaderCellDef> 
+                            Edit / Delete 
+        </th>
+
+        <td mat-cell class="container" 
+                     *matCellDef="let element; let i = index;">
+
           <mat-icon class="push-right"
-            [routerLink]="['/edit-appointment/', element.$key]">insert_chart</mat-icon>
-          <mat-icon mat-raised-button color="warn" (click)="deleteAppointment(i, element)">delete_sweep</mat-icon>
+                    [routerLink]="['/edit-appointment/', element.$key]">
+                    insert_chart
+          </mat-icon>
+                    
+          <mat-icon mat-raised-button color="warn" 
+                                      (click)="deleteAppointment(i, element)">
+                                      delete_sweep
+          </mat-icon>
+
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="columnsDisplay"></tr>
-      <tr mat-row *matRowDef="let row; columns: columnsDisplay;"></tr>
+      <tr mat-header-row 
+          *matHeaderRowDef="columnsDisplay">
+      </tr>
+
+      <tr mat-row 
+          *matRowDef="let row; columns: columnsDisplay;">
+      </tr>
+
     </table>
 
-<!--Pagination-->
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" 
+                   showFirstLastButtons>
+    </mat-paginator>
   </div>
+
   <br>
 
 <!--  Footer Buttons-->
-  <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-appointment">
-    <mat-icon>alarm</mat-icon> Make an Appointment
+  <a mat-raised-button class="button-length" 
+                       routerLinkActive="active" 
+                       routerLink="/add-appointment">
+                       <mat-icon>alarm</mat-icon> 
+                       Make an Appointment
   </a>
 
-  <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-doctor">
-    <mat-icon>work</mat-icon> Add a Doctor
+  <a mat-raised-button class="button-length" 
+                       routerLinkActive="active" 
+                       routerLink="/add-doctor">
+                       <mat-icon>work</mat-icon> 
+                       Add a Doctor
   </a>
 
-  <a mat-raised-button class="button-length" routerLinkActive="active" routerLink="/add-hospital">
-    <mat-icon>playlist_add</mat-icon> Add a Hospital</a>
+  <a mat-raised-button class="button-length" 
+                       routerLinkActive="active" 
+                       routerLink="/add-hospital">
+                       <mat-icon>playlist_add</mat-icon> 
+                       Add a Hospital
+  </a>
 </div>

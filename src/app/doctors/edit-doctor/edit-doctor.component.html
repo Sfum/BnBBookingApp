@@ -5,71 +5,134 @@
 
 <!-- Edit Doctor form -->
 <div class="edit-doctor-form">
-  <form [formGroup]="editDoctorForm" (ngSubmit)="updateDoctor()" novalidate>
+
+  <form [formGroup]="editDoctorForm" 
+        (ngSubmit)="updateDoctor()" 
+        novalidate>
+   
     <mat-card class="card-length" appRoundEdges>
+
       <div class="controlers-wrapper">
 
         <!-- Doctor name -->
         <mat-form-field class="doctor-name">
-          <input matInput placeholder="Doctor name" formControlName="doctor_name">
+
+          <input matInput placeholder="Doctor name" 
+                          formControlName="doctor_name">
+
           <mat-error *ngIf="handleError('doctor_name', 'required')">
-            You must provide a <strong>doctor name!</strong>
+            You must provide a 
+            <strong>
+              doctor name!
+            </strong>
           </mat-error>
+
         </mat-form-field>
 
         <!-- Contact Number -->
         <mat-form-field class="contact-number">
-          <input matInput placeholder="Contact Number" formControlName="doctor_number" pattern="[0-9]*" minlength="10"
-                 maxlength="10">
+
+          <input matInput placeholder="Contact Number" 
+                          formControlName="doctor_number" 
+                          pattern="[0-9]*" 
+                          minlength="10"
+                          maxlength="10">
+
           <mat-error *ngIf="handleError('doctor_number', 'required')">
-            You must provide a <strong>valid mobile number!</strong>
+            You must provide a 
+            <strong>
+              valid mobile number!
+            </strong>
           </mat-error>
+
           <mat-error *ngIf="handleError('doctor_number', 'pattern')">
             Only numbers are allowed!
           </mat-error>
+
           <mat-error *ngIf="handleError('doctor_number', 'minlength')">
-            The Doctor's <strong>mobile contact</strong> must be 10 digit long!
+            The Doctor's 
+            <strong>
+              mobile contact
+            </strong> 
+            must be 10 digit long!
           </mat-error>
+
         </mat-form-field>
+
       </div>
+
     </mat-card>
     <br>
     <!-- Area/Hospital -->
     <mat-card class="card-length" appRoundEdges>
+
       <div class="controlers-wrapper">
+
         <mat-form-field>
+
           <mat-label>Select a Hospital</mat-label>
-          <mat-select [(value)]="selected" formControlName="hospital_names">
-            <mat-option *ngFor="let element of HospitalData" [value]="element.hospital_name">
-              {{element.hospital_name}} / {{element.address}}
+          <mat-select [(value)]="selected" 
+                      formControlName="hospital_names">
+
+            <mat-option *ngFor="let element of HospitalData" 
+                        [value]="element.hospital_name">
+                        {{element.hospital_name}} / 
+                        {{element.address}}
             </mat-option>
+
           </mat-select>
+
           <mat-error *ngIf="handleError('hospital_names', 'required')">
             Hospital is required!
           </mat-error>
+
         </mat-form-field>
 
         <!-- Taking On New Patients -->
         <div class="card-length">
+
           <mat-label>Taking On New Patients: </mat-label>
+
           <br><br>
-          <mat-radio-group aria-label="Select an option" formControlName="new_patients">
+
+          <mat-radio-group aria-label="Select an option" 
+                           formControlName="new_patients">
+
             <mat-radio-button value="Yes">Yes</mat-radio-button>
             <mat-radio-button value="No">No</mat-radio-button>
+
           </mat-radio-group>
+
         </div>
       </div>
+
     </mat-card>
+
     <br>
+
     <!-- Submit & Reset -->
     <mat-card class="card-length" appRoundEdges>
+
       <div class="full-wrapper button-wrapper">
+
         <div class="button-wrapper">
-          <button mat-flat-button color="warn">Update</button>
-          <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
+
+          <button mat-flat-button color="warn">
+            Update
+          </button>
+
+          <button mat-flat-button color="war" 
+                                 type="button" 
+                                 (click)="goBack()">
+                                 Go Back
+          </button>
+
         </div>
       </div>
+
     </mat-card>
+
   </form>
+
 </div>
-<br>
+

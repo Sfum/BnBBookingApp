@@ -1,48 +1,55 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
-import { MatChipInputEvent } from '@angular/material';
+import { Component, OnInit }                  from '@angular/core';
+import { ActivatedRoute, Router }             from '@angular/router';
+import { Location }                           from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // import Appointment Model
-import { Appointment } from '../../models/appointment';
+import { Appointment }                        from '../../models/appointment';
 
 // import Services
-import { AppointmentService } from '../../services/appointment.service';
-import { HospitalService } from '../../services/hospital.service';
-import { DoctorService } from '../../services/doctor.service';
+import { AppointmentService }                 from '../../services/appointment.service';
+import { HospitalService }                    from '../../services/hospital.service';
+import { DoctorService }                      from '../../services/doctor.service';
 
 @Component({
-  selector: 'app-edit-doctor',
+  selector:    'app-edit-doctor',
   templateUrl: './edit-doctor.component.html',
-  styleUrls: ['./edit-doctor.component.css']
+  styleUrls:  ['./edit-doctor.component.css']
 })
 
 export class EditDoctorComponent implements OnInit {
+
   editDoctorForm: FormGroup;
-  HospitalData: any = [];
-  selected: any;
+  HospitalData:   any = [];
+  selected:       any;
+
   ngOnInit() {
     this.doctorApi.GetDoctorList();
     this.updateDoctorForm();
   }
   constructor(
-    public fb: FormBuilder,
-    private location: Location,
-    private actRoute: ActivatedRoute,
-    private router: Router,
-    private appointmentApi: AppointmentService,
-    private doctorApi: DoctorService,
+    public  fb:          FormBuilder,
+    private location:    Location,
+    private actRoute:    ActivatedRoute,
+    private router:      Router,
+    private doctorApi:   DoctorService,
     private hospitalApi: HospitalService,
   ) {
+
     // Get Doctor, Subscribe & Push
     var id = this.actRoute.snapshot.paramMap.get('id');
-    this.doctorApi.GetDoctor(id).valueChanges().subscribe(data => {
+    this.doctorApi.GetDoctor(id)
+                  .valueChanges()
+                  .subscribe(data => {
       this.editDoctorForm.setValue(data);
+
     // Get Hospital, Subscribe & Push
-      this.hospitalApi.GetHospitalList().snapshotChanges().subscribe(appointments => {
-        appointments.forEach(item => {
-          let a = item.payload.toJSON();
+      this.hospitalApi.GetHospitalList()
+                      .snapshotChanges()
+                      .subscribe(appointments => {
+          appointments.forEach(item => {
+          let a = item.payload
+                      .toJSON();
           a['$key'] = item.key;
           this.HospitalData.push(a as Appointment);
         });
@@ -52,10 +59,10 @@ export class EditDoctorComponent implements OnInit {
   // Update Doctor Form / Validation
   updateDoctorForm() {
     this.editDoctorForm = this.fb.group({
-      doctor_name: ['', [Validators.required]],
-      doctor_number: ['', [Validators.required]],
-      hospital_names: ['', [Validators.required]],
-      new_patients: ['Yes'],
+         doctor_name:    ['', [Validators.required]],
+         doctor_number:  ['', [Validators.required]],
+         hospital_names: ['', [Validators.required]],
+         new_patients:   ['Yes'],
     });
   }
   // Update Doctor

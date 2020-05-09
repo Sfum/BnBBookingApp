@@ -1,56 +1,82 @@
  <!-- Title-->
  <div class="title">
    <h1 class="mat-h1">Add Appointment</h1>
-   <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
+   <button mat-flat-button color="war" 
+           type="button" 
+           (click)="goBack()">Go Back</button>
  </div><br>
 
  <!-- Appointment form -->
  <div class="appointment-form">
-   <form [formGroup]="appointmentForm" (ngSubmit)="submitAppointment()" #resetAppointmentForm="ngForm" novalidate>
+   <form [formGroup]="appointmentForm" 
+         (ngSubmit)="submitAppointment()" 
+         #resetAppointmentForm="ngForm" 
+         novalidate>
+
      <!-- Left block -->
      <mat-card class="card-length" appRoundEdges>
        <div class="controlers-wrapper">
 
          <!-- Appointment Reference Number -->
          <mat-form-field class="appointment-reference-number">
-           <input matInput placeholder="Appointment Reference Number" formControlName="reference_number" pattern="[0-9]*" minlength="5"
-                  maxlength="10">
+
+           <input matInput placeholder="Appointment Reference Number" 
+                           formControlName="reference_number" 
+                           pattern="[0-9]*" 
+                           minlength="5"
+                           maxlength="10">
            <mat-error *ngIf="handleError('reference_number', 'required')">
              You must provide an <strong>Appointment Reference Number!</strong>
            </mat-error>
+      
            <mat-error *ngIf="handleError('reference_number', 'pattern')">
              Only numbers are allowed!
            </mat-error>
+
            <mat-error *ngIf="handleError('reference_number', 'minlength')">
              Your <strong>Appointment Reference Number</strong> must be 10 digit!
            </mat-error>
+
          </mat-form-field>
 
          <!-- Patient First Name -->
          <mat-form-field class="patient-first-name">
-           <input matInput placeholder="Patient First Name" formControlName="first_name">
+
+           <input matInput placeholder="Patient First Name" 
+                           formControlName="first_name">
+
            <mat-error *ngIf="handleError('first_name', 'required')">
              You must provide <strong>First Name!</strong>
            </mat-error>
+
          </mat-form-field>
 
          <!-- Patient Last Name -->
          <mat-form-field class="patient-last-name">
-           <input matInput placeholder="Patient Last Name" formControlName="last_name">
+
+           <input matInput placeholder="Patient Last Name" 
+                           formControlName="last_name">
+
            <mat-error *ngIf="handleError('last_name', 'required')">
              You must provide <strong>Last Name!</strong>
            </mat-error>
+
          </mat-form-field>
 
          <!-- Appointment Date -->
          <mat-form-field>
-           <input matInput readonly [matDatepicker]="picker" placeholder="Appointment Date"
-             formControlName="appointment_date" (dateChange)="formatDate($event)">
+           <input matInput readonly [matDatepicker]="picker" 
+                                    placeholder="Appointment Date"
+                                    formControlName="appointment_date" 
+                                    (dateChange)="formatDate($event)">
+
            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
            <mat-datepicker #picker></mat-datepicker>
+
            <mat-error *ngIf="handleError('appointment_date', 'required')">
              Appointment date is required!
            </mat-error>
+
          </mat-form-field>
        </div>
      </mat-card>
@@ -60,12 +86,19 @@
 
          <!-- Select a Doctor -->
          <mat-form-field>
+
            <mat-label>Select a Doctor</mat-label>
-           <mat-select [(value)]="selected" formControlName="doctor_select">
-             <mat-option *ngFor="let element of DoctorData" [value]="element.doctor_name">
-               {{element.doctor_name}} / {{element.hospital_names}}
+
+           <mat-select [(value)]="selected" 
+                       formControlName="doctor_select">
+
+             <mat-option *ngFor="let element of DoctorData" 
+                         [value]="element.doctor_name">
+                         {{element.doctor_name}} / {{element.hospital_names}}
              </mat-option>
+
            </mat-select>
+
            <mat-error *ngIf="handleError('doctor_select', 'required')">
              Doctor is required!
            </mat-error>
@@ -74,32 +107,42 @@
          <!-- Confirmation -->
          <div class="confirmation">
            <mat-label>Confirmation: </mat-label>
-           <mat-radio-group aria-label="Select an option" formControlName="confirmation">
+
+           <mat-radio-group aria-label="Select an option" 
+                            formControlName="confirmation">
              <br><br>
              <mat-radio-button value="Yes">Yes</mat-radio-button>
              <mat-radio-button value="No">No</mat-radio-button>
            </mat-radio-group>
+
          </div>
          <br>
 
          <!-- Submit & Reset -->
          <div class="submit-form">
+
            <button mat-stroked-button color="warn"
                    [mdePopoverTriggerFor]="appPopover"
-                   mdePopoverTriggerOn="click">
-             Add Appointment
+                   mdePopoverTriggerOn="click">Add Appointment
            </button>
 
            <!-- Mde Popover -->
-           <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverCloseOnClick]="false">
+           <mde-popover #appPopover="mdePopover" 
+                        [mdePopoverOverlapTrigger]="false" 
+                        [mdePopoverCloseOnClick]="false">
+
              <mat-card style="max-width: 300px">
+
                <mat-card-content>
                  Please, fill the required fields!
                </mat-card-content>
+
                <mat-card-actions align="right">
                  <button (click)="closePopover()" mat-button>Close</button>
                </mat-card-actions>
+
              </mat-card>
+             
            </mde-popover>
          </div>
        </div>

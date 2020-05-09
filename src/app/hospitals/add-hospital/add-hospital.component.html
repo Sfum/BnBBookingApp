@@ -1,67 +1,127 @@
 <!--   Title-->
 <div class="title">
-   <h1 class="mat-h1">Add Hospital</h1>
-   <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
-</div><br>
+
+   <h1 class="mat-h1">
+     Add Hospital
+    </h1>
+
+   <button mat-flat-button color="war" 
+                          type="button" 
+                          (click)="goBack()">
+                          Go Back
+   </button>
+
+</div>
+
+<br>
 
  <!-- Hospital form -->
  <div class="hospital-form">
-   <form [formGroup]="hospitalForm" (ngSubmit)="submitHospital()" #resetHospitalForm="ngForm" novalidate>
+
+   <form [formGroup]="hospitalForm" 
+         (ngSubmit)="submitHospital()" 
+         #resetHospitalForm="ngForm" 
+         novalidate>
+
      <mat-card class="card-length" appRoundEdges>
+
        <div class="controlers-wrapper">
 
          <!-- Hospital name -->
          <mat-form-field class="hospital-name">
-           <input matInput placeholder="Hospital Name" formControlName="hospital_name">
+
+           <input matInput placeholder="Hospital Name" 
+                           formControlName="hospital_name">
+
            <mat-error *ngIf="handleError('hospital_name', 'required')">
-             You must provide a <strong>Hospital name!</strong>
+             You must provide a 
+             <strong>
+               Hospital name!
+              </strong>
            </mat-error>
+
          </mat-form-field>
 
          <!-- Contact Number -->
          <mat-form-field class="contact-number">
-           <input matInput placeholder="Contact Number" formControlName="contact_number" pattern="[0-9]*" minlength="5"
-                  maxlength="15">
+
+           <input matInput placeholder="Contact Number" 
+                           formControlName="contact_number" 
+                           pattern="[0-9]*" 
+                           minlength="5"
+                           maxlength="15">
+
            <mat-error *ngIf="handleError('contact_number', 'required')">
-             You must provide a <strong>valid phone number!</strong>
+             You must provide a 
+             <strong>
+               valid phone number!
+              </strong>
            </mat-error>
+
            <mat-error *ngIf="handleError('contact_number', 'pattern')">
              Only numbers are allowed!
            </mat-error>
+
          </mat-form-field>
 
          <!-- Address -->
          <mat-form-field class="address">
-           <input matInput placeholder="Address" formControlName="address">
+           <input matInput placeholder="Address" 
+                           formControlName="address">
+
            <mat-error *ngIf="handleError('address', 'required')">
-             You must provide Hospital <strong>address!</strong>
+             You must provide Hospital 
+             <strong>
+               address!
+              </strong>
            </mat-error>
+
          </mat-form-field>
 
          <!-- Submit & Reset -->
        </div>
+
        <button mat-stroked-button color="warn"
-               [mdePopoverTriggerFor]="appPopover"
+              [mdePopoverTriggerFor]="appPopover"
                mdePopoverTriggerOn="click">
-         Add Hospital
+               Add Hospital
        </button>
 
        <!-- Mde Popover -->
-       <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverCloseOnClick]="false">
+       <mde-popover #appPopover="mdePopover" 
+                    [mdePopoverOverlapTrigger]="false" 
+                    [mdePopoverCloseOnClick]="false">
+
          <mat-card style="max-width: 300px">
+
            <mat-card-content>
              Please, fill the required fields!
            </mat-card-content>
+
            <mat-card-actions align="right">
-             <button (click)="closePopover()" mat-button>Close</button>
+
+             <button mat-button (click)="closePopover()">
+               Close
+              </button>
+
            </mat-card-actions>
+
          </mat-card>
+
        </mde-popover>
+
      </mat-card>
+
    </form>
+
    <br>
+
    <div class="card-length">
-     <button mat-raised-button (click)="resetForm()">Clear Form</button>
+
+     <button mat-raised-button (click)="resetForm()">
+       Clear Form
+      </button>
+
    </div>
  </div>
-<br>
+

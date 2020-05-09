@@ -9,9 +9,10 @@ export const environment = {
     authDomain: "dentist-appointment-app-c7ba6.firebaseapp.com",
     databaseURL: "https://dentist-appointment-app-c7ba6.firebaseio.com",
     projectId: "dentist-appointment-app-c7ba6",
-    storageBucket: "",
+    storageBucket: "dentist-appointment-app-c7ba6.appspot.com",
     messagingSenderId: "686209342368",
     appId: "1:686209342368:web:948dd8253b5ae9fc"
+
   }
 };
 

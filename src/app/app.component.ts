@@ -1,5 +1,5 @@
-import { Component, ViewChild, HostListener, OnInit } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component, ViewChild, HostListener } from '@angular/core';
+import { MatSidenav }                         from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +34,9 @@ export class AppComponent {
   }
 
   isBiggerScreen() {
-    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    const width = window.innerWidth || 
+                  document.documentElement.clientWidth || 
+                  document.body.clientWidth;
     if (width < 768) {
       return true;
     } else {

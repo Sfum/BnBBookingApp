@@ -1,6 +1,6 @@
 export interface Hospital {
-  $key: string;
-  hospital_name: string;
+  $key:           string;
+  hospital_name:  string;
   contact_number: number;
-  address: string;
+  address:        string;
 }

@@ -1,33 +1,33 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule }                 from '@angular/core';
+import { Routes, RouterModule }     from '@angular/router';
 
 // Import Appointment Components
-import { AddAppointmentComponent } from './appointments/add-appointment/add-appointment.component';
+import { AddAppointmentComponent }  from './appointments/add-appointment/add-appointment.component';
 import { AppointmentListComponent } from './appointments/appointments-list/appointments-list.component';
 import { EditAppointmentComponent } from './appointments/edit-appointment/edit-appointment.component';
 
 // Import Doctors Components
-import { DoctorsListComponent } from './doctors/doctors-list/doctors-list.component';
-import { EditDoctorComponent } from './doctors/edit-doctor/edit-doctor.component';
-import { AddDoctorComponent } from './doctors/add-doctor/add-doctor.component';
+import { DoctorsListComponent }     from './doctors/doctors-list/doctors-list.component';
+import { EditDoctorComponent }      from './doctors/edit-doctor/edit-doctor.component';
+import { AddDoctorComponent }       from './doctors/add-doctor/add-doctor.component';
 
 // Import Hospitals Components
-import { AddHospitalComponent } from './hospitals/add-hospital/add-hospital.component';
-import { EditHospitalComponent } from './hospitals/edit-hospital/edit-hospital.component';
-import { HospitalsListComponent } from './hospitals/hospitals-list/hospitals-list.component';
+import { AddHospitalComponent }     from './hospitals/add-hospital/add-hospital.component';
+import { EditHospitalComponent }    from './hospitals/edit-hospital/edit-hospital.component';
+import { HospitalsListComponent }   from './hospitals/hospitals-list/hospitals-list.component';
 
 // Defining Routes
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'add-appointment' },
-  { path: 'add-appointment', component: AddAppointmentComponent },
+  { path: '',                     pathMatch: 'full', redirectTo: 'add-appointment' },
+  { path: 'add-appointment',      component: AddAppointmentComponent },
   { path: 'edit-appointment/:id', component: EditAppointmentComponent },
-  { path: 'appointments-list', component: AppointmentListComponent },
-  { path: 'add-doctor', component: AddDoctorComponent },
-  { path: 'edit-doctor/:id', component: EditDoctorComponent },
-  { path: 'doctors-list', component: DoctorsListComponent },
-  { path: 'add-hospital', component: AddHospitalComponent },
-  { path: 'edit-hospital/:id', component: EditHospitalComponent },
-  { path: 'hospitals-list', component: HospitalsListComponent }
+  { path: 'appointments-list',    component: AppointmentListComponent },
+  { path: 'add-doctor',           component: AddDoctorComponent },
+  { path: 'edit-doctor/:id',      component: EditDoctorComponent },
+  { path: 'doctors-list',         component: DoctorsListComponent },
+  { path: 'add-hospital',         component: AddHospitalComponent },
+  { path: 'edit-hospital/:id',    component: EditHospitalComponent },
+  { path: 'hospitals-list',       component: HospitalsListComponent }
 ];
 
 @NgModule({

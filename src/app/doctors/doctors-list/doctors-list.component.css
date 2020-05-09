@@ -1,6 +1,6 @@
 .button-length{
-  width: 200px;
-  min-width: unset!important;
+  width: flex;
+  min-width: 200px;
   text-align: left;
 }
 

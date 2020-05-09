@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Doctor } from '../models/doctor';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { Injectable }        from '@angular/core';
+import { Doctor }            from '../models/doctor';
+import { AngularFireDatabase, 
+         AngularFireList, 
+         AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DoctorService {
-  doctorsRef: AngularFireList<any>;
-  doctorRef: AngularFireObject<any>;
+
+  doctorsRef: AngularFireList  <any>;
+  doctorRef:  AngularFireObject<any>;
 
   constructor(private db: AngularFireDatabase) {}
-
 
   // Get doctor
   GetDoctor(id: string) {
@@ -28,10 +30,10 @@ export class DoctorService {
   // Create doctor
   AddDoctor(doctor: Doctor) {
     this.doctorsRef.push({
-      doctor_name: doctor.doctor_name,
-      doctor_number: doctor.doctor_number,
-      hospital_names: doctor.hospital_names,
-      new_patients: doctor.new_patients,
+         doctor_name:    doctor.doctor_name,
+         doctor_number:  doctor.doctor_number,
+         hospital_names: doctor.hospital_names,
+         new_patients:   doctor.new_patients,
     })
       .catch(error => {
         this.errorMgmt(error);
@@ -41,10 +43,10 @@ export class DoctorService {
   // Update doctor
   UpdateDoctor(id, doctor: Doctor) {
     this.doctorRef.update({
-      doctor_name: doctor.doctor_name,
-      doctor_number: doctor.doctor_number,
-      hospital_names: doctor.hospital_names,
-      new_patients: doctor.new_patients,
+         doctor_name:    doctor.doctor_name,
+         doctor_number:  doctor.doctor_number,
+         hospital_names: doctor.hospital_names,
+         new_patients:   doctor.new_patients,
     })
       .catch(error => {
         this.errorMgmt(error);
@@ -53,9 +55,10 @@ export class DoctorService {
 
   // Delete doctor
   DeleteDoctor(id: string) {
-    this.doctorRef = this.db.object('doctors-list/' + id);
+    this.doctorRef = this.db
+                  .object('doctors-list/' + id);
     this.doctorRef.remove()
-      .catch(error => {
+                  .catch(error => {
         this.errorMgmt(error);
       });
   }
