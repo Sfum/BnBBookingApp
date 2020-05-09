@@ -5,11 +5,6 @@
   font-size: small;
 }
 
-.mat-sidenav-container {
-
-  display: flex;
-}
-
 [disabled] {
   pointer-events: none;
 }
