@@ -1,55 +1,110 @@
 <!-- Title -->
 <div class="title">
-  <h1 class="mat-h1">Edit Hospital</h1>
+
+  <h1 class="mat-h1">
+    Edit Hospital
+  </h1>
+
 </div>
 
 <!-- Hospital form -->
 <div class="inner-wrapper">
-  <form [formGroup]="editHospitalForm" (ngSubmit)="updateHospital()" novalidate>
+
+  <form [formGroup]="editHospitalForm" 
+        (ngSubmit)="updateHospital()" 
+        novalidate>
+
     <mat-card class="card-length" appRoundEdges >
+
       <div class="controlers-wrapper">
 
         <!-- Hospital name -->
         <mat-form-field class="Hospital-name">
-          <input matInput placeholder="Hospital name" formControlName="hospital_name">
+
+          <input matInput placeholder="Hospital name" 
+                          formControlName="hospital_name">
+
           <mat-error *ngIf="handleError('hospital_name', 'required')">
-            You must provide a <strong>Hospital name!</strong>
+            You must provide a 
+            <strong>
+              Hospital name!
+            </strong>
           </mat-error>
+
         </mat-form-field>
 
         <!-- Contact Number -->
         <mat-form-field class="Contact-Number">
-          <input matInput placeholder="Contact Number" formControlName="contact_number" pattern="[0-9]*" minlength="10"
-                 maxlength="10">
+
+          <input matInput placeholder="Contact Number" 
+                          formControlName="contact_number" 
+                          pattern="[0-9]*" 
+                          minlength="10"
+                          maxlength="10">
+
           <mat-error *ngIf="handleError('contact_number', 'required')">
-            You must provide a <strong>valid phone number!</strong>
+            You must provide a 
+            <strong>
+              valid phone number!
+            </strong>
           </mat-error>
+
           <mat-error *ngIf="handleError('contact_number', 'pattern')">
             Only numbers are allowed!
           </mat-error>
+
           <mat-error *ngIf="handleError('contact_number', 'minlength')">
-           <strong>Phone contact</strong> must be 10 digit long!
+           <strong>
+             Phone contact
+            </strong> 
+            must be 10 digit long!
           </mat-error>
+
         </mat-form-field>
 
         <!-- Address -->
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Address" formControlName="address">
+
+          <input matInput placeholder="Address" 
+                          formControlName="address">
+
           <mat-error *ngIf="handleError('address', 'required')">
-            You must provide Hospitam <strong>address.</strong>
+            You must provide Hospital
+            <strong>
+              address!
+            </strong>
           </mat-error>
+
         </mat-form-field>
+
       </div>
+
     </mat-card>
+
     <br><br>
+
     <!-- Submit & Reset -->
     <mat-card class="card-length" appRoundEdges>
+
       <div class="full-wrapper button-wrapper">
+
         <div class="button-wrapper">
-          <button mat-flat-button color="warn">Update</button>
-          <button mat-flat-button color="war" type="button" (click)="goBack()">Go Back</button>
+
+          <button mat-flat-button color="warn">
+            Update
+          </button>
+
+          <button mat-flat-button color="war" 
+                                 type="button" 
+                                 (click)="goBack()">
+                                 Go Back
+          </button>
+
         </div>
       </div>
+
     </mat-card>
+
   </form>
+  
 </div>
