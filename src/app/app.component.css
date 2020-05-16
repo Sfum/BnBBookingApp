@@ -1,8 +1,14 @@
-.button-length {
+.button-length.active {
   width: 200px;
   min-width: unset!important;
-  text-align: left;
   font-size: small;
+  color: rgb(255, 0, 38);
+}
+
+.button-length {
+
+  text-align: left;
+
 }
 
 [disabled] {
