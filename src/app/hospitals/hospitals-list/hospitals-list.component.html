@@ -1,93 +1,70 @@
 <!-- Title -->
 <div class="title">
-
-  <h1 class="mat-h1">
-    Hospital List
-  </h1>
-
-  <button mat-flat-button color="war" 
-                         type="button" 
-                         (click)="goBack()">
-                         Go Back
-  </button>
-
+  <h1 class="mat-h1"> Hospital List </h1>
+  <button mat-flat-button
+          color="war"
+          type="button"
+          (click)="goBack()"> Go Back </button>
 </div>
 
 <!-- No Entries message -->
-<p class="no-data" *ngIf="HospitalData.length <= 0" >
-  There are no entries added yet!
-</p>
+<p class="no-data"
+   *ngIf="HospitalData.length <= 0"> There are no entries added yet! </p>
 
 <!-- Hospitals list Angular material data table -->
-<div class="container" *ngIf="HospitalData.length > 0">
-
+<div class="container"
+     *ngIf="HospitalData.length > 0">
   <mat-form-field fxFlex="20%">
-
-    <input matInput type="text" 
-                    (keyup)="doFilter($event.target.value)" 
-                    placeholder="Search">
+    <input matInput
+           type="text"
+           (keyup)="doFilter($event.target.value)"
+           placeholder="Search">
   </mat-form-field>
-
   <div class="mat-elevation-z8">
-
-    <table mat-table [dataSource]="dataSource">
-
+    <table mat-table
+           [dataSource]="dataSource">
       <ng-container matColumnDef="hospital_name">
-        <th mat-header-cell class="container" *matHeaderCellDef> 
-          Hospital 
-        </th>
-
-        <td mat-cell class="container" *matCellDef="let element"> 
-          {{element.hospital_name}} 
-        </td>
-
+        <th mat-header-cell
+            class="container"
+            *matHeaderCellDef> Hospital </th>
+        <td mat-cell
+            class="container"
+            *matCellDef="let element"> {{element.hospital_name}} </td>
       </ng-container>
-
       <ng-container matColumnDef="address">
-
-        <th mat-header-cell class="container" *matHeaderCellDef> 
-          Address 
-        </th>
-        <td mat-cell class="container" *matCellDef="let element"> 
-          {{element.address}} 
-        </td>
-
+        <th mat-header-cell
+            class="container"
+            *matHeaderCellDef> Address </th>
+        <td mat-cell
+            class="container"
+            *matCellDef="let element"> {{element.address}} </td>
       </ng-container>
-
       <ng-container matColumnDef="action">
-
-        <th mat-header-cell class="container" 
-                            *matHeaderCellDef> 
-                            Edit / Delete 
-        </th>
-        
-        <td mat-cell class="container" 
-                     *matCellDef="let element; let i = index;">
-
+        <th mat-header-cell
+            class="container"
+            *matHeaderCellDef> Edit / Delete </th>
+        <td mat-cell
+            class="container"
+            *matCellDef="let element; let i = index;">
           <mat-icon class="push-right"
                     [routerLink]="['/edit-hospital/', element.$key]">
-                    insert_chart
+            insert_chart </mat-icon>
+          <mat-icon mat-raised-button
+                    color="warn"
+                    (click)="deleteHospital(i, element)"> delete_sweep
           </mat-icon>
-
-          <mat-icon mat-raised-button color="warn" 
-                                      (click)="deleteHospital(i, element)">
-                                      delete_sweep
-          </mat-icon>
-
         </td>
-        
       </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="columnsDisplay; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: columnsDisplay;"></tr>
-
+      <tr mat-header-row
+          *matHeaderRowDef="columnsDisplay; sticky: true"></tr>
+      <tr mat-row
+          *matRowDef="let row; columns: columnsDisplay;"></tr>
     </table>
-
-<!--    Paginator-->
-    <mat-paginator [pageSizeOptions]="[10, 20]" 
-                    showFirstLastButtons>
+    
+    <!--    Paginator-->
+    <mat-paginator [pageSizeOptions]="[10, 20]"
+                   showFirstLastButtons>
     </mat-paginator>
-
   </div>
   <br>
 </div>

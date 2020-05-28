@@ -13,8 +13,7 @@ import { Hospital }                         from '../../models/hospital';
 })
 
 export class HospitalsListComponent {
-
-  @ViewChild(MatPaginator) 
+  @ViewChild(MatPaginator)
 
   paginator:      MatPaginator;
   dataSource:     MatTableDataSource<Hospital>;

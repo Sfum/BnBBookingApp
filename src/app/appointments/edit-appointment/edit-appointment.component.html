@@ -1,162 +1,115 @@
 <!-- Title -->
 <div class="title">
-
-  <h1 class="mat-h1">
-    Edit Appointment
-  </h1>
-
+  <h1 class="mat-h1"> Edit Appointment </h1>
 </div>
 
 <!-- Appointment form -->
 <div class="appointment-form">
-  <form [formGroup]="editAppointmentForm" 
-        (ngSubmit)="updateAppointment()" 
+  <form [formGroup]="editAppointmentForm"
+        (ngSubmit)="updateAppointment()"
         novalidate>
-    <mat-card class="card-length" 
+    <mat-card class="card-length"
               appRoundEdges>
-
       <div class="controlers-wrapper">
 
         <!-- Appointment Reference Number -->
         <mat-form-field class="appointment-reference-number">
-
-          <input matInput placeholder="Appointment Reference Number" 
-                          formControlName="reference_number" 
-                          pattern="[0-9]*" 
-                          minlength="10"
-                          maxlength="10">
-
-          <mat-error *ngIf="handleError('reference_number', 'required')">
-            You must provide an 
-            <strong>
-              Appointment Reference Number!
-            </strong>
+          <input matInput
+                 placeholder="Appointment Reference Number"
+                 formControlName="reference_number"
+                 pattern="[0-9]*"
+                 minlength="10"
+                 maxlength="10">
+          <mat-error *ngIf="handleError('reference_number', 'required')"> You
+            must provide an <strong> Appointment Reference Number! </strong>
           </mat-error>
-
-          <mat-error *ngIf="handleError('reference_number', 'pattern')">
-            Only numbers are allowed!
+          <mat-error *ngIf="handleError('reference_number', 'pattern')"> Only
+            numbers are allowed! </mat-error>
+          <mat-error *ngIf="handleError('reference_number', 'minlength')"> Your
+            <strong> Appointment Reference Number </strong> must be 10 digit!
           </mat-error>
-
-          <mat-error *ngIf="handleError('reference_number', 'minlength')">
-            Your <strong>
-              Appointment Reference Number
-            </strong> 
-            must be 10 digit!
-          </mat-error>
-
         </mat-form-field>
 
         <!-- Patient First Name -->
         <mat-form-field class="patient-first-name">
-          <input matInput placeholder="Patient First Name" 
-                          formControlName="first_name">
-
-          <mat-error *ngIf="handleError('first_name', 'required')">
-            You must provide 
-            <strong>
-              First Name!
-            </strong>
+          <input matInput
+                 placeholder="Patient First Name"
+                 formControlName="first_name">
+          <mat-error *ngIf="handleError('first_name', 'required')"> You must
+            provide <strong> First Name! </strong>
           </mat-error>
-
         </mat-form-field>
 
         <!-- Patient Last Name -->
         <mat-form-field class="patient-last-name">
-          <input matInput placeholder="Patient Last Name" 
-                          formControlName="last_name">
-
-          <mat-error *ngIf="handleError('last_name', 'required')">
-            You must provide 
-            <strong>
-              Last Name!
-            </strong>
+          <input matInput
+                 placeholder="Patient Last Name"
+                 formControlName="last_name">
+          <mat-error *ngIf="handleError('last_name', 'required')"> You must
+            provide <strong> Last Name! </strong>
           </mat-error>
-
         </mat-form-field>
 
         <!-- Appointment Date -->
         <mat-form-field>
-          <input matInput readonly [matDatepicker]="picker" 
-                                   placeholder="Appointment Date"
-                                   formControlName="appointment_date" 
-                                   (dateChange)="formatDate($event)">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-
-            <mat-error *ngIf="handleError('appointment_date', 'required')">
-            Appointment date is required!
-            </mat-error>
-
+          <input matInput
+                 readonly
+                 [matDatepicker]="picker"
+                 placeholder="Appointment Date"
+                 formControlName="appointment_date"
+                 (dateChange)="formatDate($event)">
+          <mat-datepicker-toggle matSuffix
+                                 [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="handleError('appointment_date', 'required')">
+            Appointment date is required! </mat-error>
         </mat-form-field>
-
       </div>
-
     </mat-card>
     <br>
-    <mat-card class="card-length" appRoundEdges>
+    <mat-card class="card-length"
+              appRoundEdges>
       <div class="controlers-wrapper">
 
         <!-- Select a Doctor -->
         <mat-form-field>
           <mat-label>Edit a Doctor</mat-label>
-          <mat-select [(value)]="selected" 
+          <mat-select [(value)]="selected"
                       formControlName="doctor_select">
-
-            <mat-option *ngFor="let element of DoctorData" 
-                        [value]="element.doctor_name">
-                        {{element.doctor_name}} / 
-                        {{element.hospital_names}}
-            </mat-option>
-
+            <mat-option *ngFor="let element of DoctorData"
+                        [value]="element.doctor_name"> {{element.doctor_name}} /
+              {{element.hospital_names}} </mat-option>
           </mat-select>
-
-          <mat-error *ngIf="handleError('doctor_select', 'required')">
-            Doctor is required!
-          </mat-error>
-
+          <mat-error *ngIf="handleError('doctor_select', 'required')"> Doctor is
+            required! </mat-error>
         </mat-form-field>
 
         <!-- Confirmation -->
         <div class="confirmation">
           <mat-label>Confirmed?: </mat-label>
-          <mat-radio-group aria-label="Select an option" 
+          <mat-radio-group aria-label="Select an option"
                            formControlName="confirmation">
-
-            <mat-radio-button value="Yes">
-              Yes
-            </mat-radio-button>
-
-            <mat-radio-button value="No">
-              No
-            </mat-radio-button>
-
+            <mat-radio-button value="Yes"> Yes </mat-radio-button>
+            <mat-radio-button value="No"> No </mat-radio-button>
           </mat-radio-group>
         </div>
       </div>
-
     </mat-card>
     <br>
+    
     <!-- Submit & Reset -->
-    <mat-card class="card-length" appRoundEdges>
-
+    <mat-card class="card-length"
+              appRoundEdges>
       <div class="full-wrapper button-wrapper">
-
         <div class="button-wrapper">
-          <button mat-flat-button color="warn">
-            Update
-          </button>
-
-          <button mat-flat-button color="war" 
-                  type="button" 
-                  (click)="goBack()">
-                  Go Back
-          </button>
-
+          <button mat-flat-button
+                  color="warn"> Update </button>
+          <button mat-flat-button
+                  color="war"
+                  type="button"
+                  (click)="goBack()"> Go Back </button>
         </div>
       </div>
-
     </mat-card>
-
   </form>
-  
 </div>
