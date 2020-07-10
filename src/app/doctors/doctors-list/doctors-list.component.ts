@@ -59,7 +59,7 @@ export class DoctorsListComponent {
   // Filtering
   doFilter = (value: string) => {
     this.dataSource.filter = value.trim()
-                                 .toLocaleLowerCase();
+                                  .toLocaleLowerCase();
   }
   // Go Back
   goBack() {
