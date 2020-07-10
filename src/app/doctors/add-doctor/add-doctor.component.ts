@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild }       from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location }                           from '@angular/common';
-import { ActivatedRoute, Router }             from '@angular/router';
+import { Router }             from '@angular/router';
 
 // import Appointment Model
 import { Appointment }                        from '../../appointments/appointment';

@@ -58,9 +58,9 @@ export class AddHospitalComponent implements OnInit {
   // Submit Hospital
   submitHospital() {
     if (this.hospitalForm.valid) {
-      this.hospitalApi.AddHospital(this.hospitalForm.value)
-      this.resetForm();
-      this.router.navigate(['hospitals-list']);
+        this.hospitalApi.AddHospital(this.hospitalForm.value)
+        this.resetForm();
+        this.router.navigate(['hospitals-list']);
     }
   }
 
