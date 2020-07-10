@@ -2,8 +2,8 @@ import { Component, ViewChild }             from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Location }                         from '@angular/common';
 
-import { HospitalService }                  from '../../services/hospital.service';
-import { Hospital }                         from '../../models/hospital';
+import { HospitalService }                  from '../hospital.service';
+import { Hospital }                         from '../hospital';
 
 
 @Component({

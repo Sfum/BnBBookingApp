@@ -4,11 +4,11 @@ import { Location }                           from '@angular/common';
 import { ActivatedRoute, Router }             from '@angular/router';
 
 // import Appointment Model
-import { Appointment }                        from '../../models/appointment';
+import { Appointment }                        from '../../appointments/appointment';
 
 // import Services
-import { HospitalService }                    from '../../services/hospital.service';
-import { DoctorService }                      from '../../services/doctor.service';
+import { HospitalService }                    from '../../hospitals/hospital.service';
+import { DoctorService }                      from '../doctor.service';
 
 // import Mde Popover
 import { MdePopoverTrigger }                  from '@material-extended/mde';

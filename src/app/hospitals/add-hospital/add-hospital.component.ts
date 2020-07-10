@@ -4,7 +4,7 @@ import { Location }                           from '@angular/common';
 import { ActivatedRoute, Router }             from '@angular/router';
 
 // import Services
-import { HospitalService }                    from '../../services/hospital.service';
+import { HospitalService }                    from '../hospital.service';
 
 // import Mde Popover
 import { MdePopoverTrigger }                  from '@material-extended/mde';

@@ -4,11 +4,11 @@ import { Location }                           from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // import Appointment Model
-import { Appointment }                        from '../../models/appointment';
+import { Appointment }                        from '../appointment';
 
 // import Services
-import { AppointmentService }                 from '../../services/appointment.service';
-import { DoctorService }                      from '../../services/doctor.service';
+import { AppointmentService }                 from '../appointment.service';
+import { DoctorService }                      from '../../doctors/doctor.service';
 
 @Component({
   selector:    'app-edit-appointment',

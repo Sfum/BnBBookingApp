@@ -3,10 +3,10 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Location }                         from '@angular/common';
 
 // import Appointment Services
-import { AppointmentService }               from '../../services/appointment.service';
+import { AppointmentService }               from '../appointment.service';
 
 // import Appointment Model
-import { Appointment }                      from '../../models/appointment';
+import { Appointment }                      from '../appointment';
 
 @Component({
   selector:    'app-appointments-list',

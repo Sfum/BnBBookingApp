@@ -30,9 +30,9 @@ import { AngularFireDatabaseModule }         from '@angular/fire/database';
 import { environment }                       from 'src/environments/environment';
 
 // Import Services
-import { AppointmentService }                from './services/appointment.service';
-import { DoctorService }                     from './services/doctor.service';
-import { HospitalService }                   from './services/hospital.service';
+import { AppointmentService }                from './appointments/appointment.service';
+import { DoctorService }                     from './doctors/doctor.service';
+import { HospitalService }                   from './hospitals/hospital.service';
 
 // Import Directive
 import { RoundEdgesDirective }               from './directives/roundEdges';

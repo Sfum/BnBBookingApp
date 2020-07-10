@@ -4,3 +4,4 @@ export interface Hospital {
   contact_number: number;
   address:        string;
 }
+

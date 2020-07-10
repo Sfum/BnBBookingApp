@@ -1,5 +1,5 @@
 import { Injectable }        from '@angular/core';
-import { Hospital }          from '../models/hospital';
+import { Hospital }          from './hospital';
 import { AngularFireDatabase, 
          AngularFireList, 
          AngularFireObject } from '@angular/fire/database';

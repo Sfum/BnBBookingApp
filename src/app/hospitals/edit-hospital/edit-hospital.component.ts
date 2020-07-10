@@ -4,7 +4,7 @@ import { Location }                           from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // import Services
-import { HospitalService }                    from '../../services/hospital.service';
+import { HospitalService }                    from '../hospital.service';
 
 
 @Component({
