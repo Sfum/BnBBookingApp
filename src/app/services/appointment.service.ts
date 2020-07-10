@@ -1,7 +1,7 @@
 import { Injectable }        from '@angular/core';
 import { Appointment }       from '../models/appointment';
-import { AngularFireDatabase, 
-         AngularFireList, 
+import { AngularFireDatabase,
+         AngularFireList,
          AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
@@ -10,8 +10,8 @@ import { AngularFireDatabase,
 
 export class AppointmentService {
 
-  appointmentsRef: AngularFireList  <any>;
-  appointmentRef:  AngularFireObject<any>;
+  appointmentsRef: AngularFireList<any>;
+  appointmentRef: AngularFireObject<any>;
 
   constructor(private db: AngularFireDatabase) {}
 
@@ -30,10 +30,10 @@ export class AppointmentService {
   AddAppointment(appointment: Appointment) {
     this.appointmentsRef.push({
          first_name:        appointment.first_name,
-         reference_number: appointment.reference_number,
-         last_name:        appointment.last_name,
-         appointment_date: appointment.appointment_date,
-         doctor_select:    appointment.doctor_select,
+         reference_number:  appointment.reference_number,
+         last_name:         appointment.last_name,
+         appointment_date:  appointment.appointment_date,
+         doctor_select:     appointment.doctor_select,
          confirmation:      appointment.confirmation
     })
     .catch(error => {
@@ -45,10 +45,10 @@ export class AppointmentService {
   UpdateAppointment(id, appointment: Appointment) {
     this.appointmentRef.update({
          first_name:        appointment.first_name,
-         reference_number: appointment.reference_number,
-         last_name:        appointment.last_name,
-         appointment_date: appointment.appointment_date,
-         doctor_select:    appointment.doctor_select,
+         reference_number:  appointment.reference_number,
+         last_name:         appointment.last_name,
+         appointment_date:  appointment.appointment_date,
+         doctor_select:     appointment.doctor_select,
          confirmation:      appointment.confirmation
     })
     .catch(error => {

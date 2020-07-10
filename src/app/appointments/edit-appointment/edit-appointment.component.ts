@@ -59,10 +59,10 @@ export class EditAppointmentComponent implements OnInit {
   updateAppointmentForm() {
     this.editAppointmentForm = this.fb.group({
          first_name:        ['', [Validators.required]],
-         reference_number: ['', [Validators.required]],
-         last_name:        ['', [Validators.required]],
-         appointment_date: ['', [Validators.required]],
-         doctor_select:    ['', [Validators.required]],
+         reference_number:  ['', [Validators.required]],
+         last_name:         ['', [Validators.required]],
+         appointment_date:  ['', [Validators.required]],
+         doctor_select:     ['', [Validators.required]],
          confirmation:      ['', [Validators.required]],
     });
   }

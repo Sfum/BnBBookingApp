@@ -83,10 +83,10 @@ export class AddAppointmentComponent implements OnInit {
   resetForm() {
     this.appointmentForm = this.fb.group({
       first_name:        [''],
-      reference_number: [''],
-      last_name:        [''],
-      appointment_date: [''],
-      doctor_select:    [''],
+      reference_number:  [''],
+      last_name:         [''],
+      appointment_date:  [''],
+      doctor_select:     [''],
       confirmation:      [''],
     });
   }

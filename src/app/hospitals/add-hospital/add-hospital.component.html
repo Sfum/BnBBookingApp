@@ -39,6 +39,7 @@
           <mat-error *ngIf="handleError('contact_number', 'required')"> You must
             provide a <strong> valid phone number! </strong>
           </mat-error>
+
           <mat-error *ngIf="handleError('contact_number', 'pattern')"> Only
             numbers are allowed! </mat-error>
         </mat-form-field>
@@ -58,7 +59,7 @@
       <button mat-stroked-button
               color="warn"
               [mdePopoverTriggerFor]="appPopover"
-              mdePopoverTriggerOn="click"> Add Hospital 
+              mdePopoverTriggerOn="click"> Add Hospital
       </button>
 
       <!-- Mde Popover -->
@@ -82,5 +83,5 @@
     <button mat-raised-button
             (click)="resetForm()"> Clear Form </button>
   </div>
-  
+
 </div>
