@@ -29,12 +29,12 @@ export class AppointmentService {
   // Create Appointment
   AddAppointment(appointment: Appointment) {
     this.appointmentsRef.push({
-         first_name:        appointment.first_name,
+         first_name:       appointment.first_name,
          reference_number: appointment.reference_number,
          last_name:        appointment.last_name,
          appointment_date: appointment.appointment_date,
          doctor_select:    appointment.doctor_select,
-         confirmation:      appointment.confirmation
+         confirmation:     appointment.confirmation
     })
     .catch(error => {
       this.errorMgmt(error);
@@ -44,12 +44,12 @@ export class AppointmentService {
   // Update Appointment
   UpdateAppointment(id, appointment: Appointment) {
     this.appointmentRef.update({
-         first_name:        appointment.first_name,
+         first_name:       appointment.first_name,
          reference_number: appointment.reference_number,
          last_name:        appointment.last_name,
          appointment_date: appointment.appointment_date,
          doctor_select:    appointment.doctor_select,
-         confirmation:      appointment.confirmation
+         confirmation:     appointment.confirmation
     })
     .catch(error => {
       this.errorMgmt(error);
@@ -62,7 +62,7 @@ export class AppointmentService {
                        .object('appointments-list/' + id);
     this.appointmentRef.remove()
                        .catch(error => {
-      this.errorMgmt(error);
+                           this.errorMgmt(error);
     });
   }
 

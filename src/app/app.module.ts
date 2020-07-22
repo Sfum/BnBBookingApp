@@ -3,12 +3,7 @@ import { AppRoutingModule }                  from './app-routing.module';
 import { AppComponent }                      from './app.component';
 import { BrowserAnimationsModule }           from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA }  from '@angular/core';
-import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
-
-// Import Appointment Components
-import { AddAppointmentComponent }           from './appointments/add-appointment/add-appointment.component';
-import { EditAppointmentComponent }          from './appointments/edit-appointment/edit-appointment.component';
-import { AppointmentListComponent }          from './appointments/appointments-list/appointments-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Import Doctors Components
 import { AddDoctorComponent }                from './doctors/add-doctor/add-doctor.component';
@@ -30,7 +25,7 @@ import { AngularFireDatabaseModule }         from '@angular/fire/database';
 import { environment }                       from 'src/environments/environment';
 
 // Import Services
-import { AppointmentService }                from './appointments/appointment.service';
+
 import { DoctorService }                     from './doctors/doctor.service';
 import { HospitalService }                   from './hospitals/hospital.service';
 
@@ -40,13 +35,14 @@ import { RoundEdgesDirective }               from './directives/roundEdges';
 // Import Mde Popover
 import { MdePopoverModule }                  from '@material-extended/mde';
 
+// Import Modules
+import { AppointmentsModule }                from './appointments/appointments.module';
+import { DoctorsModule }                     from './doctors/doctors.module';
+import { HospitalsModule }                   from './hospitals/hospitals.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddAppointmentComponent,
-    EditAppointmentComponent,
-    AppointmentListComponent,
     AddDoctorComponent,
     EditDoctorComponent,
     DoctorsListComponent,
@@ -66,9 +62,12 @@ import { MdePopoverModule }                  from '@material-extended/mde';
     ReactiveFormsModule,
     MatExpansionModule,
     MatTabsModule,
-    MdePopoverModule
+    MdePopoverModule,
+    AppointmentsModule,
+    DoctorsModule,
+    HospitalsModule
   ],
-  providers: [AppointmentService, DoctorService, HospitalService],
+  providers: [DoctorService, HospitalService],
   bootstrap: [AppComponent],
   schemas:   [CUSTOM_ELEMENTS_SCHEMA]
 })
