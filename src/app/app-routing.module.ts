@@ -1,11 +1,6 @@
 import { NgModule }                 from '@angular/core';
 import { Routes, RouterModule }     from '@angular/router';
 
-// Import Appointment Components
-import { AddAppointmentComponent }  from './appointments/add-appointment/add-appointment.component';
-import { AppointmentListComponent } from './appointments/appointments-list/appointments-list.component';
-import { EditAppointmentComponent } from './appointments/edit-appointment/edit-appointment.component';
-
 // Import Doctors Components
 import { DoctorsListComponent }     from './doctors/doctors-list/doctors-list.component';
 import { EditDoctorComponent }      from './doctors/edit-doctor/edit-doctor.component';
@@ -18,16 +13,21 @@ import { HospitalsListComponent }   from './hospitals/hospitals-list/hospitals-l
 
 // Defining Routes
 const routes: Routes = [
-  { path: '',                     pathMatch: 'full', redirectTo: 'add-appointment' },
-  { path: 'add-appointment',      component: AddAppointmentComponent },
-  { path: 'edit-appointment/:id', component: EditAppointmentComponent },
-  { path: 'appointments-list',    component: AppointmentListComponent },
-  { path: 'add-doctor',           component: AddDoctorComponent },
-  { path: 'edit-doctor/:id',      component: EditDoctorComponent },
-  { path: 'doctors-list',         component: DoctorsListComponent },
-  { path: 'add-hospital',         component: AddHospitalComponent },
-  { path: 'edit-hospital/:id',    component: EditHospitalComponent },
-  { path: 'hospitals-list',       component: HospitalsListComponent }
+  {
+    path: "edit-appointment",
+    loadChildren: () =>
+      import("./appointments/appointments.module").then(
+        (m) => m.AppointmentsModule
+      ),
+  },
+
+  { path: "", pathMatch: "full", redirectTo: "edit-appointment" },
+  { path: "add-doctor", component: AddDoctorComponent },
+  { path: "edit-doctor/:id", component: EditDoctorComponent },
+  { path: "doctors-list", component: DoctorsListComponent },
+  { path: "add-hospital", component: AddHospitalComponent },
+  { path: "edit-hospital/:id", component: EditHospitalComponent },
+  { path: "hospitals-list", component: HospitalsListComponent },
 ];
 
 @NgModule({

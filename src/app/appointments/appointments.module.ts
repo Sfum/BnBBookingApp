@@ -11,6 +11,8 @@ import { AppointmentListComponent }          from './../appointments/appointment
 
 import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
 
+import { AppointmentsRoutingModule }         from './appointments-routing.module';
+
 // Import Angular Material Module
 import { AngularMaterialModule }             from './../material.module';
 import { MatExpansionModule, MatTabsModule } from '@angular/material';
@@ -18,12 +20,11 @@ import { MatExpansionModule, MatTabsModule } from '@angular/material';
 // Import Mde Popover
 import { MdePopoverModule }                  from '@material-extended/mde';
 
-
 @NgModule({
   declarations: [
     AddAppointmentComponent,
     EditAppointmentComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
   ],
   imports: [
     CommonModule,
@@ -32,9 +33,10 @@ import { MdePopoverModule }                  from '@material-extended/mde';
     AngularMaterialModule,
     MatExpansionModule,
     MatTabsModule,
-    MdePopoverModule
+    MdePopoverModule,
+    AppointmentsRoutingModule,
   ],
   providers: [AppointmentService],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppointmentsModule { }
+export class AppointmentsModule {}

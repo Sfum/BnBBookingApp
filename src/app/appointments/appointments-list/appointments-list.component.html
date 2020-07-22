@@ -55,7 +55,7 @@
             class="container"
             *matCellDef="let element; let i = index;">
           <mat-icon class="push-right"
-                    [routerLink]="['/edit-appointment/', element.$key]">
+                    [routerLink]="['../edit-appointment', element.$key]">
             insert_chart </mat-icon>
           <mat-icon mat-raised-button
                     color="warn"
