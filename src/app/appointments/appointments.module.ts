@@ -11,6 +11,7 @@ import { AppointmentListComponent }          from './../appointments/appointment
 
 import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
 
+// Import Routing Module
 import { AppointmentsRoutingModule }         from './appointments-routing.module';
 
 // Import Angular Material Module

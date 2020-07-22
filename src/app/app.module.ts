@@ -1,14 +1,11 @@
 import { BrowserModule }                     from '@angular/platform-browser';
-import { AppRoutingModule }                  from './app-routing.module';
 import { AppComponent }                      from './app.component';
-import { BrowserAnimationsModule }           from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA }  from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// Import Doctors Components
-import { AddDoctorComponent }                from './doctors/add-doctor/add-doctor.component';
-import { EditDoctorComponent }               from './doctors/edit-doctor/edit-doctor.component';
-import { DoctorsListComponent }              from './doctors/doctors-list/doctors-list.component';
+import { AppRoutingModule } from "./app-routing.module";
 
 // Import Hospitals Components
 import { AddHospitalComponent }              from './hospitals/add-hospital/add-hospital.component';
@@ -25,8 +22,6 @@ import { AngularFireDatabaseModule }         from '@angular/fire/database';
 import { environment }                       from 'src/environments/environment';
 
 // Import Services
-
-import { DoctorService }                     from './doctors/doctor.service';
 import { HospitalService }                   from './hospitals/hospital.service';
 
 // Import Directive
@@ -43,9 +38,6 @@ import { HospitalsModule }                   from './hospitals/hospitals.module'
 @NgModule({
   declarations: [
     AppComponent,
-    AddDoctorComponent,
-    EditDoctorComponent,
-    DoctorsListComponent,
     AddHospitalComponent,
     EditHospitalComponent,
     HospitalsListComponent,
@@ -67,7 +59,7 @@ import { HospitalsModule }                   from './hospitals/hospitals.module'
     DoctorsModule,
     HospitalsModule
   ],
-  providers: [DoctorService, HospitalService],
+  providers: [HospitalService],
   bootstrap: [AppComponent],
   schemas:   [CUSTOM_ELEMENTS_SCHEMA]
 })

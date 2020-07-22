@@ -88,7 +88,7 @@
                        formControlName="doctor_select">
              <mat-option *ngFor="let element of DoctorData"
                          [value]="element.doctor_name"> {{element.doctor_name}}
-               / {{element.hospital_names}} </mat-option>
+               at {{element.hospital_names}} </mat-option>
            </mat-select>
            <mat-error *ngIf="handleError('doctor_select', 'required')"> Doctor
              is required! </mat-error>
