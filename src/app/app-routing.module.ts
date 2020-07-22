@@ -1,20 +1,14 @@
 import { NgModule }                 from '@angular/core';
 import { Routes, RouterModule }     from '@angular/router';
 
-// Import Hospitals Components
-import { AddHospitalComponent }     from './hospitals/add-hospital/add-hospital.component';
-import { EditHospitalComponent }    from './hospitals/edit-hospital/edit-hospital.component';
-import { HospitalsListComponent }   from './hospitals/hospitals-list/hospitals-list.component';
-
-// Defining Routes
+// Defining Routes for Lazy Loading
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "appointments-list" },
+  { path: "", pathMatch: "full", redirectTo: "" },
 
   {
     path: "",
     loadChildren: () =>
-      import("./appointments/appointments.module").then(
-        (m) => m.AppointmentsModule
+      import("./appointments/appointments.module").then((m) => m.AppointmentsModule
       ),
   },
   {
@@ -22,10 +16,11 @@ const routes: Routes = [
     loadChildren: () =>
       import("./doctors/doctors.module").then((m) => m.DoctorsModule),
   },
-
-  { path: "add-hospital", component: AddHospitalComponent },
-  { path: "edit-hospital/:id", component: EditHospitalComponent },
-  { path: "hospitals-list", component: HospitalsListComponent },
+  {
+    path: "",
+    loadChildren: () =>
+      import("./hospitals/hospitals.module").then((m) => m.HospitalsModule),
+  },
 ];
 
 @NgModule({

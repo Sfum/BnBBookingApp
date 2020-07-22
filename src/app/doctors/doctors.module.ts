@@ -9,6 +9,7 @@ import { AddDoctorComponent }                from '../doctors/add-doctor/add-doc
 import { EditDoctorComponent }               from '../doctors/edit-doctor/edit-doctor.component';
 import { DoctorsListComponent }              from '../doctors/doctors-list/doctors-list.component';
 
+// Import Reactive Forms
 import { FormsModule, ReactiveFormsModule }  from "@angular/forms";
 
 // Import Routing Module
