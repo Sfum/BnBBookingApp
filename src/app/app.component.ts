@@ -8,7 +8,7 @@ import { MatSidenav }                         from '@angular/material/sidenav';
 })
 
 export class AppComponent {
-  opened = true;
+  opened = false;
 
   @ViewChild('sidenav') sidenav: MatSidenav;
 
@@ -18,7 +18,7 @@ export class AppComponent {
       this.opened = false;
     } else {
       this.sidenav.fixedTopGap = 55;
-      this.opened = true;
+      this.opened = false;
     }
   }
 

@@ -25,9 +25,13 @@ import { AppointmentsModule }                from './appointments/appointments.m
 import { DoctorsModule }                     from './doctors/doctors.module';
 import { HospitalsModule }                   from './hospitals/hospitals.module';
 
+import { WelcomeComponent } from "./welcome/welcome.component";
+
+
 @NgModule({
   declarations: [
     AppComponent,
+    WelcomeComponent,
     RoundEdgesDirective
   ],
   imports: [

@@ -1,0 +1,18 @@
+.title {
+    padding: 20px;
+    padding-bottom: 30px;
+}
+
+.button-length.active {
+
+  min-width: unset !important;
+  font-size: small;
+}
+
+.button-length {
+  text-align: left;
+}
+
+.frame {
+    padding: 10px;
+}
