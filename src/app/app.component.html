@@ -3,7 +3,7 @@
              (click)="sidenav.toggle()"
              color="warn"
              class="header">
-  <mat-icon>local_hospital</mat-icon> Health Clinic Appointment Centre
+  <mat-icon>local_hospital</mat-icon> Pandemic Management Tool
 </mat-toolbar>
 
  <app-welcome></app-welcome>
@@ -25,21 +25,21 @@
 
           <!--      Add Appointment, Doctor & Hospital Menu-->
           <a mat-raised-button
-             class="button-length"
+             class="menu__button"
              (click)="sidenav.close()"
              routerLinkActive="active"
              routerLink="/add-appointment">
             <mat-icon>alarm</mat-icon> Add Appointment
           </a>
           <a mat-raised-button
-             class="button-length"
+             class="menu__button"
              (click)="sidenav.close()"
              routerLinkActive="active"
              routerLink="/add-doctor">
             <mat-icon>work</mat-icon> Add Doctor
           </a>
           <a mat-raised-button
-             class="button-length"
+             class="menu__button"
              (click)="sidenav.close()"
              routerLinkActive="active"
              routerLink="/add-hospital">
@@ -49,21 +49,21 @@
           
           <!--       Appointment, Doctor & Hospital List Menu-->
           <a mat-raised-button
-             class="button-length"
+             class="menu__button"
              (click)="sidenav.close()"
              routerLinkActive="active"
              routerLink="/appointments-list">
             <mat-icon>assignment</mat-icon> View Appointments
           </a>
           <a mat-raised-button
-             class="button-length"
+             class="menu__button"
              (click)="sidenav.close()"
              routerLinkActive="active"
              routerLink="/doctors-list">
             <mat-icon>view_list</mat-icon> View Doctors
           </a>
           <a mat-raised-button
-             class="button-length"
+             class="menu__button"
              (click)="sidenav.close()"
              routerLinkActive="active"
              routerLink="/hospitals-list">
@@ -71,7 +71,7 @@
           </a>
 <br><br>
           <a mat-raised-button
-             class="button-length"
+             class="menu__button"
              (click)="sidenav.close()"
              routerLink="/">
             <mat-icon>local_hospital</mat-icon> Home Screen

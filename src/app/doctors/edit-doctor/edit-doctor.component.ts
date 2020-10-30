@@ -14,7 +14,7 @@ import { DoctorService }                      from '../doctor.service';
 @Component({
   selector:    'app-edit-doctor',
   templateUrl: './edit-doctor.component.html',
-  styleUrls:  ['./edit-doctor.component.css']
+  styleUrls:  ['./edit-doctor.component.scss']
 })
 
 export class EditDoctorComponent implements OnInit {

@@ -8,7 +8,7 @@ import { Doctor }                           from '../doctor';
 @Component({
   selector:    'app-doctors-list',
   templateUrl: './doctors-list.component.html',
-  styleUrls:  ['./doctors-list.component.css']
+  styleUrls:  ['./doctors-list.component.scss']
 })
 
 export class DoctorsListComponent {

@@ -16,7 +16,7 @@ import { MdePopoverTrigger }                  from '@material-extended/mde';
 @Component({
   selector:    'app-add-appointment',
   templateUrl: './add-appointment.component.html',
-  styleUrls:  ['./add-appointment.component.css']
+  styleUrls:  ['./add-appointment.component.scss']
 })
 export class AddAppointmentComponent implements OnInit {
 

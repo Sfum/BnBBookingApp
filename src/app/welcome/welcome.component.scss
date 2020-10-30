@@ -1,0 +1,25 @@
+.title {
+    padding: 20px;
+    padding-bottom: 30px;
+}
+
+.button-length {
+  text-align: left;
+  width: 200px;
+}
+.menu__button {
+  text-align: left;
+  width: 200px;
+}
+
+.menu-appointments {
+
+  padding: 10px;
+  display: flex;
+  min-width: 200px;
+}
+.menu__button.active {
+  /* min-width: unset!important; */
+  font-size: small;
+  color: rgb(255, 0, 38);
+}

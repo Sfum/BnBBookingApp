@@ -8,6 +8,8 @@ import { AppRoutingModule } from "./app-routing.module";
 // Import Angular Material Module
 import { AngularMaterialModule }             from './material.module';
 import { MatExpansionModule, MatTabsModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 // Import Firebase
 import { AngularFireModule }                 from '@angular/fire';
@@ -46,7 +48,8 @@ import { WelcomeComponent } from "./welcome/welcome.component";
     MdePopoverModule,
     AppointmentsModule,
     DoctorsModule,
-    HospitalsModule
+    HospitalsModule,
+    MatMenuModule
   ],
   bootstrap: [AppComponent],
   schemas:   [CUSTOM_ELEMENTS_SCHEMA]

@@ -9,7 +9,7 @@ import { Hospital }                         from '../hospital';
 @Component({
   selector:    'app-hospitals-list',
   templateUrl: './hospitals-list.component.html',
-  styleUrls:  ['./hospitals-list.component.css']
+  styleUrls:  ['./hospitals-list.component.scss']
 })
 
 export class HospitalsListComponent {

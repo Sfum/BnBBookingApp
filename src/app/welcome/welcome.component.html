@@ -1,47 +1,70 @@
 <div class="frame">
-<div class="title">
-<span><b>Welcome to Health Care Appointment Centre!</b></span>
-</div>
-<mat-card>
-<!--      Add Appointment, Doctor & Hospital Menu-->
-<a mat-raised-button
-   class="button-length"
-   routerLinkActive="active"
-   routerLink="/add-appointment">
-  <mat-icon>alarm</mat-icon> Add Appointment
-</a>
-<a mat-raised-button
-   class="button-length"
-   routerLinkActive="active"
-   routerLink="/add-doctor">
-  <mat-icon>work</mat-icon> Add Doctor
-</a>
-<a mat-raised-button
-   class="button-length"
-   routerLinkActive="active"
-   routerLink="/add-hospital">
-  <mat-icon>playlist_add</mat-icon> Add Hospital
-</a>
-<br><br>
+  <div class="title">
+    <span>
+      <b>Welcome to Pandemic Management Tool!</b>
+    </span>
+  </div>
 
-<!--       Appointment, Doctor & Hospital List Menu-->
-<a mat-raised-button
-   class="button-length"
-   routerLinkActive="active"
-   routerLink="/appointments-list">
-  <mat-icon>assignment</mat-icon> View Appointments
-</a>
-<a mat-raised-button
-   class="button-length"
-   routerLinkActive="active"
-   routerLink="/doctors-list">
-  <mat-icon>view_list</mat-icon> View Doctors
-</a>
-<a mat-raised-button
-   class="button-length"
-   routerLinkActive="active"
-   routerLink="/hospitals-list">
-  <mat-icon>local_hospital</mat-icon> View Hospitals
-</a>
-</mat-card>
+  <mat-card>
+
+    <button mat-button
+            [matMenuTriggerFor]="menuappointments">Appointments
+    </button>
+
+    <mat-menu #menuappointments="matMenu">
+
+      <a mat-raised-button
+         class="menu__button"
+         routerLinkActive="active"
+         routerLink="/add-appointment">
+        <mat-icon>alarm</mat-icon> Add Appointment
+      </a>
+      <a mat-raised-button
+      class="menu__button"
+         routerLinkActive="active"
+         routerLink="/appointments-list">
+        <mat-icon>assignment</mat-icon> View Appointments
+      </a>
+    </mat-menu>
+
+
+    <button mat-button
+            [matMenuTriggerFor]="menudoctors">Doctors
+    </button>
+
+    <mat-menu #menudoctors="matMenu">
+      <a mat-raised-button
+         class="menu__button"
+         routerLinkActive="active"
+         routerLink="/add-doctor">
+        <mat-icon>work</mat-icon> Add Doctor
+      </a>
+      <a mat-raised-button
+         class="menu__button"
+         routerLinkActive="active"
+         routerLink="/doctors-list">
+        <mat-icon>view_list</mat-icon> View Doctors
+      </a>
+    </mat-menu>
+
+    <button mat-button
+            [matMenuTriggerFor]="menuhospitals">Hospitals
+    </button>
+
+    <mat-menu #menuhospitals="matMenu">
+      <a mat-raised-button
+         class="menu__button"
+         routerLinkActive="active"
+         routerLink="/add-hospital">
+        <mat-icon>playlist_add</mat-icon> Add Hospital
+      </a>
+      <a mat-raised-button
+         class="menu__button"
+         routerLinkActive="active"
+         routerLink="/hospitals-list">
+        <mat-icon>local_hospital</mat-icon> View Hospitals
+      </a>
+    </mat-menu>
+
+  </mat-card>
 </div>

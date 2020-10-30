@@ -10,7 +10,7 @@ import { HospitalService }                    from '../hospital.service';
 @Component({
   selector:    'app-edit-hospital',
   templateUrl: './edit-hospital.component.html',
-  styleUrls:  ['./edit-hospital.component.css']
+  styleUrls:  ['./edit-hospital.component.scss']
 })
 
 export class EditHospitalComponent implements OnInit {
